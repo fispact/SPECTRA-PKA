@@ -1,0 +1,10 @@
+*.o 
+*.mod
+*~
+other+original/*
+tests/*
+decay/*
+collapse_test/*
+*.exe
+geant_tests/*
+xs_convert/*
