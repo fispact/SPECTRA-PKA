@@ -3,7 +3,7 @@ language: python
 addons:
   apt:
     packages:
-      - gfortran-6
+      - gfortran
 
 script:
   - make
