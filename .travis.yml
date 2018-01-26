@@ -1,0 +1,9 @@
+language: python
+
+addons:
+  apt:
+    packages:
+      - gfortran-6
+
+script:
+  - make
