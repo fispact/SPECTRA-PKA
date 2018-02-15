@@ -7,7 +7,7 @@
 - [Usage](#usage)
   - [Code words](#code-words)
 - [Examples](#examples)
-- [Input PKA data download]{data-download}
+- [Input PKA data download](#data-download)
 
 #### <a name="overview"></a>Overview
 
