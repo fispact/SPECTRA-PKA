@@ -37,7 +37,7 @@ A complete list of code words can be found on the [FISPACT-II wiki page](http://
 
 In the folder containing the distributed executables of SPECTRA-PKA there is a "test" folder to get the user started. The folder contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type: 
 ```bash
-<location of SPECTRA-PKA> SPECTRA_PKA ZR.in
+<location of SPECTRA-PKA>SPECTRA_PKA ZR.in
 ```
 Here ```<location of SPECTRA-PKA>``` is the folder contained the SPECTRA-PKA executable. The input file (ZR.in) is:
 
