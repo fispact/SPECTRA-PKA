@@ -39,7 +39,7 @@ In the folder containing the distributed executables of SPECTRA-PKA there is a "
 ```bash
 <location of SPECTRA-PKA> SPECTRA_PKA ZR.in
 ```
-Here ```location of SPECTRA-PKA``` is the folder contained the SPECTRA-PKA executable. The input file (ZR.in) is:
+Here ```<location of SPECTRA-PKA>``` is the folder contained the SPECTRA-PKA executable. The input file (ZR.in) is:
 
 ```bash
 flux_filename="fluxes_specter.dat"
@@ -62,7 +62,7 @@ flux_rescale_value=3.25e14
 max_global_recoils=400
 energies_once_perfile=.t.
 ```
-Note that in the test folder ```PKA data folder``` in the above has been replaced by the appropriate directory path for the default hierarchy of the FISPACT-II system. The user should tailor this file as necessary to their own system configuration before running the test.
+Note that in the test folder ```<PKA data folder>``` in the above has been replaced by the appropriate directory path for the default hierarchy of the FISPACT-II system. The user should tailor this file as necessary to their own system configuration before running the test.
 
 The test folder also has an example_results folder containing the .out and .indexes files that should be produced from a successful execution of the test. The plot_example folder provides example .plt files for GNUPLOT that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with GNUPLOT will note the use of the index option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see example_results/ZR.indexes). Important: Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are shown on the [FISPACT-II wiki page](http://fispact.ukaea.uk/wiki/Spectra-PKA) and the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf).
 
@@ -72,5 +72,5 @@ SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files 
 
 ##### <a name="publications"></a>Publications
 
-- M.R. Gilbert, J. Marian, J.-Ch. Sublet, Energy spectra of primary knock-on atoms under neutron irradiation, J. Nucl. Mater 467 (2015) 121–134. doi:https://doi.org/10.1016/j.jnucmat.2015.09.023.
-- M.R. Gilbert, J.-Ch. Sublet, PKA distributions: Contributions from transmutation products and from radioactive decay, Nucl. Mater. Energy 9 (2016) 576–580. doi:http://dx.doi.org/10.1016/j.nme.2016.02.006.
+- M.R. Gilbert, J. Marian, J.-Ch. Sublet, Energy spectra of primary knock-on atoms under neutron irradiation, J. Nucl. Mater 467 (2015) 121â€“134. doi:https://doi.org/10.1016/j.jnucmat.2015.09.023.
+- M.R. Gilbert, J.-Ch. Sublet, PKA distributions: Contributions from transmutation products and from radioactive decay, Nucl. Mater. Energy 9 (2016) 576â€“580. doi:http://dx.doi.org/10.1016/j.nme.2016.02.006.
