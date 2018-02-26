@@ -67,5 +67,5 @@ SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files 
 
 ##### <a name="publications"></a>Publications
 
-- M.R. Gilbert, J. Marian, J.-Ch. Sublet, Energy spectra of primary knock-on atoms under neutron irradiation, J. Nucl. Mater 467 (2015) 121–134. doi:[10.1016/j.jnucmat.2015.09.023](#https://doi.org/10.1016/j.jnucmat.2015.09.023)
+- M.R. Gilbert, J. Marian, J.-Ch. Sublet, Energy spectra of primary knock-on atoms under neutron irradiation, J. Nucl. Mater 467 (2015) 121–134. doi:https://doi.org/10.1016/j.jnucmat.2015.09.023.
 - M.R. Gilbert, J.-Ch. Sublet, PKA distributions: Contributions from transmutation products and from radioactive decay, Nucl. Mater. Energy 9 (2016) 576–580. doi:http://dx.doi.org/10.1016/j.nme.2016.02.006.
