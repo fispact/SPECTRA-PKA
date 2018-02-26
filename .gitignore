@@ -8,3 +8,7 @@ collapse_test/*
 *.exe
 geant_tests/*
 xs_convert/*
+flux_convert/*
+manual/*.ps
+manual/*.dvi
+

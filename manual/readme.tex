@@ -95,6 +95,13 @@ columns= pka_filename pka_ratios parent_ele parent_num ngamma_parent_mass ngamma
 
 %\restoregeometry
 
+
+\section{Input PKA data download}
+
+SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files required from NJOY are non-standard and are produced by a slightly modified version of the GROUPR module within NJOY. An evolving selection of databases produced using various international reaction cross section libraries (for various incident particle types) have been pre-calculated and are available to download as compressed tar archives from \url{https://www.ccfe.ac.uk/FISPACT-II/nuclear_data/PKA/}. These can be used immediately with SPECTRA-PKA, or can be used as a template to guide users who may want to create their own input data files (for example, for libraries not currently included on the download page).
+
+
+
 \section{Example calculation}
 In the folder containing the distributed executables of \texttt{SPECTRA-PKA} there is a ``test'' folder to get the user started. The folder contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type:
 \begin{verbatim}

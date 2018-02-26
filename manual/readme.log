@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=latex 2016.11.29)  8 DEC 2016 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=latex 2016.11.30)  15 FEB 2018 19:11
 entering extended mode
-**C:/spectra-pka/readme/readme.tex
-(C:/spectra-pka/readme/readme.tex
+**./readme.tex
+(readme.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -393,9 +393,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
 
 Overfull \hbox (10.26396pt too wide) in paragraph at lines 45--46
-[]\OT1/ptm/m/n/10 where \OT1/pcr/m/n/10 itype \OT1/ptm/m/n/10 iden-ti-fies the 
-type of the flux file. The only type cur-rently sup-ported by \OT1/pcr/m/n/10 S
-PECTRA-PKA
+\OT1/ptm/m/n/10 where \OT1/pcr/m/n/10 itype \OT1/ptm/m/n/10 iden-ti-fies the ty
+pe of the flux file. The only type cur-rently sup-ported by \OT1/pcr/m/n/10 SPE
+CTRA-PKA
  []
 
 
@@ -412,80 +412,81 @@ parent_mass ngamma_daughter_mass[]
  []
 
 [4]
-Overfull \hbox (32.94661pt too wide) in paragraph at lines 125--125
+Overfull \hbox (32.94661pt too wide) in paragraph at lines 132--132
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 128.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 135.
 
-Overfull \hbox (30.00319pt too wide) in paragraph at lines 128--129
+Overfull \hbox (30.00319pt too wide) in paragraph at lines 135--136
 \OT1/ptm/m/n/10 cur-rently used in the .plt files are ap-pro-pri-ate for the ex
 -am-ple re-sults (see \OT1/pcr/m/n/10 example_results/ZR.indexes\OT1/ptm/m/n/10
  ).
  []
 
+[5]
 File: ZR_elemental.eps Graphic file (type eps)
-<ZR_elemental.eps>
+ <ZR_elemental.eps>
 File: ZR_isotope.eps Graphic file (type eps)
  <ZR_isotope.eps>
-Overfull \hbox (40.97032pt too wide) in paragraph at lines 134--139
-[][] [][] 
+Overfull \hbox (40.97032pt too wide) in paragraph at lines 141--146
+[] [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--139
+Underfull \hbox (badness 10000) in paragraph at lines 141--146
 
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 147--151
-[][]\OT1/ptm/m/n/10 M. R. Gilbert, J. Mar-ian, and J. -Ch. Sub-let, ``En-ergy s
-pec-tra of pri-mary knock-
+Underfull \hbox (badness 5681) in paragraph at lines 154--158
+[]\OT1/ptm/m/n/10 M. R. Gilbert, J. Mar-ian, and J. -Ch. Sub-let, ``En-ergy spe
+c-tra of pri-mary knock-
  []
 
 
-Underfull \hbox (badness 4899) in paragraph at lines 147--151
+Underfull \hbox (badness 4899) in paragraph at lines 154--158
 \OT1/ptm/m/n/10 on atoms un-der neu-tron ir-ra-di-a-tion,'' \OT1/ptm/m/it/10 J.
  Nucl. Mater\OT1/ptm/m/n/10 , vol. 467, pp. 121--134, 2015.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
-[][]\OT1/ptm/m/n/10 L. R. Green-wood, and R. K. Smither, ``Specter: Neu-tron da
-m-age cal-cu-la-tions
+Underfull \hbox (badness 10000) in paragraph at lines 159--164
+[]\OT1/ptm/m/n/10 L. R. Green-wood, and R. K. Smither, ``Specter: Neu-tron dam-
+age cal-cu-la-tions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
+Underfull \hbox (badness 10000) in paragraph at lines 159--164
 \OT1/ptm/m/n/10 for ma-te-ri-als ir-ra-di-a-tions'', Jan-uary 1985. Doc-u-ment 
 Num-ber: ANL/FPP/TM-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
+Underfull \hbox (badness 10000) in paragraph at lines 159--164
 \OT1/ptm/m/n/10 197. SPECTER and SPECOMP are avail-able from the NEA data-bank.
 
  []
 
-[5]
-Underfull \hbox (badness 4872) in paragraph at lines 159--163
-[][]\OT1/ptm/m/n/10 M. R. Gilbert and J.-Ch. Sub-let, ``PKA dis-tri-bu-tions: C
-on-tri-bu-tions from trans-mu-ta-
+
+Underfull \hbox (badness 4872) in paragraph at lines 166--170
+[]\OT1/ptm/m/n/10 M. R. Gilbert and J.-Ch. Sub-let, ``PKA dis-tri-bu-tions: Con
+-tri-bu-tions from trans-mu-ta-
  []
 
 
-Underfull \hbox (badness 5802) in paragraph at lines 159--163
+Underfull \hbox (badness 5802) in paragraph at lines 166--170
 \OT1/ptm/m/n/10 tion prod-ucts and from ra-dioac-tive de-cay,'' \OT1/ptm/m/it/1
 0 Nucl. Mater. En-ergy\OT1/ptm/m/n/10 , 2016.  in press.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
 [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
  (readme.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 168.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 175.
 
 
  *File List*
@@ -560,18 +561,18 @@ ZR_elemental.eps    Graphic file (type eps)
 ZR_isotope.eps    Graphic file (type eps)
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
 Package rerunfilecheck Info: File `readme.out' has not changed.
-(rerunfilecheck)             Checksum: 1183CE6CDAC5F3C45B58989ECDA0CDD0;205.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
+(rerunfilecheck)             Checksum: 0A16A7096174130377BB9E472C71A1EC;264.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
  ) 
 Here is how much of TeX's memory you used:
  6367 strings out of 493334
- 90985 string characters out of 3139210
- 184137 words of memory out of 3000000
- 9809 multiletter control sequences out of 15000+200000
+ 90930 string characters out of 3139210
+ 184233 words of memory out of 3000000
+ 9810 multiletter control sequences out of 15000+200000
  20279 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,6n,28p,1843b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,6n,28p,1823b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on readme.dvi (6 pages, 34168 bytes).
+Output written on readme.dvi (6 pages, 33784 bytes).

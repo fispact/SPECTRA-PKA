@@ -8,6 +8,7 @@
   - [Code words](#code-words)
 - [Examples](#examples)
 - [Input PKA data download](#data-download)
+- [Publications](#publications)
 
 #### <a name="overview"></a>Overview
 
@@ -64,3 +65,7 @@ The test folder also has an example_results folder containing the .out and .inde
 
 SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files required from NJOY are non-standard and are produced by a slightly modified version of the GROUPR module within NJOY. An evolving selection of databases produced using various international reaction cross section libraries (for various incident particle types) have been pre-calculated and are available to download as compressed tar archives from [www.ccfe.ac.uk/FISPACT-II/nuclear_data/PKA](https://www.ccfe.ac.uk/FISPACT-II/nuclear_data/PKA/). These can be used immediately with SPECTRA-PKA, or can be used as a template to guide users who may want to create their own input data files (for example, for libraries not currently included on the download page).
 
+##### <a name="publications"></a>Publications
+
+- M.R. Gilbert, J. Marian, J.-Ch. Sublet, Energy spectra of primary knock-on atoms under neutron irradiation, J. Nucl. Mater 467 (2015) 121–134. doi:[10.1016/j.jnucmat.2015.09.023](#https://doi.org/10.1016/j.jnucmat.2015.09.023)
+- M.R. Gilbert, J.-Ch. Sublet, PKA distributions: Contributions from transmutation products and from radioactive decay, Nucl. Mater. Energy 9 (2016) 576–580. doi:http://dx.doi.org/10.1016/j.nme.2016.02.006.
