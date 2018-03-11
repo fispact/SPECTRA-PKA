@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=latex 2016.11.30)  15 FEB 2018 19:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.30)  11 MAR 2018 19:54
 entering extended mode
 **./readme.tex
 (readme.tex
@@ -37,10 +37,18 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\dvips.def"
-File: dvips.def 2016/07/10 v3.1a Driver-dependent file (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
@@ -65,13 +73,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count87
+\inf@bad=\count88
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count88
-\leftroot@=\count89
+\uproot@=\count89
+\leftroot@=\count90
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count90
-\DOTSCASE@=\count91
+\classnum@=\count91
+\DOTSCASE@=\count92
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
@@ -80,15 +88,15 @@ LaTeX Info: Redefining \cdots on input line 518.
 \big@size=\dimen107
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count92
-\c@MaxMatrixCols=\count93
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
-\c@parentequation=\count94
-\dspbrk@lvl=\count95
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
 \tag@help=\toks16
-\row@=\count96
-\column@=\count97
-\maxfields@=\count98
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
 \andhelp@=\toks17
 \eqnshift@=\dimen108
 \alignsep@=\dimen109
@@ -138,11 +146,8 @@ Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: dvips.def on input line 147.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
-File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 147.
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
@@ -156,8 +161,8 @@ Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
@@ -176,7 +181,7 @@ Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package pdftexcmds Info: \pdfdraftmode found.
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
@@ -203,13 +208,13 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen116
-\Hy@linkcounter=\count99
-\Hy@pagecounter=\count100
+\Hy@linkcounter=\count100
+\Hy@pagecounter=\count101
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count101
+\Hy@SavedSpaceFactor=\count102
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -221,7 +226,7 @@ Package hyperref Info: Plain pages OFF on input line 4501.
 Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count102
+\c@Hy@tempcnt=\count103
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
@@ -229,7 +234,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5088.
 \XeTeXLinkMargin=\dimen117
-\Fld@menulength=\count103
+\Fld@menulength=\count104
 \Field@Width=\dimen118
 \Fld@charsize=\dimen119
 Package hyperref Info: Hyper figures OFF on input line 6342.
@@ -241,23 +246,15 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count104
-\c@Item=\count105
-\c@Hfootnote=\count106
+\Hy@abspage=\count105
+\c@Item=\count106
+\c@Hfootnote=\count107
 )
 
-Package hyperref Message: Driver (default): hdvips.
+Package hyperref Message: Driver (autodetected): hpdftex.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hdvips.def"
-File: hdvips.def 2016/06/24 v6.83q Hyperref driver for dvips
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pdfmark.def"
-File: pdfmark.def 2016/06/24 v6.83q Hyperref definitions for pdfmark specials
-\pdf@docset=\toks21
-\pdf@box=\box28
-\pdf@toks=\toks22
-\pdf@defaulttoks=\toks23
-\HyField@AnnotCount=\count107
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
 \Fld@listcount=\count108
 \c@bookmark@seq@number=\count109
 
@@ -267,7 +264,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip48
-))
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@cnth=\count110
@@ -281,32 +278,63 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layoutheight=\dimen125
 \Gm@layouthoffset=\dimen126
 \Gm@layoutvoffset=\dimen127
-\Gm@dimlist=\toks24
+\Gm@dimlist=\toks21
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg")) (readme.aux)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+
+Package hyperref Warning: Option `backref' has already been used,
+(hyperref)                setting the option has no effect on input line 17.
+
+Package hyperref Info: Option `colorlinks' set `true' on input line 17.
+(readme.aux)
 \openout1 = `readme.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 17.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 19.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count113
+\scratchdimen=\dimen128
+\scratchbox=\box28
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen129
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks23
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 17.
+Package hyperref Info: Link coloring ON on input line 19.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -314,11 +342,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count113
+\c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (readme.out) (readme.out)
 \@outlinefile=\write3
@@ -326,9 +354,9 @@ LaTeX Info: Redefining \nameref on input line 17.
 
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: dvips
+*geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
-* driver: dvips
+* driver: pdftex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -359,16 +387,16 @@ LaTeX Info: Redefining \nameref on input line 17.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 21.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 23.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -377,46 +405,60 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 37.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
  [1
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 
-Overfull \hbox (10.26396pt too wide) in paragraph at lines 45--46
+Overfull \hbox (10.26396pt too wide) in paragraph at lines 47--48
 \OT1/ptm/m/n/10 where \OT1/pcr/m/n/10 itype \OT1/ptm/m/n/10 iden-ti-fies the ty
 pe of the flux file. The only type cur-rently sup-ported by \OT1/pcr/m/n/10 SPE
 CTRA-PKA
  []
 
 
-Overfull \hbox (0.61337pt too wide) in paragraph at lines 45--46
+Overfull \hbox (0.61337pt too wide) in paragraph at lines 47--48
 \OT1/ptm/m/n/10 for-mat shown above. \OT1/pcr/m/n/10 dummyi \OT1/ptm/m/n/10 are
  ob-so-lete en-tries where an in-te-ger value is still ex-pected. \OT1/pcr/m/n/
 10 igroup
  []
 
 [2] [3]
+Overfull \hbox (13.60234pt too wide) in paragraph at lines 74--75
+\OT1/ptm/m/n/10 energy bin bound-aries as-so-ci-ated with each PKA en-ergy bin 
+fol-low-ing the Lindhard-Scharff-Schitt [[]]
+ []
+
+
+Overfull \hbox (19.45233pt too wide) in paragraph at lines 75--76
+[]\OT1/pcr/m/n/10 assumed[]ed \OT1/ptm/m/n/10 [\OT1/pcr/m/n/10 40.0\OT1/ptm/m/n
+/10 ] --- thresh-old dis-place-ment en-ergy (in eV) for the ma-te-rial used for
+ displacements-
+ []
+
+[4]
 Overfull \hbox (32.94661pt too wide) in paragraph at lines 94--94
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
  []
 
-[4]
+
 Overfull \hbox (32.94661pt too wide) in paragraph at lines 132--132
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
  []
 
+[5]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 135.
 
@@ -426,11 +468,42 @@ Overfull \hbox (30.00319pt too wide) in paragraph at lines 135--136
  ).
  []
 
-[5]
-File: ZR_elemental.eps Graphic file (type eps)
- <ZR_elemental.eps>
-File: ZR_isotope.eps Graphic file (type eps)
- <ZR_isotope.eps>
+Package epstopdf Info: Source file: <ZR_elemental.eps>
+(epstopdf)                    date: 2016-11-21 11:56:50
+(epstopdf)                    size: 31764 bytes
+(epstopdf)             Output file: <ZR_elemental-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-03-11 18:55:32
+(epstopdf)                    size: 9618 bytes
+(epstopdf)             Command: <epstopdf --outfile=ZR_elemental-eps-converted-
+to.pdf ZR_elemental.eps>
+(epstopdf)             \includegraphics on input line 143.
+Package epstopdf Info: Output file is already uptodate.
+<ZR_elemental-eps-converted-to.pdf, id=68, 274.02374pt x 178.6675pt>
+File: ZR_elemental-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ZR_elemental-eps-converted-to.pdf>
+Package pdftex.def Info: ZR_elemental-eps-converted-to.pdf used on input line 1
+43.
+(pdftex.def)             Requested size: 292.77629pt x 190.90788pt.
+Package epstopdf Info: Source file: <ZR_isotope.eps>
+(epstopdf)                    date: 2016-11-21 11:55:47
+(epstopdf)                    size: 44356 bytes
+(epstopdf)             Output file: <ZR_isotope-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-03-11 18:55:34
+(epstopdf)                    size: 17500 bytes
+(epstopdf)             Command: <epstopdf --outfile=ZR_isotope-eps-converted-to
+.pdf ZR_isotope.eps>
+(epstopdf)             \includegraphics on input line 145.
+Package epstopdf Info: Output file is already uptodate.
+
+<ZR_isotope-eps-converted-to.pdf, id=69, 274.02374pt x 244.915pt>
+File: ZR_isotope-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ZR_isotope-eps-converted-to.pdf>
+Package pdftex.def Info: ZR_isotope-eps-converted-to.pdf used on input line 145
+.
+(pdftex.def)             Requested size: 209.12683pt x 186.91463pt.
+
 Overfull \hbox (40.97032pt too wide) in paragraph at lines 141--146
 [] [][] 
  []
@@ -440,53 +513,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--146
 
  []
 
+[6 <./ZR_elemental-eps-converted-to.pdf> <./ZR_isotope-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
 
-Underfull \hbox (badness 5681) in paragraph at lines 154--158
-[]\OT1/ptm/m/n/10 M. R. Gilbert, J. Mar-ian, and J. -Ch. Sub-let, ``En-ergy spe
-c-tra of pri-mary knock-
- []
-
-
-Underfull \hbox (badness 4899) in paragraph at lines 154--158
-\OT1/ptm/m/n/10 on atoms un-der neu-tron ir-ra-di-a-tion,'' \OT1/ptm/m/it/10 J.
- Nucl. Mater\OT1/ptm/m/n/10 , vol. 467, pp. 121--134, 2015.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--164
-[]\OT1/ptm/m/n/10 L. R. Green-wood, and R. K. Smither, ``Specter: Neu-tron dam-
-age cal-cu-la-tions
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--164
-\OT1/ptm/m/n/10 for ma-te-ri-als ir-ra-di-a-tions'', Jan-uary 1985. Doc-u-ment 
-Num-ber: ANL/FPP/TM-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--164
-\OT1/ptm/m/n/10 197. SPECTER and SPECOMP are avail-able from the NEA data-bank.
-
- []
-
-
-Underfull \hbox (badness 4872) in paragraph at lines 166--170
-[]\OT1/ptm/m/n/10 M. R. Gilbert and J.-Ch. Sub-let, ``PKA dis-tri-bu-tions: Con
--tri-bu-tions from trans-mu-ta-
- []
-
-
-Underfull \hbox (badness 5802) in paragraph at lines 166--170
-\OT1/ptm/m/n/10 tion prod-ucts and from ra-dioac-tive de-cay,'' \OT1/ptm/m/it/1
-0 Nucl. Mater. En-ergy\OT1/ptm/m/n/10 , 2016.  in press.
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
-[6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
  (readme.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 175.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
 
 
  *File List*
@@ -497,7 +530,9 @@ graphicx.sty    2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    2016/01/03 v1.10 sin cos tan (DPC)
 graphics.cfg    2016/06/04 v1.11 sample graphics configuration
-   dvips.def    2016/07/10 v3.1a Driver-dependent file (DPC,SPQR)
+  pdftex.def    2016/07/10 v0.06j Graphics/color for pdfTeX
+infwarerr.sty    2016/05/16 v1.4 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
  amsmath.sty    2016/06/28 v2.15d AMS math features
  amstext.sty    2000/06/29 v2.01 AMS text
   amsgen.sty    1999/11/30 v2.0 generic functions
@@ -510,14 +545,11 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
       bm.sty    2016/07/07 v1.2b Bold Symbol Support (DPC/FMi)
    color.sty    2016/07/10 v1.1e Standard LaTeX Color (DPC)
    color.cfg    2016/01/02 v1.6 sample color configuration
-dvipsnam.def    2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
    times.sty    2005/04/12 PSNFSS-v9.2a (SPQR) 
 hyperref.sty    2016/06/24 v6.83q Hypertext links for LaTeX
 hobsub-hyperref.sty    2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2016/05/16 v1.14 Construct package bundles (HO)
-infwarerr.sty    2016/05/16 v1.4 Providing info/warning/error messages (HO)
- ltxcmds.sty    2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 ifluatex.sty    2016/05/16 v1.4 Provides the ifluatex switch (HO)
   ifvtex.sty    2016/05/16 v1.6 Detect VTeX and its facilities (HO)
  intcalc.sty    2016/05/16 v1.2 Expandable calculations with integers (HO)
@@ -543,12 +575,14 @@ kvoptions.sty    2016/05/16 v3.12 Key value format for package options (HO)
   pd1enc.def    2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
-  hdvips.def    2016/06/24 v6.83q Hyperref driver for dvips
- pdfmark.def    2016/06/24 v6.83q Hyperref definitions for pdfmark specials
+ hpdftex.def    2016/06/24 v6.83q Hyperref driver for pdfTeX
 rerunfilecheck.sty    2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 geometry.sty    2010/09/12 v5.6 Page Geometry
 geometry.cfg
   ot1ptm.fd    2001/06/04 font definitions for OT1/ptm.
+supp-pdf.mkii
+epstopdf-base.sty    2016/05/15 v2.6 Base part for package epstopdf
+  grfext.sty    2016/05/16 v1.2 Manage graphics extensions (HO)
  nameref.sty    2016/05/21 v2.44 Cross-referencing by name of section
 gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
   readme.out
@@ -557,22 +591,35 @@ gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
     umsa.fd    2013/01/14 v3.01 AMS symbols A
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   omsptm.fd    
-ZR_elemental.eps    Graphic file (type eps)
-ZR_isotope.eps    Graphic file (type eps)
+ZR_elemental-eps-converted-to.pdf    Graphic file (type pdf)
+ZR_isotope-eps-converted-to.pdf    Graphic file (type pdf)
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
 Package rerunfilecheck Info: File `readme.out' has not changed.
 (rerunfilecheck)             Checksum: 0A16A7096174130377BB9E472C71A1EC;264.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
  ) 
 Here is how much of TeX's memory you used:
- 6367 strings out of 493334
- 90930 string characters out of 3139210
- 184233 words of memory out of 3000000
- 9810 multiletter control sequences out of 15000+200000
- 20279 words of font info for 69 fonts, out of 3000000 for 9000
+ 6760 strings out of 493333
+ 96433 string characters out of 3139184
+ 191599 words of memory out of 3000000
+ 10147 multiletter control sequences out of 15000+200000
+ 26682 words of font info for 77 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,6n,28p,1823b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,8n,28p,1862b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on readme.pdf (7 pages, 153976 bytes).
+PDF statistics:
+ 144 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on readme.dvi (6 pages, 33784 bytes).

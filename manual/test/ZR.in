@@ -2,19 +2,21 @@ flux_filename="fluxes_specter.dat"
 results_stub="ZR" 
 num_columns=6
 columns= pka_filename pka_ratios parent_ele parent_num ngamma_parent_mass ngamma_daughter_mass
-"/FISPACT-II/ENDFdata/TENDL2015data/tal2015-n/pka/Zr090s.asc" 0.51450000 Zr 90 89.904697659 90.905639587
-"/FISPACT-II/ENDFdata/TENDL2015data/tal2015-n/pka/Zr091s.asc" 0.11220000 Zr 91 90.905639587 91.905034675
-"/FISPACT-II/ENDFdata/TENDL2015data/tal2015-n/pka/Zr092s.asc" 0.17150000 Zr 92 91.905034675 92.906469947
-"/FISPACT-II/ENDFdata/TENDL2015data/tal2015-n/pka/Zr094s.asc" 0.17380000 Zr 94 93.906310828 94.908038530
-"/FISPACT-II/ENDFdata/TENDL2015data/tal2015-n/pka/Zr096s.asc" 0.02800000 Zr 96 95.908271433 96.910951206
+"example_data/Zr090s.asc" 0.51450000 Zr 90 89.904697659 90.905639587
+"example_data/Zr091s.asc" 0.11220000 Zr 91 90.905639587 91.905034675
+"example_data/Zr092s.asc" 0.17150000 Zr 92 91.905034675 92.906469947
+"example_data/Zr094s.asc" 0.17380000 Zr 94 93.906310828 94.908038530
+"example_data/Zr096s.asc" 0.02800000 Zr 96 95.908271433 96.910951206
 flux_norm_type=2
 pka_filetype=2 
 do_mtd_sums=.true.
 do_ngamma_estimate=.t.
-do_global_sums=.t.
+do_global_sums=.f.
 do_exclude_light_from_total=.t.
 number_pka_files=5 
 flux_rescale_value=3.25e14
 max_global_recoils=400
 energies_once_perfile=.t. 
+do_tdam=.t.
+assumed_ed=40.0
 
