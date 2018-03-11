@@ -346,11 +346,12 @@ END IF
          end do         
          
     END IF
+
     
-    print *,'global sums'
     !10/10/2013
     ! needs to come before sum_pkas - so that we can check alpha/proton sum flags.
     IF(do_global_sums) THEN
+    print *,'global sums'
      IF( ((.not.alpha_sum_flag).AND.(mtd.GE.800).AND.(mtd.LE.849)).OR. &
          ((.not.proton_sum_flag).AND.(mtd.GE.600).AND.(mtd.LE.649))) THEN
         ! do not add because main 107/103 z,a/z,p reaction has already been added
@@ -360,11 +361,13 @@ END IF
       CALL add_to_globals(pka(1,:),num_pka_recoil_points,tdam_energies)
      END IF
     END IF
-
-   print *,'mtd sums'
-   pka(3,:)=pka(1,:)
-   IF(do_mtd_sums) CALL sum_pkas()
   
+   
+   pka(3,:)=pka(1,:)
+   IF(do_mtd_sums) THEN
+    print *,'mtd sums'
+    CALL sum_pkas()
+   END IF
    !print *,'output',sum(pka(1,1:num_pka_recoil_points)),io_quit
 
    IF(io_quit.NE.0) cycle
@@ -389,17 +392,18 @@ END IF
        //TRIM(ADJUSTL(number_string))//' ] from [ '//TRIM(ADJUSTL(parent_ele(filenum))) &
        //TRIM(ADJUSTL(number_string2)) &
        //' ]'//TRIM(ADJUSTL(pka_filename(filenum)))   
-    WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS'
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS'
    IF(do_tdam) THEN
 
 
     IF(ksail.GE.0) THEN
-     WRITE(results_unit,'(1x,a28,a8,3x,a7,a11,a28,A22,A12)') &
-           '#ERECOIL (MeV low & high)','SUM','ERROR(%)',&
+     WRITE(results_unit,'(1x,a32,a8,3x,a7,a11,a28,A22,A12)') &
+           '#RECOIL energy (MeV low & high)','SUM','ERROR(%)',&
               'norm_sum','   T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
      i=1
      ! add in displacement energy and dpa
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                    tdam_energies(i)/2._DBL,tdam_energies(i),(pka(1,i))*&
@@ -407,7 +411,7 @@ END IF
              0.8_DBL*(pka(1,i))*&
              (tdam_energies(i)/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL)
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                    tdam_energies(i-1),tdam_energies(i),(pka(1,i))*&
@@ -417,11 +421,11 @@ END IF
       
      END DO
     ELSE
-     WRITE(results_unit,'(1x,a28,a8,a11,a28,A22,A12)') '#ERECOIL (MeV low & high)',&
+     WRITE(results_unit,'(1x,a32,a8,a11,a28,A22,A12)') '#RECOIL energy (MeV low & high)',&
             'SUM','norm_sum', &
             '   T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
      i=1
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,4ES11.4,2ES20.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,4ES11.4,2ES20.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                   tdam_energies(i)/2._DBL,tdam_energies(i),(pka(1,i))*&
@@ -429,7 +433,7 @@ END IF
              0.8_DBL*(pka(1,i))*&
              (tdam_energies(i)/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL) 
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,4ES11.4,2ES20.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,4ES11.4,2ES20.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &     
                  pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                    tdam_energies(i-1),tdam_energies(i),(pka(1,i))*&
@@ -443,26 +447,26 @@ END IF
     
    ELSE
     IF(ksail.GE.0) THEN
-     WRITE(results_unit,'(1x,a28,a8,3x,a7,a11)') &
-           '#ERECOIL (MeV low & high)','SUM','ERROR(%)','norm_sum'
+     WRITE(results_unit,'(1x,a32,a8,3x,a7,a11)') &
+           '#RECOIL energy (MeV low & high)','SUM','ERROR(%)','norm_sum'
      i=1
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,ES11.4,3x,F7.3,ES11.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,ES11.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,ES11.4,3x,F7.3,ES11.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,ES11.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
       
      END DO
     ELSE
-     WRITE(results_unit,'(1x,a28,a8,a11)') '#ERECOIL (MeV low & high)','SUM','norm_sum'
+     WRITE(results_unit,'(1x,a32,a8,a11)') '#RECOIL energy (MeV low & high)','SUM','norm_sum'
      i=1
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,2ES11.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,2ES11.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES14.4,2ES11.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,2ES11.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &     
                  pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      END DO    
@@ -476,10 +480,11 @@ END IF
               0.8_DBL*displacements/(2._DBL*assumed_ed*1e-6_DBL),&
             ' (E_d=',assumed_ed,' eV)'
    END IF
-    
-    WRITE(results_unit,*)
-    WRITE(results_unit,*)
-    file_index=file_index+1
+    ! 11/3/2018 - unused normalised output omitted - remove blank lines here - will 
+    ! be added when kept average energy is output below
+    !WRITE(results_unit,*)
+    !WRITE(results_unit,*)
+    !file_index=file_index+1
     
     ! normalise pka distributions to unity
     DO i=1,1! 1 only   ,3,2 ! 1 and 3 only
@@ -515,21 +520,22 @@ END IF
      pka(4,i)=pka(4,i-1)+pka(3,i)
      pka(2,i)=pka(2,i-1)+pka(1,i)
     END DO
-    WRITE(results_unit,*) '### index ',file_index,' ##### ',TRIM(ADJUSTL(pka_filename(filenum)))
-    WRITE(results_unit,'(a,ES11.4)') '# NORMALIZED SPECTRAL AND GROUP AVERAGED RECOIL DIST'// &
-     'RIBUTIONS  SUM = ',sum_temp
-    WRITE(results_unit,*) '#  ERECOIL  SUM-0-INTEGRAL  '
-    DO i=1,num_pka_recoil_points
-     IF(pka(1,i)==0._DBL) cycle
-     WRITE(results_unit,'(1x,3ES10.3,I10)') pka_recoil_energies(i),(pka(j,i),j=1,2),i
-    END DO
+    ! 11/3/2018 - unused normalised output - remove
+    !WRITE(results_unit,*) '### index ',file_index,' ##### ',TRIM(ADJUSTL(pka_filename(filenum)))
+    !WRITE(results_unit,'(a,ES11.4)') '# NORMALIZED SPECTRAL AND GROUP AVERAGED RECOIL DIST'// &
+    ! 'RIBUTIONS  SUM = ',sum_temp
+    !WRITE(results_unit,*) '#  ERECOIL  SUM-0-INTEGRAL  '
+    !DO i=1,num_pka_recoil_points
+    ! IF(pka(1,i)==0._DBL) cycle
+    ! WRITE(results_unit,'(1x,3ES10.3,I10)') pka_recoil_energies(i),(pka(j,i),j=1,2),i
+    !END DO
     ! compute average pka energy
     pka_ave=0.5_DBL*pka_recoil_energies(1)*pka(1,1)
     DO i=2,num_pka_recoil_points
      pka_ave=pka_ave+0.5_DBL*(pka_recoil_energies(i)+pka_recoil_energies(i-1))*pka(1,i)
     END DO
     pka_ave=pka_ave*1000000._DBL
-    
+    !11/3/2018 - but keep this part - still usefil
     WRITE(results_unit,'(a1,20x,A,ES11.4,A5)') '#','AVERAGE PKA ENERGY = ',pka_ave,' (eV)'
     
     WRITE(results_unit,*)

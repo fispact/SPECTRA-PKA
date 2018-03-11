@@ -344,7 +344,7 @@
  energies_once_perfile=.false.  ! 5/10/2015 if false then old style energy structure for every channel+4/3/2016
  do_tdam=.false.  
  assumed_ed=40._DBL  ! 4/4/2016 assumed E_d for NRT displacements per second per channel
- tdam_method=2 ! 1 from NRT paper, 2 from njoy heatr subroutine.
+ tdam_method=2 ! 1 from NRT paper (not appropriate), 2 from njoy heatr subroutine and robinson 1994
  
  !21/4/2016 need to identify incident particle to get correct daughter
  incident_particle='n' !can be n or p for now

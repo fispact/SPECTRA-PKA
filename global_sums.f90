@@ -115,13 +115,14 @@
     ! current channel
      total_pka_sum_tdam=total_pka_sum_tdam+&
         tdam_pka_temp
-     DEALLOCATE(tdam_pka_temp)      
+           
     END IF
    END IF
   END IF 
+  
+  
+  IF(do_tdam) DEALLOCATE(tdam_pka_temp)
 
-  
-  
   END SUBROUTINE add_to_globals
  
  

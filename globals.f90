@@ -148,4 +148,8 @@ MODULE globals
  !16/10/2017 - handle exception caused by first file being empty and preventing array allocation
  LOGICAL :: first_non_empty
  
+ 
+ !11/3/2018
+ INTEGER :: deallocerr
+ 
  end module globals

@@ -5,7 +5,7 @@
 !******************************************************************************
 !end rubric
 
-  SUBROUTINE sum_pkas()
+  SUBROUTINE sum_pkas
   use globals
    IMPLICIT NONE
    
@@ -64,6 +64,7 @@
    CASE DEFAULT
    
    END SELECT
+   print *,'p',mtd
    SELECT CASE(mtd)
    CASE(5,28,41:45,103,111:112,115:116,600:649)
     IF(INDEX(pka_element,"proton").NE.0) THEN
@@ -99,7 +100,7 @@
 
    
 ! heavy recoils section   
-   
+   print *,'heavy',mtd
    SELECT CASE(mtd)
    CASE(107,800:849)
     IF(INDEX(pka_element,"recoil").NE.0) THEN
@@ -190,11 +191,12 @@
     ! do nothing - not a summable reaction
    END SELECT
    
-   
+   !print *,'h2',mtd,do_tdam
    IF(do_tdam) THEN
-
-    DEALLOCATE(tdam_pka_temp)
-        
+    !PRINT *,allocated(tdam_pka_temp),size(tdam_pka_temp)
+    DEALLOCATE(tdam_pka_temp,STAT=deallocerr)
+    !PRINT *,allocated(tdam_pka_temp),size(tdam_pka_temp),deallocerr 
    END IF   
-  
+  !print *,'h3',mtd,do_tdam
+  !STOP
   END SUBROUTINE sum_pkas
