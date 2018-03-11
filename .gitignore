@@ -11,4 +11,10 @@ xs_convert/*
 flux_convert/*
 manual/*.ps
 manual/*.dvi
+manual/*converted-to.pdf
+manual/test/*.indexes
+manual/test/*.out
+manual/test/spectra-pka*
+data/*
+manual/*synctex
 
