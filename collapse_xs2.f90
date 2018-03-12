@@ -12,7 +12,7 @@
  INTEGER, INTENT (in) :: ninput_groups,noutput_groups
  REAL(KIND=DBL), INTENT (inout) :: xxs(MAX(noutput_groups+1,ninput_groups+1))
  REAL(KIND=DBL), INTENT (in) :: output_energies(noutput_groups+1),input_energies(ninput_groups+1)
- INTEGER :: ii,jj,nid(noutput_groups+1),kk
+ INTEGER :: ii,jj,kk
  REAL(KIND=DBL) :: xxs_rounded(MAX(noutput_groups+1,ninput_groups+1))
  integer :: nd1,ni
  logical :: split
@@ -56,6 +56,8 @@
         end do inner
  
         ebottom = input_energies(jj)
+        ! 12/3/2018 - impossible for ii to be zero here (i.e. split has to be false
+        ! when ii if ii is 0 & kk=1)
         if(split) ebottom = output_energies(ii)
         
 

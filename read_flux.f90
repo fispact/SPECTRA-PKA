@@ -24,6 +24,7 @@
      END IF
      IF(io_read==0) THEN
        number_flux_ebins=number_flux_groups+1
+       !12/3/2018 - over allocated flux arrays (last bin never becomes non-zero)
        ALLOCATE(flux_energies(number_flux_ebins),fluxes(number_flux_ebins),&
               flux_ebin_widths(number_flux_ebins),fluxes_norm(number_flux_ebins))
        fluxes=0._DBL

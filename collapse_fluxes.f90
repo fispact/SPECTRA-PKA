@@ -8,17 +8,19 @@
  SUBROUTINE collapse_fluxes(fluxx,ninput_groups,noutput_groups,output_energies,input_energies)
  use globals
  IMPLICIT NONE
- 
+ ! 12/3/2018 - corrects to memory leaks due to input arrays being one less in size than groups+1
  INTEGER, INTENT (in) :: ninput_groups,noutput_groups
- REAL(KIND=DBL), INTENT (inout) :: fluxx(MAX(noutput_groups+1,ninput_groups+1))
- REAL(KIND=DBL), INTENT (in) :: output_energies(noutput_groups+1),input_energies(ninput_groups+1)
- INTEGER :: ii,jj,nid(noutput_groups+1),kk
- REAL(KIND=DBL) :: fluxx_rounded(MAX(noutput_groups+1,ninput_groups+1))
+ REAL(KIND=DBL), INTENT (inout) :: fluxx(MAX(noutput_groups,ninput_groups))
+ REAL(KIND=DBL), INTENT (in) :: output_energies(noutput_groups),input_energies(ninput_groups)
+ INTEGER :: ii,jj,kk
+ REAL(KIND=DBL) :: fluxx_rounded(MAX(noutput_groups,ninput_groups))
  integer :: nd1,ni
  logical :: split
  REAL (KIND=DBL) :: frac,frac2,ebottom,due,dud
  
+ 
 !30/6/2016 modified from CEM's grpconvert routine in FISPACT-II - itself based on routines written by N.P.Taylor.
+
 
  ! 11/7/2016 but in this routine we will always be using a grid where the value in ii corresponds to
  ! the energy bin from ii-1 to ii

@@ -23,7 +23,7 @@
       CASE(2)
        READ(pka_unit,'(a30,I5,a70)',IOSTAT=io_read) pka_element,mtd,input_line
        
-       IF(io_read==0) print *,pka_element,mtd,input_line
+       IF(io_read==0) write (*,'(a,I10,x,a)') TRIM(ADJUSTL(pka_element)),mtd,TRIM(ADJUSTL(input_line))
        
        !6/3/2014 - allow for (n,g) cross section to be read-in
        IF(io_read==0) THEN
@@ -37,7 +37,7 @@
                       flag1,flag2 ! 25/2/2014 - flags to handle non-legendre format from njoy
         END IF
        END IF
-       print *,flag1,flag2,io_read
+       !print *,flag1,flag2,io_read
        !stop
       CASE(3) !7/9/2017 - GEANT output format
        READ(pka_unit,'(a70)',IOSTAT=io_read) input_line

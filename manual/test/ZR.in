@@ -11,12 +11,10 @@ flux_norm_type=2
 pka_filetype=2 
 do_mtd_sums=.true.
 do_ngamma_estimate=.t.
-do_global_sums=.f.
+do_global_sums=.t.
 do_exclude_light_from_total=.t.
 number_pka_files=5 
 flux_rescale_value=3.25e14
 max_global_recoils=400
 energies_once_perfile=.t. 
-do_tdam=.t.
-assumed_ed=40.0
 

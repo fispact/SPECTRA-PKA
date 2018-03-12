@@ -304,7 +304,7 @@ END IF
    SELECT CASE(pka_filetype) 
     CASE(3)
     CASE DEFAULT
-     print *,mtd
+     !print *,mtd
      IF(INDEX(pka_element,"recoil").NE.0) THEN
       CALL define_daughter(.true.)
      ELSE

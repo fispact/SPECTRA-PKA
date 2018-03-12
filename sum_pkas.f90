@@ -64,7 +64,6 @@
    CASE DEFAULT
    
    END SELECT
-   print *,'p',mtd
    SELECT CASE(mtd)
    CASE(5,28,41:45,103,111:112,115:116,600:649)
     IF(INDEX(pka_element,"proton").NE.0) THEN
@@ -100,7 +99,6 @@
 
    
 ! heavy recoils section   
-   print *,'heavy',mtd
    SELECT CASE(mtd)
    CASE(107,800:849)
     IF(INDEX(pka_element,"recoil").NE.0) THEN

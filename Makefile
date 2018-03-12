@@ -5,8 +5,8 @@
 FF = gfortran
 LD = gfortran
 
-FFLAGS =  -ffree-line-length-none -g
-LDFLAGS = -g
+FFLAGS =  -ffree-line-length-none -g 
+LDFLAGS = -g 
 LIBS = 
 
 PROG = spectra-pka
