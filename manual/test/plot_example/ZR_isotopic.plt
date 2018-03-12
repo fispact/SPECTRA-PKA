@@ -52,55 +52,55 @@ set yr [1e6 :1.00E+12 ]
 set y2r [1e6:1.00E+12 ] 
 set size ratio 0.7
 pl  \
-"../ZR.out" index 508:508 \
+"../ZR.out" index 272:272 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '8' lw 5 lc rgbcolor "web-green" \
 t "H1",\
-"../ZR.out" index 509:509\
+"../ZR.out" index 273:273\
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '7' lw 5 lc rgbcolor "magenta" \
 t "He4",\
-"../ZR.out" index 514:514 \
+"../ZR.out" index 278:278 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '1' lw 5 lc rgbcolor "black" \
 t "{/Times-Italic Zr90}",\
-"../ZR.out" index 513:513\
+"../ZR.out" index 277:277\
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '2' lw 5 lc rgbcolor "red" \
 t "Sr88",\
-"../ZR.out" index 517:517 \
+"../ZR.out" index 281:281 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '3' lw 5 lc rgbcolor "navy" \
 t "Sr89",\
-"../ZR.out" index 519:519 \
+"../ZR.out" index 283:283 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '5' lw 5 lc rgbcolor "web-blue" \
 t "{/Times-Italic Zr91}",\
-"../ZR.out" index 520:520 \
+"../ZR.out" index 284:284 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '3' lw 5 lc rgbcolor "dark-grey" \
 t "Y91",\
-"../ZR.out" index 524:524 \
+"../ZR.out" index 288:288 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '1' lw 5 lc rgbcolor "dark-goldenrod" \
 t "{/Times-Italic Zr92}",\
-"../ZR.out" index 529:529 \
+"../ZR.out" index 293:293\
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '6' lw 5 lc rgbcolor "cyan" \
 t "Zr93",\
-"../ZR.out" index 533:533 \
+"../ZR.out" index 297:297 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '3' lw 5 lc rgbcolor "light-green" \
 t "{/Times-Italic Zr94}",\
-"../ZR.out" index 538:538 \
+"../ZR.out" index 302:302 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '5' lw 5 lc rgbcolor "purple" \
 t "Zr95",\
-"../ZR.out" index 540:540 \
+"../ZR.out" index 304:304 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '8' lw 5 lc rgbcolor "steelblue" \
 t "{/Times-Italic Zr96}",\
-"../ZR.out" index 543:543 \
+"../ZR.out" index 307:307 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*density/atomic_mass) \
 w l lt '7' lw 5 lc rgbcolor "dark-cyan" \
 t "Zr97"

@@ -259,30 +259,31 @@
        //TRIM(ADJUSTL(number_string))//' ] from [ '//TRIM(ADJUSTL(parent_ele(filenum))) &
        //TRIM(ADJUSTL(number_string2)) &
        //' ]'//TRIM(ADJUSTL(pka_filename(filenum)))        
-      WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS'
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS'
        
        
        i=1
       IF(do_tdam) THEN
-       WRITE(results_unit,'(1x,a24,a8,a11,a28)') '#ERECOIL(MeV low & high)','SUM','norm_sum', &
+       WRITE(results_unit,'(1x,a31,a8,2x,a11,a28)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum', &
               '  T_dam (MeV low and high)'
-       IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(6ES11.4)') &
+       IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2E14.4,5x,4ES11.4)') &
                ng_pka_recoil_energies(i)/2._DBL,ng_pka_recoil_energies(i), &
                  ng_pka(j,i),ng_pka(j,i)/SUM(ng_pka(j,1:ng_num_pka_recoil_points)), &
                  ng_tdam_energies(i)/2._DBL,ng_tdam_energies(i)
        DO i=2,ng_num_pka_recoil_points
-        IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(6ES11.4)') &
+        IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2E14.4,5x,4ES11.4)') &
                   ng_pka_recoil_energies(i-1),ng_pka_recoil_energies(i), &       
                  ng_pka(j,i),ng_pka(j,i)/SUM(ng_pka(j,1:ng_num_pka_recoil_points)), &
                  ng_tdam_energies(i-1),ng_tdam_energies(i)
        END DO
       ELSE
-       WRITE(results_unit,'(1x,a24,a8,a11)') '#ERECOIL(MeV low & high)','SUM','norm_sum'
-       IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(4ES11.4)') &
+       WRITE(results_unit,'(1x,a31,a8,a11)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum'
+       IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2E14.4,5x,2ES11.4)') &
                ng_pka_recoil_energies(i)/2._DBL,ng_pka_recoil_energies(i), &
                  ng_pka(j,i),ng_pka(j,i)/SUM(ng_pka(j,1:ng_num_pka_recoil_points))       
        DO i=2,ng_num_pka_recoil_points
-        IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(4ES11.4)') &
+        IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2E14.4,5x,2ES11.4)') &
                   ng_pka_recoil_energies(i-1),ng_pka_recoil_energies(i), &       
                  ng_pka(j,i),ng_pka(j,i)/SUM(ng_pka(j,1:ng_num_pka_recoil_points))
        END DO      

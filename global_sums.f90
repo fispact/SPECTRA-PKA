@@ -133,9 +133,9 @@
    
    INTEGER, allocatable :: order(:),positions(:)
    LOGICAL :: found
-   CHARACTER (LEN=100) :: fmt1='(4ES11.4,2x,ES11.4,3x,ES11.4,3x,ES11.4,5x,ES11.4)'
-   CHARACTER (LEN=100) :: fmt2='(1x,a24,a8,a11,a15,1x,a11,a19,a11)' 
-   CHARACTER (LEN=100) :: fmt3='(1x,a24,a8,a11,a15)'
+   CHARACTER (LEN=100) :: fmt1='(ES14.4,2x,ES14.4,4(3x,ES11.4),3x,ES11.4,5x,ES11.4)'
+   CHARACTER (LEN=100) :: fmt2='(1x,a31,a8,6x,a11,3x,a15,a11,a19,a11)' 
+   CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,6x,a11,3x,a15)'
     
     DO i=1,number_global_recoils
     IF(sum(global_pka_sums(i,1:global_num_pka_recoil_points_master)).NE.0) THEN
@@ -146,15 +146,15 @@
     WRITE(index_summary,*) file_index,' recoil matrix of '//TRIM(ADJUSTL(global_daughter_eles(i))) &
         //TRIM(ADJUSTL(number_string))  
        
-       WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
        
-       
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS - per target atom'       
 
 
        
        IF (do_tdam) THEN
        
-       WRITE(results_unit,fmt2) '#ERECOIL(MeV_low_&_high))','PKAs/s','norm_sum',&
+       WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
        
        
@@ -188,7 +188,7 @@
        
        ELSE
        
-       WRITE(results_unit,fmt3) '#ERECOIL(MeV low & high))','PKAs/s','norm_sum','cumulative sum'
+       WRITE(results_unit,fmt3) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum','cumulative sum'
        
        j=1
        IF(global_pka_sums(i,j).NE.0) WRITE(results_unit,'(5ES11.4)') &
@@ -269,13 +269,14 @@
        WRITE(results_unit,*) '#  elemental recoil matrix of '//TRIM(ADJUSTL(global_elements(i))) 
     WRITE(index_summary,*) file_index,' elemental recoil matrix of '//TRIM(ADJUSTL(global_elements(i)))  
        
-       WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS - per target atom'  
        
        
        
      IF(do_tdam) THEN
 
-       WRITE(results_unit,fmt2) '#ERECOIL(MeV_low_&_high))','PKAs/s','norm_sum',&
+       WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
         
        j=1
@@ -307,7 +308,7 @@
        END DO 
       
      ELSE
-       WRITE(results_unit,fmt3) '#ERECOIL(MeV low & high)','PKAs/s','norm_sum','cumulative sum'
+       WRITE(results_unit,fmt3) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum','cumulative sum'
         
        j=1
        IF(global_pka_sums_element(i,j).NE.0) WRITE(results_unit,'(5ES11.4)') &
@@ -372,12 +373,12 @@
         WRITE(index_summary,*) file_index,' total recoil matrix'  
        END IF
        
-       WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
-       
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS - per target atom'       
        
       IF(do_tdam) THEN
 
-       WRITE(results_unit,fmt2) '#ERECOIL(MeV_low_&_high))','PKAs/s','norm_sum',&
+       WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
         
        j=1
@@ -410,7 +411,7 @@
        END DO 
 
       ELSE
-       WRITE(results_unit,fmt3) '#ERECOIL(MeV low & high)','PKAs/s','norm_sum','cumulative sum'
+       WRITE(results_unit,fmt3) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum','cumulative sum'
         
        j=1
        IF(total_pka_sum(j).NE.0) WRITE(results_unit,'(5ES11.4)') &

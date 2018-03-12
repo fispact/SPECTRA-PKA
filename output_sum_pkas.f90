@@ -21,9 +21,9 @@
  INTEGER :: numarray(10)=(/107,2,2,107,103,103,0,0,0,0/)  
  LOGICAL :: logarray(10)=(/.false.,.true.,.true.,.true.,.false., &
                            .true.,.false.,.false.,.false.,.false./)
-   CHARACTER (LEN=100) :: fmt1='(4ES11.4,2x,ES11.4,3x,ES11.4,5x,ES11.4)'
-   CHARACTER (LEN=100) :: fmt2='(1x,a24,a8,a11,1x,a11,a19,a11)' 
-   CHARACTER (LEN=100) :: fmt3='(1x,a24,a8,a11)'                           
+   CHARACTER (LEN=100) :: fmt1='(4ES14.4,2x,ES14.4,3x,ES11.4,5x,ES11.4)'
+   CHARACTER (LEN=100) :: fmt2='(1x,a31,a8,4x,a11,5x,a11,a19,a11)' 
+   CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,a11)'                           
   
   WRITE(number_string2,'(I5)') parent_num(filenum)
   
@@ -46,11 +46,12 @@
        //TRIM(ADJUSTL(number_string2)) &
        //' ]'//TRIM(ADJUSTL(pka_filename(filenum)))  
       
-      WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS'
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS'
       
       
       IF (do_tdam) THEN
-       WRITE(results_unit,fmt2) '#ERECOIL(MeV_low_&_high))','PKAs/s','norm_sum',&
+       WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
        i=1
        IF(pka_sums(j,i).NE.0) WRITE(results_unit,fmt1) &
@@ -75,7 +76,7 @@
        END DO       
       
       ELSE
-       WRITE(results_unit,fmt3) '#ERECOIL(MeV low & high))','SUM','norm_sum'
+       WRITE(results_unit,fmt3) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum'
        i=1
        IF(pka_sums(j,i).NE.0) WRITE(results_unit,'(4ES11.4)') &
                pka_recoil_energies_master(i)/2._DBL,pka_recoil_energies_master(i), &

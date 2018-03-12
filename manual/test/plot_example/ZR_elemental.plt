@@ -61,23 +61,23 @@ set yr [1e6 :1.00E+12]
 set y2r [1e6:1.00E+12] 
 set size ratio 0.7
 pl  \
-"../ZR.out" index 544:544 \
+"../ZR.out" index 308:308 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*6.506/91.22364157600980) \
 w l lt '8' lw 5 lc rgbcolor "web-green" \
 t "p",\
-"../ZR.out" index 545:545 \
+"../ZR.out" index 309:309 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*6.506/91.22364157600980) \
 w l lt '7' lw 5 lc rgbcolor "magenta" \
 t "{/Symbol a}",\
-"../ZR.out" index 548:548 \
+"../ZR.out" index 312:312 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*6.506/91.22364157600980) \
 w l lt '1' lw 5 lc rgbcolor "black" \
 t "Sr",\
-"../ZR.out" index 549:549 \
+"../ZR.out" index 313:313 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*6.506/91.22364157600980) \
 w l lt '2' lw 5 lc rgbcolor "red" \
 t "Y",\
-"../ZR.out" index 550:550 \
+"../ZR.out" index 314:314 \
  u (($1+$2)*1e6/2):($3*atoms_per_mole*6.506/91.22364157600980) \
 w l lt '3' lw 5 lc rgbcolor "navy" \
 t "{/Times-Italic Zr}"

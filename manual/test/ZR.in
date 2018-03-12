@@ -17,4 +17,6 @@ number_pka_files=5
 flux_rescale_value=3.25e14
 max_global_recoils=400
 energies_once_perfile=.t. 
+do_tdam=.t.
+assumed_ed=40.0
 

@@ -17,4 +17,5 @@ manual/test/*.out
 manual/test/spectra-pka*
 data/*
 manual/*synctex
+manual/test/plot_example/*.ps
 
