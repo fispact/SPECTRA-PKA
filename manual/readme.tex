@@ -21,7 +21,7 @@ colorlinks=true}
 
 \maketitle
 \section{Introduction}
-\texttt{SPECTRA-PKA}~\cite{gilbertmariansublet2015,gilbertsubletNME2016,gilbertsublet2018} is a command-line driven programme for calculating the expected primary knock-on atom (PKA) spectra for a given target nuclide under neutron or charged particle irradiation. NJOY-processed recoil matrices must be provided as the input nuclear data for each nuclide and reaction channel of interest. \texttt{SPECTRA-PKA} will read the nuclear data and collapse the data for each reaction channel in a file with a user-defined energy spectrum of incident particles. \texttt{SPECTRA-PKA} outputs the resulting PKA spectra for each reaction channel read-in, as well as summed PKA distributions for each different recoiling nuclide or element, including both the typically heavy residuals and the secondary-emitted light gas particles. Crucially, \texttt{SPECTRA-PKA} has the ability to process data, in a single run, for a complex material containing many different target species. The user must specify the atomic percentage for each target and the appropriate recoil cross section file, but then \texttt{SPECTRA-PKA} will automatically read-in and process each file and create global average (including as a function of isotope and element) PKA distributions. This feature, in particular, is a significant advancement over what was possible before (such as with \texttt{SPECTER} [1985] from ANL), where typically PKA distributions were only provided for single elements (and not separated by reaction channel) and based on only one nuclear data library (ENDF/B-V in the case of \texttt{SPECTER}). It allows, for example, the user to investigate the variation in PKA distributions as a function of time under irradiation, where a materials composition may change due to transmutation -- see, for example,~\cite{gilbertsubletNME2016}.
+\texttt{SPECTRA-PKA}~\cite{gilbertmariansublet2015,gilbertsubletNME2016,gilbertsublet2018} is a command-line driven programme for calculating the expected primary knock-on atom (PKA) spectra for a given target nuclide under neutron or charged particle irradiation. NJOY-processed recoil matrices must be provided as the input nuclear data for each nuclide and reaction channel of interest. \texttt{SPECTRA-PKA} will read the nuclear data and collapse the data for each reaction channel in a file with a user-defined energy spectrum of incident particles. \texttt{SPECTRA-PKA} outputs the resulting PKA spectra for each reaction channel read-in, as well as summed PKA distributions for each different recoiling nuclide or element, including both the typically heavy residuals and the secondary-emitted light gas particles. Crucially, \texttt{SPECTRA-PKA} has the ability to process data, in a single run, for a complex material containing many different target species. The user must specify the atomic percentage for each target and the appropriate recoil cross section file, but then \texttt{SPECTRA-PKA} will automatically read-in and process each file and create global average (including as a function of isotope and element) PKA distributions. This feature, in particular, is a significant advancement over what was possible before (such as with \texttt{SPECTER}~\cite{specter} from ANL), where typically PKA distributions were only provided for single elements (and not separated by reaction channel) and based on only one nuclear data library (ENDF/B-V in the case of \texttt{SPECTER}). It allows, for example, the user to investigate the variation in PKA distributions as a function of time under irradiation, where a materials composition may change due to transmutation -- see, for example,~\cite{gilbertsubletNME2016}.
 
 \section{Command line options}
 \texttt{SPECTRA-PKA} is executed from the command-line. By default, the programme expects to find an input file called \texttt{specter.input} in the execution folder, but this behaviour can be over-ridden by specifying the name of an input file on the command-line. The input file provides the user with the option to over-ride the default values of the various code words (see below) that \texttt{SPECTRA-PKA} relies upon to control its execution. The input file should be a text file but is largely free from other formatting requirements. Code word values are specified in any order, one per line, via syntax of type:
@@ -71,7 +71,7 @@ Default values are given in brackets after each code word)
 \item \texttt{max{\textunderscore}global{\textunderscore}recoils} [\texttt{200}] --- when defining global sums, it is not known in advance how many different recoiling elements or isotopes there will be. In the current version of the code, the array that holds this information is dynamically allocated and so the user must guess an expected upper limit on the number of different recoiling species. 200 is sufficient for most applications.
 
 \item \texttt{energies{\textunderscore}once{\textunderscore}perfile} [\texttt{.false.}] --- if true then for   \texttt{pka{\textunderscore}filetype}=2 the energy bin structure will only be included with the first recoil cross section matrix given in each target file. This overcomes some of the redundancy associated with the default file format, where the input and output bin structure was given with each channel, which came from the legacy format associated with \texttt{SPECTER}. For libraries distributed with \texttt{SPECTRA-PKA}, the new style will be the default, and so \texttt{energies{\textunderscore}once{\textunderscore}perfile=.true.} should be specified (the default may change in future releases).
-\item \texttt{do{\textunderscore}tdam} [\texttt{.false.}] --- if true then, for each reaction channel, calculate the equivalent damage-energy bin boundaries associated with each PKA energy bin following the Lindhard-Scharff-Schi{\o}tt~\cite{lindardetal1963a} equations described in~\cite{robinson1994,gilbertsublet2018}. Subsequently, these are used to calculate displacement-energy and displacements-per-atom (dpa) rates for each bin and the total rates for the reaction channel (see \cite{gilbertsublet2018} for more details). \texttt{SPECTRA-PKA} will also propagate the displacement-energy and dpa rates onto the global sums if \texttt{do{\textunderscore}globals} is also true.
+\item \texttt{do{\textunderscore}tdam} [\texttt{.false.}] --- if true then, for each reaction channel, calculate the equivalent damage-energy bin boundaries associated with each PKA energy bin following the Lindhard-Scharff-Schi{\o}tt~\cite{lindardetal1963a} equations described in~\cite{gilbertsublet2018,robinson1994}. Subsequently, these are used to calculate displacement-energy~\cite{AdrychBrunning2018} and displacements-per-atom (dpa) rates for each bin and the total rates for the reaction channel (see \cite{gilbertsublet2018} for more details). \texttt{SPECTRA-PKA} will also propagate the displacement-energy and dpa rates onto the global sums if \texttt{do{\textunderscore}globals} is also true.
 \item \texttt{assumed{\textunderscore}ed} [\texttt{40.0}] --- threshold displacement energy (in eV) for the material used for displacements-per-atom (dpa) evaluation via the Norgett-Robinson-Torrens~\cite{norgettetal1975} formula. A single value to be used for the entire execution. Even in a complex alloy, one atomic species will typically dominate, and so the conversion of damage energy to dpa should use a single value, which could be an average over the major elemental constituents. For example, the typical value for a material dominated by elements such as Fe and its neighbours in the periodic table is 40~eV, and is the default in \texttt{SPECTRA-PKA} (and in many other codes).
 \item \texttt{incident{\textunderscore}particle} [\texttt{n}] --- specification of incident particle type. So far, can only be \texttt{n} for neutrons or \texttt{p} for protons. Doesn't alter the results for an individual channel, but is required (for the result to be correct) to identify the daughter product from each reaction, and hence to perform the correct summing by isotope/element/reaction (if \texttt{do{\textunderscore}globals} is true).
 \item \texttt{num{\textunderscore}columns} [\texttt{1}] --- the number of different columns (i.e. code words) to be specified in the \texttt{columns} format -- see below
@@ -168,7 +168,7 @@ M.~R. Gilbert and J.-{\relax Ch}. Sublet, ``{{PKA distributions: Contributions
 M.~R. Gilbert and J.-{\relax Ch}. Sublet, ``{{Differential dpa calculations with SPECTRA-PKA}},'' {\em J. Nucl. Mater.}, accepted for publication, 2018.
 
 \bibitem{specter}
-L.~R. Greenwood, and R.~K. Smither,
+L.~R. Greenwood and R.~K. Smither,
   ``Specter: Neutron damage calculations for materials
   irradiations'', January 1985. Document Number:
   ANL/FPP/TM-197. SPECTER and SPECOMP are available from the NEA databank.
@@ -177,24 +177,31 @@ L.~R. Greenwood, and R.~K. Smither,
 
 
 \bibitem{lindardetal1963a}
-J.~Lindhard, M.~Scharff, H.~E. Schi{\o}tt,
+J.~Lindhard, M.~Scharff, and H.~E. Schi{\o}tt,
   ``{{Range concepts and heavy
   ion ranges (notes on atomic collisions, {II})}},'' {\em Mat. Fys. Medd. Dan. Vid.
   Selsk}, vol.~33~(14), pp.~1--42, 1963.
 \newblock\url{https://www.osti.gov/scitech/biblio/4153115}
 
-\bibitem{norgettetal1975}
-M.~J. Norgett, M.~T. Robinson, I.~M. Torrens, ``{{A proposed method of calculating
-  displacement dose rates}},'' {\em Nucl. Eng. Des.}, vol.~33, pp.~50--54, 1975.
-\newblock \href
-  {http://dx.doi.org/https://doi.org/10.1016/0029-5493(75)90035-7}
-  {\path{doi:https://doi.org/10.1016/0029-5493(75)90035-7}}.
-
 \bibitem{robinson1994}
 M.~T. Robinson, ``{{Basic physics of radiation damage production}},'' {\em J. Nucl. Mater.}, vol.~216, pp.~1--28, 1994.
-\newblock \href
-  {http://dx.doi.org/https://doi.org/10.1016/0022-3115(94)90003-5}
-  {\path{doi:https://doi.org/10.1016/0022-3115(94)90003-5}}.
+\newblock 
+  \url{https://doi.org/10.1016/0022-3115(94)90003-5}
+
+
+\bibitem{AdrychBrunning2018}
+A.~Adrych-Brunning, M.~R.~Gilbert, J.~{\relax -Ch}. Sublet, A.~Harte, and C.~P.~Race, ``Modelling the interaction of primary irradiation damage and
+precipitates: Implications for experimental irradiation of zirconium
+alloys,'' {\em J. Nucl. Mater},
+  vol.~498, pp.~282--289, 2018.
+\newblock \url{https://doi.org/10.1016/j.jnucmat.2017.10.022}.
+
+\bibitem{norgettetal1975}
+M.~J. Norgett, M.~T. Robinson, and I.~M. Torrens, ``{{A proposed method of calculating
+  displacement dose rates}},'' {\em Nucl. Eng. Des.}, vol.~33, pp.~50--54, 1975.
+\newblock \url{https://doi.org/10.1016/0029-5493(75)90035-7}.
+
+
 
 
 

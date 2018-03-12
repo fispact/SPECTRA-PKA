@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.30)  11 MAR 2018 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.30)  12 MAR 2018 05:00
 entering extended mode
 **./readme.tex
 (readme.tex
@@ -453,16 +453,16 @@ parent_mass ngamma_daughter_mass[]
  []
 
 
-Overfull \hbox (32.94661pt too wide) in paragraph at lines 132--132
+Overfull \hbox (32.94661pt too wide) in paragraph at lines 134--134
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
  []
 
 [5]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 135.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 137.
 
-Overfull \hbox (30.00319pt too wide) in paragraph at lines 135--136
+Overfull \hbox (30.00319pt too wide) in paragraph at lines 137--138
 \OT1/ptm/m/n/10 cur-rently used in the .plt files are ap-pro-pri-ate for the ex
 -am-ple re-sults (see \OT1/pcr/m/n/10 example_results/ZR.indexes\OT1/ptm/m/n/10
  ).
@@ -476,14 +476,14 @@ Package epstopdf Info: Source file: <ZR_elemental.eps>
 (epstopdf)                    size: 9618 bytes
 (epstopdf)             Command: <epstopdf --outfile=ZR_elemental-eps-converted-
 to.pdf ZR_elemental.eps>
-(epstopdf)             \includegraphics on input line 143.
+(epstopdf)             \includegraphics on input line 145.
 Package epstopdf Info: Output file is already uptodate.
-<ZR_elemental-eps-converted-to.pdf, id=68, 274.02374pt x 178.6675pt>
+<ZR_elemental-eps-converted-to.pdf, id=74, 274.02374pt x 178.6675pt>
 File: ZR_elemental-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ZR_elemental-eps-converted-to.pdf>
 Package pdftex.def Info: ZR_elemental-eps-converted-to.pdf used on input line 1
-43.
+45.
 (pdftex.def)             Requested size: 292.77629pt x 190.90788pt.
 Package epstopdf Info: Source file: <ZR_isotope.eps>
 (epstopdf)                    date: 2016-11-21 11:55:47
@@ -493,33 +493,33 @@ Package epstopdf Info: Source file: <ZR_isotope.eps>
 (epstopdf)                    size: 17500 bytes
 (epstopdf)             Command: <epstopdf --outfile=ZR_isotope-eps-converted-to
 .pdf ZR_isotope.eps>
-(epstopdf)             \includegraphics on input line 145.
+(epstopdf)             \includegraphics on input line 147.
 Package epstopdf Info: Output file is already uptodate.
 
-<ZR_isotope-eps-converted-to.pdf, id=69, 274.02374pt x 244.915pt>
+<ZR_isotope-eps-converted-to.pdf, id=75, 274.02374pt x 244.915pt>
 File: ZR_isotope-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ZR_isotope-eps-converted-to.pdf>
-Package pdftex.def Info: ZR_isotope-eps-converted-to.pdf used on input line 145
+Package pdftex.def Info: ZR_isotope-eps-converted-to.pdf used on input line 147
 .
 (pdftex.def)             Requested size: 209.12683pt x 186.91463pt.
 
-Overfull \hbox (40.97032pt too wide) in paragraph at lines 141--146
+Overfull \hbox (40.97032pt too wide) in paragraph at lines 143--148
 [] [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 143--148
 
  []
 
 [6 <./ZR_elemental-eps-converted-to.pdf> <./ZR_isotope-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
 
 [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
  (readme.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
 
 
  *File List*
@@ -595,19 +595,19 @@ ZR_elemental-eps-converted-to.pdf    Graphic file (type pdf)
 ZR_isotope-eps-converted-to.pdf    Graphic file (type pdf)
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
 Package rerunfilecheck Info: File `readme.out' has not changed.
 (rerunfilecheck)             Checksum: 0A16A7096174130377BB9E472C71A1EC;264.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
  ) 
 Here is how much of TeX's memory you used:
- 6760 strings out of 493333
- 96433 string characters out of 3139184
- 191599 words of memory out of 3000000
- 10147 multiletter control sequences out of 15000+200000
+ 6762 strings out of 493333
+ 96476 string characters out of 3139184
+ 191639 words of memory out of 3000000
+ 10148 multiletter control sequences out of 15000+200000
  26682 words of font info for 77 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,8n,28p,1862b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,8n,28p,1870b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
@@ -617,9 +617,9 @@ s/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on readme.pdf (7 pages, 153976 bytes).
+Output written on readme.pdf (7 pages, 155458 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 22 named destinations out of 1000 (max. 500000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
