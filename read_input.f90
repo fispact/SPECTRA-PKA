@@ -279,6 +279,24 @@
  	     processed=.true.
             end if            
 
+
+            if (trim(adjustl(input_label))=='user_energybin_file') then
+ 	     read (input_value,*) user_energybin_file
+ 	     write (*,*) 'changing user_energybin_file to      :',TRIM(ADJUSTL(user_energybin_file))
+ 	     processed=.true.
+            end if 
+            
+            if (trim(adjustl(input_label))=='do_user_output_energy_grid') then
+ 	     read (input_value,*) do_user_output_energy_grid
+ 	     write (*,*) 'changing do_user_output_energy_grid to      :',do_user_output_energy_grid
+ 	     processed=.true.
+            end if             
+            if (trim(adjustl(input_label))=='user_grid_option') then
+ 	     read (input_value,*) user_grid_option
+ 	     write (*,*) 'changing user_grid_option to      :',user_grid_option
+ 	     processed=.true.
+            end if 
+
             
             if (.not.processed) then
                  write (*,*) 'variable ',trim(adjustl(input_label)),' not recognised'
@@ -348,6 +366,21 @@
  
  !21/4/2016 need to identify incident particle to get correct daughter
  incident_particle='n' !can be n or p for now
+ 
+ !23/4/2018
+ do_user_output_energy_grid=.false. ! if true then read energy bins for global totals from file
+ user_energybin_file='ebins.dat' !energy bins for global total output spectra - in MeV
+                                ! simple file structure - number of bin boundaries (integer) followed by list of n bins boundaries
+                                ! minium (i.e. below first bin boundary will be assumed zero)
+                                ! code doesn't allow for truncation at the top - i.e. values will be omitted if they
+                                ! are above the maximum bin boundary - users should make sure their grid covers (at least)
+                                ! the maximum energy of PKAs possible.
+  !24/4/2018 
+  user_grid_option=2  ! 1 means all sum and global arrays should use the user-defined grid
+                      ! 2 means just the global arrays (including the total)
+                      ! 3 means just the final total PKA spectra
+
+ do_outputs=.false.
  
  
      END SUBROUTINE set_defaults

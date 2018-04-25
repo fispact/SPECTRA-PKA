@@ -10,7 +10,7 @@ MODULE globals
  
  
  integer, parameter ::flux_unit=21,results_unit=22,kerma_unit=23,pka_unit=24,gas_unit=25, &
-                      sigma_unit=26,unitin=20,index_summary=27
+                      sigma_unit=26,unitin=20,index_summary=27,user_ebinsunit=28
  CHARACTER (LEN=200) :: flux_filename,results_filename,kerma_filename, &
                         gas_filename,sigma_filename,results_stub
  CHARACTER (LEN=100) :: flux_title
@@ -35,7 +35,9 @@ MODULE globals
  
  !pka variables
  INTEGER :: num_pka_elements
- INTEGER :: num_pka_points,num_pka_incident_energies,num_pka_recoil_points
+ INTEGER :: num_pka_points ! number of PKA bins
+ INTEGER :: num_pka_incident_energies ! number of incident energy boundaries
+ INTEGER :: num_pka_recoil_points ! number of PKA bin boundaries
  REAL (KIND=DBL), ALLOCATABLE :: pka_incident_energies(:),pka_recoil_energies(:),&
                                  recoil_kermas(:,:),pka(:,:),epka(:)
  CHARACTER (LEN=30) :: pka_element
@@ -76,6 +78,10 @@ MODULE globals
  INTEGER, allocatable :: global_daughter_nums(:)
  INTEGER :: global_num_pka_recoil_points_master,number_global_recoils
  
+ !24/4/2018 - separate total results to allow separate use of user grid
+ REAL(KIND=DBL),ALLOCATABLE :: totalglobal_pka_recoil_energies_master(:)
+ INTEGER :: totalglobal_num_pka_recoil_points_master
+
 
  !10/10/2013 elemental sums
  ! INTEGER, PARAMETER :: max_global_elements=40
@@ -118,9 +124,11 @@ MODULE globals
  
  !5/10/2015 - way to handle new njoy output with reduced energy info.+4/3/2016
  LOGICAL :: energies_once_perfile,first_read
- REAL(KIND=DBL),ALLOCATABLE :: pka_incident_energies_master(:)
- INTEGER :: num_pka_incident_energies_master
- 
+ REAL(KIND=DBL),ALLOCATABLE :: pka_incident_energies_filemaster(:)
+ INTEGER :: num_pka_incident_energies_filemaster
+ !24/4/2018 - revised after user grd changes (these are held in the master vectors
+ REAL(KIND=DBL),ALLOCATABLE :: pka_recoil_energies_filemaster(:)
+ INTEGER :: num_pka_recoil_points_filemaster 
  
  !4/3/2016 exclude unknowns from total - needed for proton matrix problems.
  LOGICAL :: do_exclude_unknown_from_total
@@ -151,5 +159,14 @@ MODULE globals
  
  !11/3/2018
  INTEGER :: deallocerr
+ 
+ !23/4/2018
+ ! variables to read in user-specified output group structure
+ LOGICAL :: do_user_output_energy_grid
+ CHARACTER (LEN=500) :: user_energybin_file
+ INTEGER :: user_grid_option
+ 
+ !24/4/2018 - extended text outputs flag
+ LOGICAL :: do_outputs,doing_ng
  
  end module globals

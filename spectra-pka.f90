@@ -13,7 +13,7 @@ use globals
  io_quit=0
 
 
- 
+ doing_ng=.false.
  !read_input
  CALL read_input()
  
@@ -142,55 +142,166 @@ END IF
    num_pka_elements=num_pka_elements+1
    
   IF(index(pka_element,"matrix").NE.0) THEN
-   !PRINT *,recoil_kermas(1,:)
-   !PRINT *,recoil_kermas(2,:)
-   !PRINT *,recoil_kermas(3,:)
-   
-       !IF (i==570) THEN
-       !j=615
-       !    WRITE(number_string,'(I5)') daughter_num
-       !    WRITE(number_string2,'(I5)') parent_num(filenum)
-       !    WRITE(600,*) '#  '//pka_element//' [ '//TRIM(ADJUSTL(daughter_ele)) &
-       !       //TRIM(ADJUSTL(number_string))//' ] from [ '//TRIM(ADJUSTL(parent_ele(filenum))) &
-       !       //TRIM(ADJUSTL(number_string2)) &
-       !//' ]'
-       !non_zero=.false.
-       ! DO i=1,num_pka_points
-       !  IF(recoil_kermas(j,i)>0d0) WRITE(600,*) 'in',pka_incident_energies(i),pka_incident_energies(i+1),recoil_kermas(j,i)
-       !   !non_zero=.true.
-       !  !END IF
-       ! END DO
-       ! WRITE(600,*)
-       ! WRITE(600,*)
-     ! END IF
+
    DO i=1,num_pka_recoil_points
     !pka_fluxes(i,1:num_pka_incident_energies)
     ! collapse input_pka_energy_spectrum onto flux spectrum
 
-    CALL collapse_xs2(recoil_kermas(i,:),num_pka_points,number_flux_groups,flux_energies,pka_incident_energies)
+    CALL collapse_xs2(recoil_kermas(i,:),num_pka_points,number_flux_groups,flux_energies,pka_incident_energies,0._DBL)
     
     WHERE(recoil_kermas(i,:).LT.0._DBL) recoil_kermas(i,:)=0._DBL
    END DO
-   !PRINT *,recoil_kermas(1,:)
-   !PRINT *,recoil_kermas(2,:)
-   !PRINT *,recoil_kermas(3,:)
-   
-       !j=615
-       !    WRITE(600,*) '#  '//pka_element//' [ '//TRIM(ADJUSTL(daughter_ele)) &
-       !       //TRIM(ADJUSTL(number_string))//' ] from [ '//TRIM(ADJUSTL(parent_ele(filenum))) &
-       !       //TRIM(ADJUSTL(number_string2)) &
-       !//' ]'       
-       ! DO i=1,number_flux_groups
-       !  IF(recoil_kermas(j,i)>0d0) WRITE(600,*) 'out',flux_energies(i),flux_energies(i+1),recoil_kermas(j,i)
-       ! END DO
-       ! WRITE(600,*)
-       ! WRITE(600,*)   
+
    
   END IF
 
-   
    ALLOCATE(pka(11,num_pka_recoil_points),epka(num_pka_recoil_points))
-   IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
+
+   
+
+   
+   
+   
+   ! set up arrays for global isotope and element sums
+   IF((num_pka_elements==1).AND.(.not.first_non_empty).AND.(do_global_sums)) THEN
+   ALLOCATE(global_daughter_eles(max_global_recoils),global_daughter_nums(max_global_recoils))
+   !23/4/2018 - read bins from file if specified
+   IF(do_user_output_energy_grid) THEN
+    IF(do_outputs) WRITE(*,*) 'reading user-defined grid of output recoil energy-bins'
+    OPEN(unit=user_ebinsunit,file=TRIM(ADJUSTL(user_energybin_file)),STATUS='OLD',IOSTAT=io_open)
+    IF(io_open==0) THEN
+     io_read=0
+     READ(user_ebinsunit,*,IOSTAT=io_read) global_num_pka_recoil_points_master
+     IF(do_outputs) WRITE(*,*) global_num_pka_recoil_points_master,' grid points expected'
+     IF(io_read==0) THEN
+       ALLOCATE(global_pka_sums(max_global_recoils,global_num_pka_recoil_points_master), &
+       global_pka_recoil_energies_master(global_num_pka_recoil_points_master))
+       
+       READ(user_ebinsunit,*,IOSTAT=io_read) &
+          (global_pka_recoil_energies_master(j),j=1,global_num_pka_recoil_points_master)
+       IF (io_read.NE.0) THEN
+        DEALLOCATE(global_pka_sums,global_pka_recoil_energies_master)
+       ELSE
+         IF(do_outputs) WRITE(*,*) 'grid read correctly'
+       END IF
+     END IF
+     IF (io_read.NE.0) THEN
+      print *,'error reading file of user output energy bins - continuing with grid defined from input PKA files'
+      do_user_output_energy_grid=.false.     
+     END IF
+    ELSE
+     print *,'error opening file of user output energy bins - continuing with grid defined from input PKA files'
+     do_user_output_energy_grid=.false.
+    END IF
+   END IF
+
+   IF (.not.do_user_output_energy_grid) THEN  
+    global_num_pka_recoil_points_master=num_pka_recoil_points
+    ALLOCATE(global_pka_sums(max_global_recoils,global_num_pka_recoil_points_master), &
+       global_pka_recoil_energies_master(global_num_pka_recoil_points_master))
+       global_pka_recoil_energies_master=pka_recoil_energies
+   END IF !do_user_output_energy_grid 
+   
+   
+! 24/4/2018 total over all elements should be assigned here in case
+! other globals will be reset by grid option choice - see below
+   totalglobal_num_pka_recoil_points_master=global_num_pka_recoil_points_master
+    !20/5/2014
+    ALLOCATE(total_pka_sum(totalglobal_num_pka_recoil_points_master), &
+       totalglobal_pka_recoil_energies_master(totalglobal_num_pka_recoil_points_master))
+    total_pka_sum=0._DBL
+    IF(do_tdam) THEN
+     ALLOCATE(total_pka_sum_tdam(totalglobal_num_pka_recoil_points_master))
+     total_pka_sum_tdam=0._DBL
+    END IF   
+    totalglobal_pka_recoil_energies_master=global_pka_recoil_energies_master   
+   
+   
+   IF(do_user_output_energy_grid.AND.(user_grid_option==3)) THEN
+    !24/4/2018 - reset globals
+    DEALLOCATE(global_pka_sums,global_pka_recoil_energies_master)
+    global_num_pka_recoil_points_master=num_pka_recoil_points
+    ALLOCATE(global_pka_sums(max_global_recoils,global_num_pka_recoil_points_master), &
+       global_pka_recoil_energies_master(global_num_pka_recoil_points_master))
+    global_pka_recoil_energies_master=pka_recoil_energies
+   END IF
+   ! all of this is the same in either case
+   IF(do_tdam) THEN
+      ALLOCATE(global_disp_sums(max_global_recoils))
+      global_disp_sums=0._DBL
+      total_disp=0._DBL
+   END IF
+   global_pka_sums=0._DBL
+
+   IF(do_tdam) THEN
+     ALLOCATE(global_tdam_energies_master(global_num_pka_recoil_points_master),&
+         global_pka_sums_tdam(max_global_recoils,global_num_pka_recoil_points_master) &
+         )
+      ! can only have tdams for globals with varying parent/daughter combinations
+      ! using a fixed vector with interpolation
+     global_tdam_energies_master=global_pka_recoil_energies_master
+     global_pka_sums_tdam=0._DBL
+   END IF
+   
+    number_global_recoils=0
+    
+    !10/10/2013 element sums
+    ALLOCATE(global_pka_sums_element(max_global_recoils,global_num_pka_recoil_points_master), &
+             global_elements(max_global_recoils))
+    IF(do_tdam) THEN
+     ALLOCATE(global_disp_sums_element(max_global_recoils))
+     global_disp_sums_element=0._DBL
+    END IF
+    number_global_recoil_elements=0
+    global_pka_sums_element=0._DBL
+ 
+    
+
+    
+    IF(do_tdam) THEN
+     ALLOCATE(global_pka_sums_element_tdam(max_global_recoils,&
+                                           global_num_pka_recoil_points_master))
+     global_pka_sums_element_tdam=0._DBL
+    END IF   
+    
+
+    
+   END IF ! num_pka_elements=1,not-first_non_empty,do_global_sums
+   
+   
+! 23/4/2018 - move of mtd_sums allocation to handle user grid case
+
+IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
+ IF(do_outputs) WRITE(*,*) 'defining local sum energy grid'
+ IF((do_user_output_energy_grid).AND.(user_grid_option==1)) THEN
+   ! define based on global grid
+    IF(do_outputs) WRITE(*,*) 'allocating local target sum vectors'
+    num_pka_recoil_points_master=global_num_pka_recoil_points_master
+    IF(do_outputs) WRITE(*,*) 	num_pka_recoil_points_master,global_num_pka_recoil_points_master ,&
+       ALLOCATED(pka_sums),ALLOCATED(pka_recoil_energies_master),do_tdam
+    ALLOCATE(pka_sums(10,num_pka_recoil_points_master),&
+             pka_recoil_energies_master(num_pka_recoil_points_master))
+    IF(do_tdam) THEN
+       IF(do_outputs) WRITE(*,*) ALLOCATED(mtd_disp_sums),ALLOCATED(tdam_energies_master),&
+           ALLOCATED(pka_sums_tdam)
+     ALLOCATE(mtd_disp_sums(10))
+     mtd_disp_sums=0._DBL
+     
+      ALLOCATE(tdam_energies_master(num_pka_recoil_points_master), &
+               pka_sums_tdam(10,num_pka_recoil_points_master))
+      !29/6/2016 can only  have tdams for varying parent/daughter combinations
+      ! using a fixed vector with interpolation
+      IF(do_outputs) WRITE(*,*) SIZE(tdam_energies_master),SIZE(global_tdam_energies_master)
+      tdam_energies_master=global_tdam_energies_master
+      pka_sums_tdam=0._DBL
+      IF(do_outputs) WRITE(*,*) ALLOCATED(mtd_disp_sums),ALLOCATED(tdam_energies_master),&
+           ALLOCATED(pka_sums_tdam)
+    END IF
+    pka_sums=0._DBL
+    
+    pka_recoil_energies_master=global_pka_recoil_energies_master
+
+ ELSE !user grid flag
     num_pka_recoil_points_master=num_pka_recoil_points
 
     ALLOCATE(pka_sums(10,num_pka_recoil_points_master),pka_recoil_energies_master(num_pka_recoil_points_master))
@@ -209,78 +320,13 @@ END IF
     pka_sums=0._DBL
     
     pka_recoil_energies_master=pka_recoil_energies
-   END IF
-   
-   ! for new style input files - just one energy array per file - fixed incident energy spectrum (and recoil)
-   IF(energies_once_perfile.and.first_read.and.(.not.first_non_empty)) THEN
-    num_pka_incident_energies_master=num_pka_incident_energies
-    ALLOCATE(pka_incident_energies_master(num_pka_incident_energies_master))
-    
-    pka_incident_energies_master=pka_incident_energies
-    IF(.not.do_mtd_sums) THEN
-     num_pka_recoil_points_master=num_pka_recoil_points
-     ALLOCATE(pka_recoil_energies_master(num_pka_recoil_points_master))
-     pka_recoil_energies_master=pka_recoil_energies
 
-    END IF
-    
-   END IF
-   
-   
-   first_read=.false.
-   ! set up arrays for global isotope and element sums
-   IF((num_pka_elements==1).AND.(.not.first_non_empty).AND.(do_global_sums)) THEN
-    global_num_pka_recoil_points_master=num_pka_recoil_points
-    ALLOCATE(global_pka_sums(max_global_recoils,global_num_pka_recoil_points_master), &
-       global_pka_recoil_energies_master(global_num_pka_recoil_points_master), &
-       global_daughter_eles(max_global_recoils),global_daughter_nums(max_global_recoils))
-    IF(do_tdam) THEN
-      ALLOCATE(global_disp_sums(max_global_recoils))
-      global_disp_sums=0._DBL
-      total_disp=0._DBL
-    END IF
-    global_pka_sums=0._DBL
-    global_pka_recoil_energies_master=pka_recoil_energies
-    IF(do_tdam) THEN
-     ALLOCATE(global_tdam_energies_master(global_num_pka_recoil_points_master),&
-         global_pka_sums_tdam(max_global_recoils,global_num_pka_recoil_points_master) &
-         )
-      ! can only have tdams for globals with varying parent/daughter combinations
-      ! using a fixed vector with interpolation
-     global_tdam_energies_master=pka_recoil_energies
-     global_pka_sums_tdam=0._DBL
-    END IF
-    number_global_recoils=0
-    
-    
-    
-    !10/10/2013 element sums
-    ALLOCATE(global_pka_sums_element(max_global_recoils,global_num_pka_recoil_points_master), &
-             global_elements(max_global_recoils))
-    IF(do_tdam) THEN
-     ALLOCATE(global_disp_sums_element(max_global_recoils))
-     global_disp_sums_element=0._DBL
-    END IF
-    number_global_recoil_elements=0
-    global_pka_sums_element=0._DBL
-
-
-    
-    !20/5/2014
-    ALLOCATE(total_pka_sum(global_num_pka_recoil_points_master))
-    total_pka_sum=0._DBL
-    
-    IF(do_tdam) THEN
-     ALLOCATE(global_pka_sums_element_tdam(max_global_recoils,&
-                                           global_num_pka_recoil_points_master), &
-              total_pka_sum_tdam(global_num_pka_recoil_points_master))
-     total_pka_sum_tdam=0._DBL
-     global_pka_sums_element_tdam=0._DBL
-    END IF    
-    
-   END IF
+  END IF !do user grid
+ END IF !do_mtd_sums
+  
    
   IF(index(pka_element,"matrix").NE.0) THEN 
+   IF(do_outputs) WRITE(*,*) 'computing PKAs for current channel'
    DO i=1,num_pka_recoil_points
     pka(1,i)=SUM(fluxes_norm(1:number_flux_ebins)*recoil_kermas(i,1:number_flux_ebins)) 
     epka(i)=0._DBL
@@ -351,21 +397,21 @@ END IF
     !10/10/2013
     ! needs to come before sum_pkas - so that we can check alpha/proton sum flags.
     IF(do_global_sums) THEN
-    print *,'global sums'
+    IF(do_outputs) WRITE(*,*) 'global sums'
      IF( ((.not.alpha_sum_flag).AND.(mtd.GE.800).AND.(mtd.LE.849)).OR. &
          ((.not.proton_sum_flag).AND.(mtd.GE.600).AND.(mtd.LE.649))) THEN
         ! do not add because main 107/103 z,a/z,p reaction has already been added
         ! (assumed to come first)
         ! and reaction falls within limits of excited state z,a/z,p mtd numbers
      ELSE
-      CALL add_to_globals(pka(1,:),num_pka_recoil_points,tdam_energies)
+      CALL add_to_globals(pka(1,:),num_pka_recoil_points,tdam_energies,pka_recoil_energies)
      END IF
     END IF
   
    
    pka(3,:)=pka(1,:)
    IF(do_mtd_sums) THEN
-    print *,'mtd sums'
+    IF(do_outputs) WRITE(*,*) 'mtd sums'
     CALL sum_pkas()
    END IF
    !print *,'output',sum(pka(1,1:num_pka_recoil_points)),io_quit
@@ -420,7 +466,7 @@ END IF
              ((tdam_energies(i-1)+tdam_energies(i))/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL)
       
      END DO
-    ELSE
+    ELSE !ksail
      WRITE(results_unit,'(1x,a31,a8,2x,a11,a24,2x,A22,A12)') '#RECOIL energy (MeV low & high)',&
             'PKAs','norm_sum', &
             ' T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
@@ -445,7 +491,7 @@ END IF
     END IF
 
     
-   ELSE
+   ELSE !do_tdam
     IF(ksail.GE.0) THEN
      WRITE(results_unit,'(1x,a31,a8,3x,a7,a11)') &
            '#RECOIL energy (MeV low & high)','PKAs','ERROR(%)','norm_sum'
@@ -459,7 +505,7 @@ END IF
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
       
      END DO
-    ELSE
+    ELSE !ksail
      WRITE(results_unit,'(1x,a31,a8,a11)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum'
      i=1
      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,2ES11.4)') &
@@ -471,8 +517,8 @@ END IF
                  pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      END DO    
     
-    END IF
-   END IF
+    END IF !ksail
+   END IF !tdam
    IF (do_tdam) then
     WRITE(results_unit,'(a1,20x,A,ES11.4)') '#',&
                'displacement energy eV/s = ',displacements*1e6_DBL
@@ -544,9 +590,9 @@ END IF
     
    ELSE
      print *,'zero recoils for this channel'
-   END IF !non zero check
+   END IF !non zero check  for output
    
-  END IF ! cross sectin skip check
+  END IF ! cross section not matrix skip check (skip if "matrix" not found)
    
    DEALLOCATE(recoil_kermas,pka_recoil_energies,pka_incident_energies,pka,epka)
    IF(do_tdam) DEALLOCATE(tdam_energies)
@@ -559,9 +605,13 @@ END IF
   END DO ! over pka matrices in file
   !STOP
   IF((do_mtd_sums).AND.ALLOCATED(pka_sums)) THEN
+    IF(do_outputs) WRITE(*,*) 'outputting sum PKAs'
     CALL output_sum_pkas()
     DEALLOCATE(pka_recoil_energies_master,pka_sums)
     IF(do_tdam) DEALLOCATE(mtd_disp_sums,pka_sums_tdam,tdam_energies_master)
+  END IF
+  IF(energies_once_perfile) THEN
+   DEALLOCATE(pka_recoil_energies_filemaster,pka_incident_energies_filemaster)
   END IF
   
   !print *,do_ngamma_estimate,ALLOCATED(ng_pka)
@@ -573,7 +623,7 @@ END IF
   
   CLOSE(pka_unit)
 
-  
+  IF(do_outputs) WRITE(*,*) 'end of unit for current file'
   
   
  ELSE !pka file io_open

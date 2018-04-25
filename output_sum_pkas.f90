@@ -23,7 +23,18 @@
                            .true.,.false.,.false.,.false.,.false./)
    CHARACTER (LEN=100) :: fmt1='(4ES14.4,2x,ES14.4,3x,ES11.4,5x,ES11.4)'
    CHARACTER (LEN=100) :: fmt2='(1x,a31,a8,4x,a11,5x,a11,a19,a11)' 
-   CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,a11)'                           
+   CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,a11)'  
+  REAL (KIND=DBL) :: energy_min   
+
+
+       !23/4/2018 - new lower bin bound for first bin - 
+       ! if using user grid then set to zero - otherwise half of lowest bin bound.
+       IF(do_user_output_energy_grid) THEN
+        energy_min=0_DBL
+       ELSE
+        energy_min=pka_recoil_energies_master(1)/2._DBL
+       END IF
+
   
   WRITE(number_string2,'(I5)') parent_num(filenum)
   
@@ -55,7 +66,7 @@
         'tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
        i=1
        IF(pka_sums(j,i).NE.0) WRITE(results_unit,fmt1) &
-               pka_recoil_energies_master(i)/2._DBL,pka_recoil_energies_master(i), &
+               energy_min,pka_recoil_energies_master(i), &
                  pka_sums(j,i),pka_sums(j,i)/SUM(pka_sums(j,1:num_pka_recoil_points_master)), &
                  pka_sums_tdam(j,i), &
                    (pka_sums_tdam(j,i))*1e6_DBL*((pka_recoil_energies_master(i)+&
@@ -79,7 +90,7 @@
        WRITE(results_unit,fmt3) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum'
        i=1
        IF(pka_sums(j,i).NE.0) WRITE(results_unit,'(4ES11.4)') &
-               pka_recoil_energies_master(i)/2._DBL,pka_recoil_energies_master(i), &
+               energy_min,pka_recoil_energies_master(i), &
                  pka_sums(j,i),pka_sums(j,i)/SUM(pka_sums(j,1:num_pka_recoil_points_master))       
        DO i=2,num_pka_recoil_points_master
         IF(pka_sums(j,i).NE.0) WRITE(results_unit,'(4ES11.4)') &
@@ -89,8 +100,8 @@
       END IF
   
       ! compute average pka energy
-      pka_ave=0.5_DBL*pka_recoil_energies_master(1)*pka_sums(j,1)
-      DO i=1,num_pka_recoil_points_master
+      pka_ave=0.5_DBL*(pka_recoil_energies_master(1)+energy_min)*pka_sums(j,1)
+      DO i=2,num_pka_recoil_points_master  ! 24/4/2018 wrongly said i=1, before
        pka_ave=pka_ave+0.5_DBL*(pka_recoil_energies_master(i)+pka_recoil_energies_master(i-1))*pka_sums(j,i)
       END DO
       pka_ave=pka_ave*1000000._DBL

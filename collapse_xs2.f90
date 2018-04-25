@@ -5,7 +5,7 @@
 !******************************************************************************
 !end rubric
 
- SUBROUTINE collapse_xs2(xxs,ninput_groups,noutput_groups,output_energies,input_energies)
+ SUBROUTINE collapse_xs2(xxs,ninput_groups,noutput_groups,output_energies,input_energies,out_min)
  use globals
  IMPLICIT NONE
  
@@ -16,13 +16,15 @@
  REAL(KIND=DBL) :: xxs_rounded(MAX(noutput_groups+1,ninput_groups+1))
  integer :: nd1,ni
  logical :: split
- REAL (KIND=DBL) :: frac,frac2,ebottom,due,dud
+ REAL (KIND=DBL) :: frac,frac2,ebottom,due,dud,out_min
  
 !30/6/2016 modified from CEM's grpconvert routine in FISPACT-II - itself based on routines written by N.P.Taylor.
 ! converts a cross section vector in one group structure (input_energies) into another (output_energies)
 ! assumes that the first ninput_energies elements of the input xxs contains the input vector
 ! and that the input xxs is big enough to hold the cross section in either the input or output structures
 ! the first noutput_energies of the returned xxs vector will be the converted cross sections.
+
+!25/4/2018 new out_min variable to handle what the minimum energy should be.
  
      xxs_rounded=0.0
      nd1=noutput_groups+1
@@ -71,8 +73,12 @@
         ! so denominator is always width of out bin
         ! i.e. to take a probability average
         !dud = input_energies(jj+1) -ebottom   
-        dud=output_energies(ii+1)-output_energies(ii)
-        
+        !25/4/2018 - handle first bin case
+        If (ii==0) THEN
+         dud=output_energies(ii+1)-out_min
+        ELSE
+         dud=output_energies(ii+1)-output_energies(ii)
+        END IF 
         frac2 = due / dud
  
         if(kk/=1) then

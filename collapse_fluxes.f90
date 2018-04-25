@@ -21,12 +21,12 @@
  
 !30/6/2016 modified from CEM's grpconvert routine in FISPACT-II - itself based on routines written by N.P.Taylor.
 
-
+!IF(do_outputs) WRITE(*,*) 'collapsing fluxes'
  ! 11/7/2016 but in this routine we will always be using a grid where the value in ii corresponds to
  ! the energy bin from ii-1 to ii
  
      fluxx_rounded=0.0
-     nd1=noutput_groups+1
+     nd1=noutput_groups
      ! check for overlap of groups - shouldn't be a problem here.
      ! 11/7/2016 - in fact all the output groups with energies below the 
      ! first input group bound get a proportion of the total in the first group
@@ -37,13 +37,15 @@
      !   if(input_energies(1).lt.output_energies(kk)) exit
      !end do
      !print *,ni
+
      ni = 1
  
      jj=0
      split=.false.
      outer: do kk=ni,nd1
+        
         ii = kk !- 1
- 
+        
         inner: do
            if(.not.split) then
               jj = jj + 1
@@ -61,6 +63,7 @@
  
            split = .false.
            if(input_energies(jj) == real(output_energies(ii))) cycle outer
+!           IF(do_outputs) WRITE(*,*) jj,split
         end do inner
         
         IF(jj/=1) THEN
@@ -96,9 +99,9 @@
     end do outer
  
  
-
+IF(do_outputs) WRITE(*,*) "finished"
  fluxx=0._DBL
  fluxx(1:noutput_groups)=fluxx_rounded(1:noutput_groups)
-
+IF(do_outputs) WRITE(*,*) 'sent results to matrix'
  
  END SUBROUTINE collapse_fluxes

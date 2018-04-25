@@ -24,7 +24,7 @@
        incident_mass=neutron_mass
       END SELECT   
    
-
+    IF(do_outputs) WRITE(*,*) 'performing (n,g) evaluation'
  
     ! see pg 126 bk 5
     ALLOCATE(ng_recoil_kermas(num_pka_recoil_points,MAX(number_flux_ebins,num_pka_incident_energies)), &
@@ -178,7 +178,12 @@
          !PRINT *,i,j
          
          !11/7/2016 - now divide xs in each recoil group by bin width
-         DO k=1,ng_num_pka_recoil_points
+         !25/4/2018 array handling for k=1
+         k=1
+         ng_recoil_kermas(k,j)=ng_recoil_kermas(k,j)/ &
+             (ng_pka_recoil_energies(k)- &  
+             ng_pka_recoil_energies(k)/2._DBL)         
+         DO k=2,ng_num_pka_recoil_points
           ng_recoil_kermas(k,j)=ng_recoil_kermas(k,j)/ &
              (ng_pka_recoil_energies(k)- &  
              ng_pka_recoil_energies(k-1)) 
@@ -192,7 +197,7 @@
    DO i=1,ng_num_pka_recoil_points
     !pka_fluxes(i,1:num_pka_incident_energies)
     ! collapse input_pka_energy_spectrum onto flux spectrum
-    CALL collapse_xs2(ng_recoil_kermas(i,:),ng_num_pka_points,number_flux_groups,flux_energies,ng_pka_incident_energies)
+    CALL collapse_xs2(ng_recoil_kermas(i,:),ng_num_pka_points,number_flux_groups,flux_energies,ng_pka_incident_energies,0._DBL)
     WHERE(ng_recoil_kermas(i,:).LT.0._DBL) ng_recoil_kermas(i,:)=0._DBL
    END DO 
    
@@ -202,12 +207,6 @@
    END DO   
    
    
-   !24/2/2014 temp code to output matrix
-   
-   
-!    DO j=1,ng_num_pka_incident_energies
- !     DO i=1,ng_num_pka_recoil_points
-!       WRITE(102,*) ng_recoil_kermas(
    
    DEALLOCATE(ng_recoil_kermas,ng_pka_incident_energies)
    
@@ -221,6 +220,9 @@
 
     !estimated (n,g) recoil matrix
     ! ng_pka(1,:)
+    
+   IF(do_outputs) WRITE(*,*) 'output (n,g) evaluation'
+    
    mtd=102
    CALL define_daughter(.true.)
    !PRINT *,daughter_num,daughter_ele
@@ -243,8 +245,9 @@
          
          
     END IF
-   IF(do_global_sums) CALL add_to_globals(ng_pka(1,:),ng_num_pka_recoil_points,ng_tdam_energies)
-   
+    IF(do_outputs) WRITE(*,*) 'add ng estimate to globals'
+     doing_ng=.true.
+   IF(do_global_sums) CALL add_to_globals(ng_pka(1,:),ng_num_pka_recoil_points,ng_tdam_energies,ng_pka_recoil_energies)
    j=1
    
    IF(sum(ng_pka(j,1:ng_num_pka_recoil_points)).NE.0) THEN
@@ -294,7 +297,7 @@
   
       ! compute average pka energy
       pka_ave=0.5_DBL*ng_pka_recoil_energies(1)*ng_pka(j,1)
-      DO i=1,ng_num_pka_recoil_points
+      DO i=2,ng_num_pka_recoil_points
        pka_ave=pka_ave+0.5_DBL*(ng_pka_recoil_energies(i)+ng_pka_recoil_energies(i-1))*ng_pka(j,i)
       END DO
       pka_ave=pka_ave*1000000._DBL
@@ -311,6 +314,6 @@
       WRITE(results_unit,*)
       file_index=file_index+1
    END IF !non zero check
-
+   IF(do_outputs) WRITE(*,*) 'end of (n,g) output'
   
   END SUBROUTINE output_ng_estimate

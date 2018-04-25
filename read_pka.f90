@@ -84,9 +84,7 @@
          IF((energies_once_perfile.and.first_read).OR.(.not.energies_once_perfile)) THEN
           READ(pka_unit,*,IOSTAT=io_read) (pka_incident_energies(j),j=1,num_pka_incident_energies)
           pka_recoil_energies=pka_incident_energies
-         ELSE
-           pka_recoil_energies=pka_recoil_energies_master
-           pka_incident_energies=pka_incident_energies_master
+
          END IF        
         
 
@@ -97,26 +95,36 @@
           IF((energies_once_perfile.and.first_read).OR.(.not.energies_once_perfile)) THEN
            READ(pka_unit,*,IOSTAT=io_read) (pka_incident_energies(i),i=1,num_pka_incident_energies),&
                                 (pka_recoil_energies(j),j=1,num_pka_recoil_points)
-          ELSE
-           pka_recoil_energies=pka_recoil_energies_master
-           pka_incident_energies=pka_incident_energies_master
+
           END IF          
          CASE DEFAULT
           IF((energies_once_perfile.and.first_read).OR.(.not.energies_once_perfile)) THEN
            READ(pka_unit,*,IOSTAT=io_read) (pka_recoil_energies(i),i=1,num_pka_recoil_points),&
                                 (pka_incident_energies(j),j=1,num_pka_incident_energies)
-          ELSE
-           pka_recoil_energies=pka_recoil_energies_master
-           pka_incident_energies=pka_incident_energies_master
+
           END IF
          END SELECT
         END IF
         
-        IF((energies_once_perfile).and.(.not.first_read).and. &
-           ((num_pka_incident_energies.NE.num_pka_incident_energies_master).OR.&
-            (num_pka_recoil_points.NE.num_pka_recoil_points_master))) THEN
+        IF((energies_once_perfile)) THEN
+         IF((.not.first_read)) THEN
+          IF((num_pka_incident_energies.NE.num_pka_incident_energies_filemaster).OR.&
+            (num_pka_recoil_points.NE.num_pka_recoil_points_filemaster)) THEN
             PRINT *,'Energy matrix only read once, but subseqent recoil matrices have different grid'
             STOP
+          ELSE
+           pka_recoil_energies=pka_recoil_energies_filemaster
+           pka_incident_energies=pka_incident_energies_filemaster          
+          END IF
+         ELSE
+          num_pka_recoil_points_filemaster=num_pka_recoil_points
+          num_pka_incident_energies_filemaster=num_pka_incident_energies
+          ALLOCATE(pka_recoil_energies_filemaster(num_pka_recoil_points_filemaster),&
+            pka_incident_energies_filemaster(num_pka_incident_energies_filemaster))
+           pka_recoil_energies_filemaster=pka_recoil_energies
+           pka_incident_energies_filemaster=pka_incident_energies  
+          first_read=.false.  
+         END IF
         END IF
         SELECT CASE(pka_filetype)
         CASE(1) ! original format

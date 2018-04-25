@@ -4,10 +4,17 @@
 
 FF = gfortran
 LD = gfortran
-
 FFLAGS =  -ffree-line-length-none -g 
 LDFLAGS = -g 
-LIBS = 
+LIBS =
+
+#FF = ifort
+#LD = ifort
+#FFLAGS = 
+#LDFLAGS = 
+#FFLAGS =  -check -debug inline_debug_info -debug-parameters all
+#LDFLAGS = -check -debug inline_debug_info -debug-parameters all
+#LIBS = 
 
 PROG = spectra-pka
 
