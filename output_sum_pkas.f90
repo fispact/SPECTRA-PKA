@@ -21,7 +21,7 @@
  INTEGER :: numarray(10)=(/107,2,2,107,103,103,0,0,0,0/)  
  LOGICAL :: logarray(10)=(/.false.,.true.,.true.,.true.,.false., &
                            .true.,.false.,.false.,.false.,.false./)
-   CHARACTER (LEN=100) :: fmt1='(4ES14.4,2x,ES14.4,3x,ES11.4,5x,ES11.4)'
+   CHARACTER (LEN=100) :: fmt1='(4ES14.6,2x,ES14.6,3x,ES11.4,5x,ES11.4)'
    CHARACTER (LEN=100) :: fmt2='(1x,a31,a8,4x,a11,5x,a11,a19,a11)' 
    CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,a11)'  
   REAL (KIND=DBL) :: energy_min   

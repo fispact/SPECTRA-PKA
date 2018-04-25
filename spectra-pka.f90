@@ -449,7 +449,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
               'norm_sum',' T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
      i=1
      ! add in displacement energy and dpa
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                    tdam_energies(i)/2._DBL,tdam_energies(i),(pka(1,i))*&
@@ -457,7 +457,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
              0.8_DBL*(pka(1,i))*&
              (tdam_energies(i)/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL)
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                    tdam_energies(i-1),tdam_energies(i),(pka(1,i))*&
@@ -471,7 +471,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
             'PKAs','norm_sum', &
             ' T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
      i=1
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,4ES11.4,2ES20.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,4ES11.4,2ES20.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                   tdam_energies(i)/2._DBL,tdam_energies(i),(pka(1,i))*&
@@ -479,7 +479,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
              0.8_DBL*(pka(1,i))*&
              (tdam_energies(i)/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL) 
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,4ES11.4,2ES20.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,4ES11.4,2ES20.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &     
                  pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points)), &
                    tdam_energies(i-1),tdam_energies(i),(pka(1,i))*&
@@ -496,11 +496,11 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
      WRITE(results_unit,'(1x,a31,a8,3x,a7,a11)') &
            '#RECOIL energy (MeV low & high)','PKAs','ERROR(%)','norm_sum'
      i=1
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,ES11.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,ES11.4,3x,F7.3,ES11.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,ES11.4,3x,F7.3,ES11.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,ES11.4,3x,F7.3,ES11.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &
                    pka(1,i),epka(i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
       
@@ -508,11 +508,11 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
     ELSE !ksail
      WRITE(results_unit,'(1x,a31,a8,a11)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum'
      i=1
-     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,2ES11.4)') &
+     IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,2ES11.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
                    pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      DO i=2,num_pka_recoil_points
-      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.4,2ES11.4)') &
+      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,2ES11.4)') &
                pka_recoil_energies(i-1),pka_recoil_energies(i), &     
                  pka(1,i),pka(1,i)/SUM(pka(1,1:num_pka_recoil_points))
      END DO    

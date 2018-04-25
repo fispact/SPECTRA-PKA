@@ -6,6 +6,8 @@ tests/*
 decay/*
 collapse_test/*
 *.exe
+spectra-pka
+
 geant_tests/*
 xs_convert/*
 flux_convert/*
@@ -18,4 +20,6 @@ manual/test/spectra-pka*
 data/*
 manual/*synctex
 manual/test/plot_example/*.ps
+Makefile2
+
 

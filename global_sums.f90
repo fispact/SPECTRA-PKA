@@ -184,7 +184,7 @@ IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_maste
    
    INTEGER, allocatable :: order(:),positions(:)
    LOGICAL :: found
-   CHARACTER (LEN=100) :: fmt1='(ES14.4,2x,ES14.4,4(3x,ES11.4),3x,ES11.4,5x,ES11.4)'
+   CHARACTER (LEN=100) :: fmt1='(ES14.6,2x,ES14.6,4(3x,ES11.4),3x,ES11.4,5x,ES11.4)'
    CHARACTER (LEN=100) :: fmt2='(1x,a31,a8,6x,a11,3x,a15,a11,a19,a11)' 
    CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,6x,a11,3x,a15)'
    REAL (KIND=DBL) :: energy_min
