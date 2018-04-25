@@ -21,7 +21,7 @@ colorlinks=true}
 
 \maketitle
 \section{Introduction}
-\texttt{SPECTRA-PKA}~\cite{gilbertmariansublet2015,gilbertsubletNME2016,gilbertsublet2018} is a command-line driven programme for calculating the expected primary knock-on atom (PKA) spectra for a given target nuclide under neutron or charged particle irradiation. NJOY-processed recoil matrices must be provided as the input nuclear data for each nuclide and reaction channel of interest. \texttt{SPECTRA-PKA} will read the nuclear data and collapse the data for each reaction channel in a file with a user-defined energy spectrum of incident particles. \texttt{SPECTRA-PKA} outputs the resulting PKA spectra for each reaction channel read-in, as well as summed PKA distributions for each different recoiling nuclide or element, including both the typically heavy residuals and the secondary-emitted light gas particles. Crucially, \texttt{SPECTRA-PKA} has the ability to process data, in a single run, for a complex material containing many different target species. The user must specify the atomic percentage for each target and the appropriate recoil cross section file, but then \texttt{SPECTRA-PKA} will automatically read-in and process each file and create global average (including as a function of isotope and element) PKA distributions. This feature, in particular, is a significant advancement over what was possible before (such as with \texttt{SPECTER}~\cite{specter} from ANL), where typically PKA distributions were only provided for single elements (and not separated by reaction channel) and based on only one nuclear data library (ENDF/B-V in the case of \texttt{SPECTER}). It allows, for example, the user to investigate the variation in PKA distributions as a function of time under irradiation, where a materials composition may change due to transmutation -- see, for example,~\cite{gilbertsubletNME2016}.
+\texttt{SPECTRA-PKA}~\cite{gilbertmariansublet2015,gilbertsubletNME2016,gilbertsublet2018,spectrapkaavailablefrom} is a command-line driven programme for calculating the expected primary knock-on atom (PKA) spectra for a given target nuclide under neutron or charged particle irradiation. NJOY-processed recoil matrices must be provided as the input nuclear data for each nuclide and reaction channel of interest. \texttt{SPECTRA-PKA} will read the nuclear data and collapse the data for each reaction channel in a file with a user-defined energy spectrum of incident particles. \texttt{SPECTRA-PKA} outputs the resulting PKA spectra for each reaction channel read-in, as well as summed PKA distributions for each different recoiling nuclide or element, including both the typically heavy residuals and the secondary-emitted light gas particles. Crucially, \texttt{SPECTRA-PKA} has the ability to process data, in a single run, for a complex material containing many different target species. The user must specify the atomic percentage for each target and the appropriate recoil cross section file, but then \texttt{SPECTRA-PKA} will automatically read-in and process each file and create global average (including as a function of isotope and element) PKA distributions. This feature, in particular, is a significant advancement over what was possible before (such as with \texttt{SPECTER}~\cite{specter} from ANL), where typically PKA distributions were only provided for single elements (and not separated by reaction channel) and based on only one nuclear data library (ENDF/B-V in the case of \texttt{SPECTER}). It allows, for example, the user to investigate the variation in PKA distributions as a function of time under irradiation, where a materials composition may change due to transmutation -- see, for example,~\cite{gilbertsubletNME2016}.
 
 \section{Command line options}
 \texttt{SPECTRA-PKA} is executed from the command-line. By default, the programme expects to find an input file called \texttt{specter.input} in the execution folder, but this behaviour can be over-ridden by specifying the name of an input file on the command-line. The input file provides the user with the option to over-ride the default values of the various code words (see below) that \texttt{SPECTRA-PKA} relies upon to control its execution. The input file should be a text file but is largely free from other formatting requirements. Code word values are specified in any order, one per line, via syntax of type:
@@ -93,7 +93,14 @@ columns= pka_filename pka_ratios parent_ele parent_num ngamma_parent_mass ngamma
 "Zr096s.asc" 0.02800000 Zr 96 95.908271433 96.910951206
 \end{verbatim}}
 
-%\restoregeometry
+\begin{itemize}
+
+\item \texttt{do{\textunderscore}user{\textunderscore}output{\textunderscore}energy{\textunderscore}grid} [\texttt{.false.}] --- if true then this variable causes the program to read a user-defined PKA energy grid (in MeV units) for a specified (via \texttt{user{\textunderscore}energybin{\textunderscore}file}) file. This grid will be used instead of those read from the input data streams to output the various summed PKA spectra (see \texttt{do{\textunderscore}mtd{\textunderscore}sums} and \texttt{do{\textunderscore}global{\textunderscore}sums}). This option can be particularly useful to recast the spectra onto a linear energy grid (instead of the logarithmic grid typically used in nuclear physics to represent nuclear cross sections and/or flux spectra) for use in integrated modelling schemes.
+
+\item \texttt{user{\textunderscore}energybin{\textunderscore}file} [\texttt{ebins.dat}] --- the name of the file from where the user-defined output energy grid will be read. The first line of this file is expected to give the number of energy bounds, which are subsequently listed in the file (in increasing MeV units). It is assumed the minimum energy (below the first bound) is zero, but the code does not check if the maximum energy is high enough to capture all of the evaluated PKA energies (PKA fluxes above the maximum will be omitted from the output). If this file cannot be found, or if an error occurs during reading, then the program will default to the original grids from the input data.
+
+\item \texttt{user{\textunderscore}grid{\textunderscore}option} [\texttt{2}] --- the use of a user-defined output energy grid can result in very large output files, particularly if using a fine resolution linear grid over several orders of magnitude (in energy). In such cases it may be desirable to restrict the application of the user grid. If \texttt{user{\textunderscore}grid{\textunderscore}option} is 1 (or any other integer not discussed here) then the user grid will be used to output all summed spectra (sums across nuclides, elements, reaction sets, etc.). If 2 then only the global sums at the end of the evaluation will use the grid -- sums performed at the end of the processing of each target nuclide will use the default energy grid obtained from the input data steams, which are typically based around log-scaling. If \texttt{user{\textunderscore}grid{\textunderscore}option} is 3 then only the very final ``total'' PKA spectrum will use the specified grid.
+\end{itemize}
 
 
 \section{Input PKA data download}
@@ -164,8 +171,19 @@ M.~R. Gilbert and J.-{\relax Ch}. Sublet, ``{{PKA distributions: Contributions
   Energy}, vol.~9, pp.~576--580, 2016.
     \newblock \url{http://dx.doi.org/10.1016/j.nme.2016.02.006}.
 
+
+
+
+
+
 \bibitem{gilbertsublet2018}
-M.~R. Gilbert and J.-{\relax Ch}. Sublet, ``{{Differential dpa calculations with SPECTRA-PKA}},'' {\em J. Nucl. Mater.}, accepted for publication, 2018.
+M.R. Gilbert and J.-Ch. Sublet, ``{{Differential dpa calculations with
+  SPECTRA-PKA}},'' {\em J. Nucl. Mater.}, vol.~504, pp.~101--108, 2018.
+    \newblock \url{https://doi.org/10.1016/j.jnucmat.2018.03.032}.
+
+\bibitem{spectrapkaavailablefrom}
+M.~R. Gilbert, ``{SPECTRA-PKA}'',  (2018) {SPECTRA-PKA is available to download
+  from github at \url{https://github.com/fispact/SPECTRA-PKA}}.
 
 \bibitem{specter}
 L.~R. Greenwood and R.~K. Smither,
@@ -185,7 +203,7 @@ J.~Lindhard, M.~Scharff, and H.~E. Schi{\o}tt,
 
 \bibitem{robinson1994}
 M.~T. Robinson, ``{{Basic physics of radiation damage production}},'' {\em J. Nucl. Mater.}, vol.~216, pp.~1--28, 1994.
-\newblock 
+\newblock
   \url{https://doi.org/10.1016/0022-3115(94)90003-5}
 
 
