@@ -610,7 +610,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
     DEALLOCATE(pka_recoil_energies_master,pka_sums)
     IF(do_tdam) DEALLOCATE(mtd_disp_sums,pka_sums_tdam,tdam_energies_master)
   END IF
-  IF(energies_once_perfile) THEN
+  IF(energies_once_perfile.AND.ALLOCATED(pka_recoil_energies_filemaster)) THEN
    DEALLOCATE(pka_recoil_energies_filemaster,pka_incident_energies_filemaster)
   END IF
   
@@ -634,14 +634,18 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
  filenum=filenum+1
    
  END DO ! io_quit  and loop over filenames for pka section
- 
+ ! 26/4/2018 - check there is something to output - i.e. avoid crash if no files have been read
  IF(do_global_sums) THEN
+  IF((number_global_recoils.GT.0)) THEN
    CALL output_global_sums()
    IF(ALLOCATED(global_pka_sums)) DEALLOCATE(global_pka_sums)
    IF(ALLOCATED(global_pka_sums_element)) DEALLOCATE(global_pka_sums_element)
    IF(do_tdam.AND.ALLOCATED(global_tdam_energies_master)) &
        DEALLOCATE(global_tdam_energies_master,global_pka_sums_tdam, &
       global_pka_sums_element_tdam)
+  ELSE
+   print *,'no global sums to output'
+  END IF
  END IF
  IF(io_quit.NE.0) THEN
   PRINT *,'quiting'
