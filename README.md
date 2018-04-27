@@ -28,7 +28,7 @@ A description of each code word and its expected value(s) are given below. An al
 
 ##### <a name="code-words"></a>Code words
 
-A complete list of code words can be found on the [FISPACT-II wiki page](http://fispact.ukaea.uk/wiki/Spectra-PKA) or the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf)
+A complete list of code words can be found on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf)
 
 
 
@@ -64,7 +64,7 @@ energies_once_perfile=.t.
 ```
 Note that in the test folder ```<PKA data folder>``` in the above has been replaced by the appropriate directory path for the default hierarchy of the FISPACT-II system. The user should tailor this file as necessary to their own system configuration before running the test.
 
-The test folder also has an example_results folder containing the .out and .indexes files that should be produced from a successful execution of the test. The plot_example folder provides example .plt files for GNUPLOT that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with GNUPLOT will note the use of the index option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see example_results/ZR.indexes). Important: Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are shown on the [FISPACT-II wiki page](http://fispact.ukaea.uk/wiki/Spectra-PKA) and the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf).
+The test folder also has an example_results folder containing the .out and .indexes files that should be produced from a successful execution of the test. The plot_example folder provides example .plt files for GNUPLOT that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with GNUPLOT will note the use of the index option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see example_results/ZR.indexes). Important: Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are shown on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf) and the [FISPACT-II wiki page](http://fispact.ukaea.uk/wiki/Spectra-PKA).
 
 ##### <a name="data-download"></a>Input PKA data download
 
