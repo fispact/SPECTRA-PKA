@@ -518,5 +518,11 @@ IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_maste
        WRITE(results_unit,*)
        file_index=file_index+1
     !END IF !non zero check 
+    
+    
+    IF(do_timed_configs) THEN
+    
+      CALL create_configs
+    END IF
    
   END SUBROUTINE output_global_sums
