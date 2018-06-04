@@ -21,5 +21,7 @@ data/*
 manual/*synctex
 manual/test/plot_example/*.ps
 Makefile2
+spectra-pka.dSYM/*
+
 
 
