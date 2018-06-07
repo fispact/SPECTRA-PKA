@@ -35,7 +35,8 @@ A complete list of code words (with explanation) can be found on the [pdf readme
 
 #### <a name="examples"></a>Examples
 
-In the folder containing the distributed executables of SPECTRA-PKA there is a "test" folder to get the user started. The folder contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type: 
+In the subfolder containing the pdf manual distributed with SPECTRA-PKA there are two example calculations to get the user started. The first, in "manual/test", contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type:
+
 ```bash
 <location of SPECTRA-PKA>SPECTRA_PKA ZR.in
 ```
@@ -65,6 +66,9 @@ energies_once_perfile=.t.
 Note that in the test folder ```<PKA data folder>``` in the above has been replaced by the appropriate directory path for the default hierarchy of the FISPACT-II system. The user should tailor this file as necessary to their own system configuration before running the test.
 
 The test folder also has an example_results folder containing the .out and .indexes files that should be produced from a successful execution of the test. The plot_example folder provides example .plt files for GNUPLOT that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with GNUPLOT will note the use of the index option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see example_results/ZR.indexes). Important: Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are shown on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf) and the [FISPACT-II wiki page](http://fispact.ukaea.uk/wiki/Spectra-PKA).
+
+A further example, which doesn't include a plot example (as described above), can be found in the folder "manual/usergrid_test". This "test" calculates the PKA distributions for a single Fe isotope (Fe56) irradiated in a typical fission irradiation spectrum. It exemplifies the use of a user-defined energy output grid for the PKA distributions and additionally provides examples of the format of the required user-grid input file.
+
 
 ##### <a name="data-download"></a>Input PKA data download
 

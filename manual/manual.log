@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.30)  25 APR 2018 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.30)  7 JUN 2018 11:46
 entering extended mode
 **./manual.tex
 (manual.tex
@@ -281,29 +281,45 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@dimlist=\toks21
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+))
 
 Package hyperref Warning: Option `backref' has already been used,
-(hyperref)                setting the option has no effect on input line 17.
+(hyperref)                setting the option has no effect on input line 18.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 17.
+Package hyperref Info: Option `colorlinks' set `true' on input line 18.
 (manual.aux)
 \openout1 = `manual.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 20.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -320,23 +336,10 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \MPnumerator=\count117
 \makeMPintoPDFobject=\count118
 \everyMPtoPDFconversion=\toks23
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 19.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package hyperref Info: Link coloring ON on input line 20.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
@@ -344,9 +347,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 20.
+LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \nameref on input line 20.
 
 (manual.out) (manual.out)
 \@outlinefile=\write3
@@ -387,16 +390,16 @@ LaTeX Info: Redefining \nameref on input line 19.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 23.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 24.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 23.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -405,120 +408,120 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 37.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 38.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
  [1
 
 {C:/Users/mgilbert.CCFEPC/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
 
-Overfull \hbox (10.26396pt too wide) in paragraph at lines 47--48
+Overfull \hbox (10.26396pt too wide) in paragraph at lines 48--49
 \OT1/ptm/m/n/10 where \OT1/pcr/m/n/10 itype \OT1/ptm/m/n/10 iden-ti-fies the ty
 pe of the flux file. The only type cur-rently sup-ported by \OT1/pcr/m/n/10 SPE
 CTRA-PKA
  []
 
 
-Overfull \hbox (0.61337pt too wide) in paragraph at lines 47--48
+Overfull \hbox (0.61337pt too wide) in paragraph at lines 48--49
 \OT1/ptm/m/n/10 for-mat shown above. \OT1/pcr/m/n/10 dummyi \OT1/ptm/m/n/10 are
  ob-so-lete en-tries where an in-te-ger value is still ex-pected. \OT1/pcr/m/n/
 10 igroup
  []
 
 [2] [3]
-Overfull \hbox (13.60234pt too wide) in paragraph at lines 74--75
+Overfull \hbox (13.60234pt too wide) in paragraph at lines 75--76
 \OT1/ptm/m/n/10 energy bin bound-aries as-so-ci-ated with each PKA en-ergy bin 
 fol-low-ing the Lindhard-Scharff-Schitt [[]]
  []
 
 
-Overfull \hbox (19.45233pt too wide) in paragraph at lines 75--76
+Overfull \hbox (19.45233pt too wide) in paragraph at lines 76--77
 []\OT1/pcr/m/n/10 assumed[]ed \OT1/ptm/m/n/10 [\OT1/pcr/m/n/10 40.0\OT1/ptm/m/n
 /10 ] --- thresh-old dis-place-ment en-ergy (in eV) for the ma-te-rial used for
  displacements-
  []
 
 [4]
-Overfull \hbox (32.94661pt too wide) in paragraph at lines 94--94
+Overfull \hbox (32.94661pt too wide) in paragraph at lines 95--95
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
  []
 
 [5]
-Overfull \hbox (32.94661pt too wide) in paragraph at lines 141--141
+Overfull \hbox (32.94661pt too wide) in paragraph at lines 142--142
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 145.
 
-Overfull \hbox (30.00319pt too wide) in paragraph at lines 144--145
+Overfull \hbox (27.6032pt too wide) in paragraph at lines 145--146
 \OT1/ptm/m/n/10 cur-rently used in the .plt files are ap-pro-pri-ate for the ex
--am-ple re-sults (see \OT1/pcr/m/n/10 example_results/ZR.indexes\OT1/ptm/m/n/10
- ).
+-am-ple re-sults (see \OT1/pcr/m/n/10 example[]results/ZR.indexes\OT1/ptm/m/n/1
+0 ).
  []
 
 Package epstopdf Info: Source file: <ZR_elemental.eps>
-(epstopdf)                    date: 2016-11-21 11:56:50
+(epstopdf)                    date: 2018-03-11 22:33:08
 (epstopdf)                    size: 31764 bytes
 (epstopdf)             Output file: <ZR_elemental-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-03-11 18:55:32
-(epstopdf)                    size: 9618 bytes
+(epstopdf)                    date: 2018-06-07 11:43:57
+(epstopdf)                    size: 9623 bytes
 (epstopdf)             Command: <epstopdf --outfile=ZR_elemental-eps-converted-
 to.pdf ZR_elemental.eps>
-(epstopdf)             \includegraphics on input line 152.
+(epstopdf)             \includegraphics on input line 153.
 Package epstopdf Info: Output file is already uptodate.
 <ZR_elemental-eps-converted-to.pdf, id=76, 274.02374pt x 178.6675pt>
 File: ZR_elemental-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ZR_elemental-eps-converted-to.pdf>
 Package pdftex.def Info: ZR_elemental-eps-converted-to.pdf used on input line 1
-52.
+53.
 (pdftex.def)             Requested size: 292.77629pt x 190.90788pt.
 Package epstopdf Info: Source file: <ZR_isotope.eps>
-(epstopdf)                    date: 2016-11-21 11:55:47
+(epstopdf)                    date: 2018-03-11 22:33:08
 (epstopdf)                    size: 44356 bytes
 (epstopdf)             Output file: <ZR_isotope-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-03-11 18:55:34
-(epstopdf)                    size: 17500 bytes
+(epstopdf)                    date: 2018-06-07 11:43:59
+(epstopdf)                    size: 17505 bytes
 (epstopdf)             Command: <epstopdf --outfile=ZR_isotope-eps-converted-to
 .pdf ZR_isotope.eps>
-(epstopdf)             \includegraphics on input line 154.
+(epstopdf)             \includegraphics on input line 155.
 Package epstopdf Info: Output file is already uptodate.
 
 <ZR_isotope-eps-converted-to.pdf, id=77, 274.02374pt x 244.915pt>
 File: ZR_isotope-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ZR_isotope-eps-converted-to.pdf>
-Package pdftex.def Info: ZR_isotope-eps-converted-to.pdf used on input line 154
+Package pdftex.def Info: ZR_isotope-eps-converted-to.pdf used on input line 155
 .
 (pdftex.def)             Requested size: 209.12683pt x 186.91463pt.
 
-Overfull \hbox (40.97032pt too wide) in paragraph at lines 150--155
+Overfull \hbox (40.97032pt too wide) in paragraph at lines 151--156
 [] [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--155
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 [6] [7 <./ZR_elemental-eps-converted-to.pdf> <./ZR_isotope-eps-converted-to.pdf
 >]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 230.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
  [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 230.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
  (manual.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 230.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 233.
 
 
  *File List*
@@ -578,10 +581,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 geometry.sty    2010/09/12 v5.6 Page Geometry
 geometry.cfg
-  ot1ptm.fd    2001/06/04 font definitions for OT1/ptm.
-supp-pdf.mkii
+epstopdf.sty    2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
 epstopdf-base.sty    2016/05/15 v2.6 Base part for package epstopdf
   grfext.sty    2016/05/16 v1.2 Manage graphics extensions (HO)
+  ot1ptm.fd    2001/06/04 font definitions for OT1/ptm.
+supp-pdf.mkii
  nameref.sty    2016/05/21 v2.44 Cross-referencing by name of section
 gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
   manual.out
@@ -594,19 +598,19 @@ ZR_elemental-eps-converted-to.pdf    Graphic file (type pdf)
 ZR_isotope-eps-converted-to.pdf    Graphic file (type pdf)
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 230.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 233.
 Package rerunfilecheck Info: File `manual.out' has not changed.
-(rerunfilecheck)             Checksum: 0A16A7096174130377BB9E472C71A1EC;264.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 230.
+(rerunfilecheck)             Checksum: C76FD79487A0AF4FFF99814653D43BB0;265.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 233.
  ) 
 Here is how much of TeX's memory you used:
- 6765 strings out of 493333
- 96535 string characters out of 3139184
- 191684 words of memory out of 3000000
- 10149 multiletter control sequences out of 15000+200000
+ 6771 strings out of 493333
+ 96716 string characters out of 3139184
+ 191722 words of memory out of 3000000
+ 10153 multiletter control sequences out of 15000+200000
  26682 words of font info for 77 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,8n,28p,1894b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,8n,28p,1894b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
@@ -616,7 +620,7 @@ s/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on manual.pdf (8 pages, 159403 bytes).
+Output written on manual.pdf (8 pages, 159968 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)

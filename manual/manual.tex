@@ -12,6 +12,7 @@
 \newcommand{\etals}{\emph{et al. \@}}\newcommand{\mb}[1]{\mathbf{#1}}
 \newcommand{\ie}{\emph{i.e.\@} }\newcommand{\etc}{\emph{etc.\@} }
 \newcommand{\etal}{\emph{et al.\@}}\newcommand{\diffd}{\text{d}}
+\usepackage{epstopdf}
 
 \hypersetup{backref,
 colorlinks=true}
@@ -109,8 +110,8 @@ SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files 
 
 
 
-\section{Example calculation}
-In the folder containing the distributed executables of \texttt{SPECTRA-PKA} there is a ``test'' folder to get the user started. The folder contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type:
+\section{Example calculations}
+In the subfolder containing the pdf manual distributed with \texttt{SPECTRA-PKA} there are two example calculations to get the user started. The first, in \texttt{manual/test}, contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type:
 \begin{verbatim}
 <location of SPECTRA-PKA>SPECTRA_PKA ZR.in
 \end{verbatim}
@@ -141,7 +142,7 @@ assumed_ed=40.0
 \end{verbatim}}
 Note that in the test folder \texttt{<PKA data folder>} in the above has been replaced by the appropriate directory path for the default hierarchy of the \texttt{FISPACT-II} system. The user should tailor this file as necessary to their own system configuration before running the test.
 
-The test folder also has an ``example\verb|_|results'' folder containing the .out and .indexes files that should be produced from a successful execution of the test. The ``plot\verb|_|example'' folder provides example .plt files for \texttt{GNUPLOT} that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with \texttt{GNUPLOT} will note the use of the \texttt{index} option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see \texttt{example\char`_results/ZR.indexes}). \textbf{Important:} Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are given in figure~\ref{pka_graphs}.
+The test folder also has an ``example\verb|_|results'' folder containing the .out and .indexes files that should be produced from a successful execution of the test. The ``plot\verb|_|example'' folder provides example .plt files for \texttt{GNUPLOT} that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with \texttt{GNUPLOT} will note the use of the \texttt{index} option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see \texttt{example\_results/ZR.indexes}). \textbf{Important:} Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are given in figure~\ref{pka_graphs}.
 
 
 
@@ -149,13 +150,15 @@ The test folder also has an ``example\verb|_|results'' folder containing the .ou
 \begin{figure}[t]
 \hskip-1.5cm
 \parbox[b][7cm][t]{0.7\textwidth}{\includegraphics[width=0.7\textwidth]
-{ZR_elemental}}%\vskip1cm
+{ZR_elemental}}%\vskip1xcm
 \includegraphics[width=0.5\textwidth]
 {ZR_isotope}\\
 \vskip-1.0cm
 \hskip-0.5cm(a)\hskip7.2cm(b)
 \caption{\label{pka_graphs}(a) elemental and (b) isotopic PKA distributions for pure Zr under PWR conditions.}
 \end{figure}
+
+A further example, which doesn't include a plot example (as described above), can be found in the folder \texttt{manual/usergrid\_test}. This ``test'' calculates the PKA distributions for a single Fe isotope (\(^{56}\)Fe) irradiated in a typical fission irradiation spectrum. It exemplifies the use of a user-defined energy output grid for the PKA distributions and additionally provides examples of the format of the required user-grid input file.
 
 \begin{thebibliography}{10}
 

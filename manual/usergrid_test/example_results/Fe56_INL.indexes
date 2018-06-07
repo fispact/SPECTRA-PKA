@@ -1,0 +1,81 @@
+           0  input_spectrum
+           1  (n,np) proton matrix [ H1 ] from [ Fe56 ]Fe056s.asc
+           2  (n,p) proton matrix [ H1 ] from [ Fe56 ]Fe056s.asc
+           3  (n,2p) proton matrix [ H1 ] from [ Fe56 ]Fe056s.asc
+           4  (n,pa) proton matrix [ H1 ] from [ Fe56 ]Fe056s.asc
+           5  (n,na) alpha matrix [ He4 ] from [ Fe56 ]Fe056s.asc
+           6  (n,a) alpha matrix [ He4 ] from [ Fe56 ]Fe056s.asc
+           7  (n,2a) alpha matrix [ He4 ] from [ Fe56 ]Fe056s.asc
+           8  (n,pa) alpha matrix [ He4 ] from [ Fe56 ]Fe056s.asc
+           9  (n,2n) recoil matrix [ Fe55 ] from [ Fe56 ]Fe056s.asc
+          10  (n,na) recoil matrix [ Cr52 ] from [ Fe56 ]Fe056s.asc
+          11  (n,np) recoil matrix [ Mn55 ] from [ Fe56 ]Fe056s.asc
+          12  (n,nc) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          13  (n,p) recoil matrix [ Mn56 ] from [ Fe56 ]Fe056s.asc
+          14  (n,d) recoil matrix [ Mn55 ] from [ Fe56 ]Fe056s.asc
+          15  (n,t) recoil matrix [ Mn54 ] from [ Fe56 ]Fe056s.asc
+          16  (n,h) recoil matrix [ Cr54 ] from [ Fe56 ]Fe056s.asc
+          17  (n,a) recoil matrix [ Cr53 ] from [ Fe56 ]Fe056s.asc
+          18  (n,2a) recoil matrix [ Ti49 ] from [ Fe56 ]Fe056s.asc
+          19  (n,2p) recoil matrix [ Cr55 ] from [ Fe56 ]Fe056s.asc
+          20  (n,pa) recoil matrix [ V52 ] from [ Fe56 ]Fe056s.asc
+          21  (n,elastic) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          22  (n,n01) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          23  (n,n02) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          24  (n,n03) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          25  (n,n04) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          26  (n,n05) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          27  (n,n06) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          28  (n,n07) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          29  (n,n08) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          30  (n,n09) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          31  (n,n10) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          32  (n,n11) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          33  (n,n12) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          34  (n,n13) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          35  (n,n14) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          36  (n,n15) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          37  (n,n16) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          38  (n,n17) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          39  (n,n18) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          40  (n,n19) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          41  (n,n20) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          42  (n,n21) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          43  (n,n22) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          44  (n,n23) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          45  (n,n24) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          46  (n,n25) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          47  (n,n26) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          48  (n,n27) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          49  (n,n28) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          50  (n,n29) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          51  (n,n30) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          52  total alpha matrix [ He4 ] from [ Fe56 ]Fe056s.asc
+          53  (n,inelastic) recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          54  scatter recoil matrix [ Fe56 ] from [ Fe56 ]Fe056s.asc
+          55  total (z,a) recoil matrix [ Cr53 ] from [ Fe56 ]Fe056s.asc
+          56  total proton matrix [ H1 ] from [ Fe56 ]Fe056s.asc
+          57  total (z,p) recoil matrix [ Mn56 ] from [ Fe56 ]Fe056s.asc
+          58  estimated (n,g) recoil matrix [ Fe57 ] from [ Fe56 ]Fe056s.asc
+          59  recoil matrix of H1
+          60  recoil matrix of He4
+          61  recoil matrix of Fe55
+          62  recoil matrix of Cr52
+          63  recoil matrix of Mn55
+          64  recoil matrix of Mn54
+          65  recoil matrix of Cr53
+          66  recoil matrix of Cr54
+          67  recoil matrix of Fe56
+          68  recoil matrix of Mn56
+          69  recoil matrix of Ti49
+          70  recoil matrix of Cr55
+          71  recoil matrix of V52
+          72  recoil matrix of Fe57
+          73  elemental recoil matrix of H
+          74  elemental recoil matrix of He
+          75  elemental recoil matrix of Ti
+          76  elemental recoil matrix of V
+          77  elemental recoil matrix of Cr
+          78  elemental recoil matrix of Mn
+          79  elemental recoil matrix of Fe
+          80  total recoil matrix (He+H+unknowns excluded)

@@ -1,0 +1,21 @@
+ flux_filename="INL_flux_specter.dat"
+ results_stub="Fe56_INL" 
+num_columns=6
+columns= pka_filename pka_ratios parent_ele parent_num ngamma_parent_mass ngamma_daughter_mass
+"Fe056s.asc" 1.0 Fe 56 55.934936326 56.935392841
+flux_norm_type=2
+ pka_filetype=2 ! original format - 2 new format equivalent to groupr output from NJOY
+ do_mtd_sums=.true.
+ do_ngamma_estimate=.t.
+ do_global_sums=.t.
+ do_exclude_light_from_total=.t.
+ number_pka_files=1
+ energies_once_perfile=.t.
+ do_tdam=.t.
+ assumed_ed=40
+ tdam_method=2
+ flux_rescale_value=5.738262e-8
+# molar mass of input material is:  55.84514442998595
+do_user_output_energy_grid=.t.
+user_energybin_file="outenergies_1keV.dat"
+user_grid_option=3
