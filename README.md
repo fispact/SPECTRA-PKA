@@ -28,7 +28,7 @@ A description of each code word and its expected value(s) are given below. An al
 
 ##### <a name="code-words"></a>Code words
 
-A complete list of code words (with explanation) can be found on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/readme.pdf)
+A complete list of code words (with explanation) can be found on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/manual.pdf)
 
 
 
