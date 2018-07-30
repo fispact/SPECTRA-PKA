@@ -29,7 +29,7 @@ colorlinks=true}
 \begin{center}
 \texttt{<code word name>=<code word value>}
 \end{center}
-A description of each code word and its expected value(s) are given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described.
+A description of each code word and its expected value(s) is given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described. Unless otherwise stated, all numbers given in the main input file (or other files for the irradiation spectrum, etc.) should use a dot (.) to represent the decimal place (including in numbers represented in scientific notation) -- use of a comma (,) will result in incorrect reading of files and potentially misleading results.
 \section{Code words}
 Default values are given in brackets after each code word)
 \begin{itemize}
@@ -42,7 +42,7 @@ Default values are given in brackets after each code word)
 < text description >
 <itype> <dummyi> <igroup> <dummyi> <acnm> <time>
 <number_groups> <ksail>
-< number_groups + 1 energy bin boundaries in MeV>
+< number_groups + 1 energy bin boundaries in ascending MeV>
 < number_groups flux values >
     \end{verbatim}
     where \texttt{itype} identifies the type of the flux file. The only type currently supported by \texttt{SPECTRA-PKA} is that where \texttt{itype}\(>1\) -- so that the third line in the file has the \verb|<number_groups><ksail>| format shown above. \texttt{dummyi} are obsolete entries where an integer value is still expected. \texttt{igroup} identifies the units of the subsequent flux values, and an appropriate conversion may be applied according to \verb|flux_norm_type| (see below). In the present code only two choices are accepted: n~s\(^{-1}\) (\texttt{igroup=2}), or n~s\(^{-1}\)~MeV\(^{-1}\) (any other value of \texttt{igroup}), both per unit area. \texttt{acnm} and \texttt{time} were, respectively, used for flux (power) normalization and to obtain the total fluence, but neither of these influence the output produced by \texttt{SPECTRA-PKA}. A \texttt{ksail} value greater than zero indicates that the spectrum file contains error values for the flux in each bin, which are propagated via covariance matrices to the error estimates in the PKA spectrum for each reaction channel (but not to the summed distributions as yet). The flux error vector (\verb|number_groups| values) should immediately follow the \verb|number_groups| flux values.
