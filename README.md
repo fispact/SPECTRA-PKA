@@ -23,12 +23,11 @@ SPECTRA-PKA comes with a simple `makefile`, requiring GNU make and a compatible 
 SPECTRA-PKA is executed from the command-line. By default, the programme expects to find an input file called specter.input in the execution folder, but this behaviour can be over-ridden by specifying the name of an input file on the command-line. The input file provides the user with the option to over-ride the default values of the various code words (see below) that SPECTRA-PKA relies upon to control its execution. The input file should be a text file but is largely free from other formatting requirements. Code word values are specified in any order, one per line, via syntax of type: 
 ```bash
 <code word name> = <code word value>
-```
-A description of each code word and its expected value(s) are given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described. 
+```  
 
 ##### <a name="code-words"></a>Code words
 
-A complete list of code words (with explanation) can be found on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/manual.pdf)
+A complete list of code words (with explanation) can be found on the [pdf readme](https://github.com/fispact/SPECTRA-PKA/blob/master/manual/manual.pdf). An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described.
 
 
 
