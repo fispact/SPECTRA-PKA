@@ -61,7 +61,7 @@ MODULE globals
  
  !8/10/2013
  ! daughter definitions
- CHARACTER (LEN=10),ALLOCATABLE :: parent_ele(:)
+ CHARACTER (LEN=2),ALLOCATABLE :: parent_ele(:)
  CHARACTER (LEN=10) :: daughter_ele,number_string,number_string2
  INTEGER,ALLOCATABLE :: parent_num(:)
  INTEGER :: daughter_num
@@ -168,5 +168,11 @@ MODULE globals
  
  !24/4/2018 - extended text outputs flag
  LOGICAL :: do_outputs,doing_ng
+ 
+ !9/5/2018
+ LOGICAL :: do_timed_configs
+ INTEGER :: box_nunits,box_type,nsteps
+ REAL (KIND=DBL) :: timestep,latt
+ CHARACTER (LEN=500) :: config_namestub
  
  end module globals

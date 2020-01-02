@@ -382,6 +382,8 @@
 
  do_outputs=.false.
  
+ do_timed_configs=.true. !if true then output a sequence of atomic configurations to evolve a composition in time
+ 
  
      END SUBROUTINE set_defaults
      
