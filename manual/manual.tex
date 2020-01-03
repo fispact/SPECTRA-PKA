@@ -28,7 +28,7 @@ colorlinks=true}
 \begin{center}
 \texttt{<code word name>=<code word value>}
 \end{center}
-A description of each code word and its expected value(s) are given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described.
+A description of each code word and its expected value(s) is given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described. Unless otherwise stated, all numbers given in the main input file (or other files for the irradiation spectrum, etc.) should use a dot (.) to represent the decimal place (including in numbers represented in scientific notation) -- use of a comma (,) will result in incorrect reading of files and potentially misleading results.
 \section{Code words}
 Default values are given in brackets after each code word)
 \begin{itemize}
@@ -41,7 +41,7 @@ Default values are given in brackets after each code word)
 < text description >
 <itype> <dummyi> <igroup> <dummyi> <acnm> <time>
 <number_groups> <ksail>
-< number_groups + 1 energy bin boundaries in MeV>
+< number_groups + 1 energy bin boundaries in ascending MeV>
 < number_groups flux values >
     \end{verbatim}
     where \texttt{itype} identifies the type of the flux file. The only type currently supported by \texttt{SPECTRA-PKA} is that where \texttt{itype}\(>1\) -- so that the third line in the file has the \verb|<number_groups><ksail>| format shown above. \texttt{dummyi} are obsolete entries where an integer value is still expected. \texttt{igroup} identifies the units of the subsequent flux values, and an appropriate conversion may be applied according to \verb|flux_norm_type| (see below). In the present code only two choices are accepted: n~s\(^{-1}\) (\texttt{igroup=2}), or n~s\(^{-1}\)~MeV\(^{-1}\) (any other value of \texttt{igroup}), both per unit area. \texttt{acnm} and \texttt{time} were, respectively, used for flux (power) normalization and to obtain the total fluence, but neither of these influence the output produced by \texttt{SPECTRA-PKA}. A \texttt{ksail} value greater than zero indicates that the spectrum file contains error values for the flux in each bin, which are propagated via covariance matrices to the error estimates in the PKA spectrum for each reaction channel (but not to the summed distributions as yet). The flux error vector (\verb|number_groups| values) should immediately follow the \verb|number_groups| flux values.
@@ -146,7 +146,7 @@ SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files 
 
 
 \section{Example calculation}
-In the folder containing the distributed code of \texttt{SPECTRA-PKA} there is a ``test'' folder to get the user started. The folder contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder in the git repository and then, on the command line, type:
+In the subfolder containing the pdf manual distributed with \texttt{SPECTRA-PKA} there are some examples calculations to get the user started. The first, in \texttt{manual/test}, contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder in the git repository and then, on the command line, type:
 \begin{verbatim}
 <location of SPECTRA-PKA>SPECTRA_PKA ZR.in
 \end{verbatim}
@@ -185,12 +185,26 @@ The test folder also has an ``example\verb|_|results'' folder containing the .ou
 \begin{figure}[t]
 \hskip-1.5cm
 \parbox[b][7cm][t]{0.7\textwidth}{\includegraphics[width=0.7\textwidth]
-{ZR_elemental}}%\vskip1cm
+{figures/ZR_elemental}}%\vskip1cm
 \includegraphics[width=0.5\textwidth]
-{ZR_isotope}\\
+{figures/ZR_isotope}\\
 \vskip-1.0cm
 \hskip-0.5cm(a)\hskip7.2cm(b)
 \caption{\label{pka_graphs}(a) elemental and (b) isotopic PKA distributions for pure Zr under PWR conditions.}
+\end{figure}
+
+A further example, which doesn't include a plot example (as described above), can be found in the folder \texttt{manual/usergrid\char`_test}. This ``test'' calculates the PKA distributions for a single Fe isotope (\(^{56}\)Fe) irradiated in a typical fission irradiation spectrum. It exemplifies the use of a user-defined energy output grid for the PKA distributions and additionally provides examples of the format of the required user-grid input file.
+
+A final example demonstrates the possibilities of the atomistic PKA capabilities newly developed in the code, including the ability to interface with BCA simulations. In the folder   \texttt{manual/bca\char`_test} is another Zr example. In this case the code is asked to stochastically define the PKA events that would take place in a hcp box of 500x500x500 unit cells during a 100~s irradiation under the PWR fission spectrum. Additionally, the BCA code SDTrimSP is run for each PKA above the 40~eV threshold for atomic displacement in Zr. Two example plot scripts are provided to plot the resulting final accumulation of PKA events and the corresponding cascade distributions. Figure~\ref{bca} demonstrates the output produced from this simulation. 
+
+\begin{figure}[t]
+%\hskip-1.5cm
+\hskip-0.5cm(a)\hskip7.2cm(b)\\
+\includegraphics[width=0.45\textwidth]
+{figures/pkas100s.eps}%\vskip1cm
+{\includegraphics[width=0.49\textwidth]
+{figures/bca100s.eps}}
+\caption{\label{bca}(a) PKA events and (b) BCA-simulated cascades during a 100~s irradiation of a 500x500x500 unit-cell hcp lattice of pure Zr under PWR conditions.}
 \end{figure}
 
 \begin{thebibliography}{10}

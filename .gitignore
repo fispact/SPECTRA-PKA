@@ -13,12 +13,13 @@ xs_convert/*
 flux_convert/*
 manual/*.ps
 manual/*.dvi
-manual/*converted-to.pdf
+manual/figures/*converted-to.pdf
 manual/test/*.indexes
 manual/test/*.out
 manual/test/spectra-pka*
 data/*
 manual/*synctex
+manual/*synctex.gz
 manual/test/plot_example/*.ps
 Makefile2
 spectra-pka.dSYM/*

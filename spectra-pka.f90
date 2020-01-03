@@ -750,7 +750,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
  
  
  
- IF(do_timed_configs) THEN
+ IF((do_timed_configs).AND.(io_quit==0)) THEN
  
   CALL create_configs
  

@@ -129,9 +129,9 @@ SUBROUTINE sdtrim_run(ke,direction_vec,ievent,pos_vec,pkaelement,itime,done_bca)
   CHARACTER (LEN=500) :: commandstring
   LOGICAL, intent(out) :: done_bca
  
- ! skip unless above min energy
+ ! skip unless above min energy=threshold energy
  
- IF(ke.GE.min_pka_energy) THEN
+ IF(ke.GE.assumed_ed) THEN
   CALL triinpwrite(ke,pkaelement)
  
   write(commandstring,*) TRIM(ADJUSTL(sdtrim_path))//' >tri.cmd.out'
@@ -155,16 +155,18 @@ CALL read_bca(ievent,direction_vec,pos_vec,itime)
    CALL system(sdstr) 
   
   
-   done_bca=.true.
-  ELSE
-   done_bca=.false.
+   
+
+   
   
-  END IF ! above threshold
+  END IF 
   
-    
+   done_bca=.true. 
   
   !STOP
- END IF
+ ELSE
+  done_bca=.false.
+ END IF ! above threshold
 
   
 END SUBROUTINE sdtrim_run
@@ -224,6 +226,7 @@ fileread:  DO WHILE(.not.fileend)
    
  !17/9/2019 - as standard we will skip if below the displacement threshold 
  ! this time it will be the full displacement thresh (not the PKA min)
+ ![ update 3/1/2020 - now we don't intiate bca unless above threshold]
  ! atom will not be displaced (and thus won't contribute to damage) if 
  ! below E_d
  IF(histene.LT.assumed_ed) cycle fileread

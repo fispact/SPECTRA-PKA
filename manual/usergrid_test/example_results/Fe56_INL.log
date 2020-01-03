@@ -1,0 +1,2232 @@
+ changing num_columns to      :           6
+ changing number_pka_files to      :           1
+ changing flux_filename to      :INL_flux_specter.dat                                                                                                                                                                                    
+ skipping over results_stub - already read
+ skipping over num_columns in this second pass
+changing pka_filename for nuclide   1 to:Fe056s.asc                                                                                                                                                                                              
+changing pka_ratio for nuclide   1 to:.1000000000E+01
+changing parent_ele for nuclide   1 to:Fe
+changing parent_num for nuclide   1 to:   56
+changing ngamma_parent_mass for nuclide   1 to:.5593493633E+02
+changing ngamma_daughter_mass for nuclide   1 to:.5693539284E+02
+ processed_column_data
+ changing flux_norm_type to      :           2
+ changing pka_filetype to      :           2
+ changing do_mtd_sums to      : T
+ changing do_ngamma_estimate to      : T
+ changing do_global_sums to      : T
+ changing do_exclude_light_from_total to      : T
+ skipping over number_pka_files in this second pass
+ changing energies_once_perfile to      : T
+ changing do_tdam to      : T
+ changing assumed_ed to      :   40.000000000000000     
+ changing tdam_method to      :           2
+ changing flux_rescale_value to      :   5.7382620000000003E-008
+ changing do_user_output_energy_grid to      : T
+ changing user_energybin_file to      :outenergies_1keV.dat
+ changing user_grid_option to      :           3
+ reading Fe056s.asc
+(n,x) proton matrix         5 0.30000E+08       661       660         1         2
+ pka data read in for: (n,x) proton matrix
+ reading user-defined grid of output recoil energy-bins
+        2300  grid points expected
+ grid read correctly
+ defining local sum energy grid
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ number global nuclide recoils:            1 H
+ number global element recoils:            1
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,np) proton matrix        28 0.30000E+08       661       660         1         2
+ pka data read in for: (n,np) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2np) proton matrix        41 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2np) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,3np) proton matrix        42 0.30000E+08       661       660         1         2
+ pka data read in for: (n,3np) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,n2p) proton matrix        44 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n2p) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,npa) proton matrix        45 0.30000E+08       661       660         1         2
+ pka data read in for: (n,npa) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,p) proton matrix       103 0.30000E+08       661       660         1         2
+ pka data read in for: (n,p) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2p) proton matrix       111 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2p) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,pa) proton matrix       112 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pa) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,pd) proton matrix       115 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pd) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,pt) proton matrix       116 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pt) proton matrix
+ computing PKAs for current channel
+ daughter: H                    1           1
+ global sums
+ H                    1 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,x) alpha matrix         5 0.30000E+08       661       660         1         2
+ pka data read in for: (n,x) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ number global nuclide recoils:            2 He
+ number global element recoils:            2
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,na) alpha matrix        22 0.30000E+08       661       660         1         2
+ pka data read in for: (n,na) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2na) alpha matrix        24 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2na) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,n2a) alpha matrix        29 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n2a) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,npa) alpha matrix        45 0.30000E+08       661       660         1         2
+ pka data read in for: (n,npa) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,a) alpha matrix       107 0.30000E+08       661       660         1         2
+ pka data read in for: (n,a) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2a) alpha matrix       108 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2a) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,pa) alpha matrix       112 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pa) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,da) alpha matrix       117 0.30000E+08       661       660         1         2
+ pka data read in for: (n,da) alpha matrix
+ computing PKAs for current channel
+ daughter: He                   4           2
+ global sums
+ He                   4 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting gas particle from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,x) recoil matrix         5 0.30000E+08       661       660         1         2
+ pka data read in for: (n,x) recoil matrix
+ computing PKAs for current channel
+ daughter: unknown              0           2
+ global sums
+ number global nuclide recoils:            3 unknown
+ number global element recoils:            3
+ unknown              0 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+ omitting unknown daughter from total pkas
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,2nd) recoil matrix        11 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2nd) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  53          25
+ global sums
+ number global nuclide recoils:            4 Mn
+ number global element recoils:            4
+ Mn                  53 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,2n) recoil matrix        16 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2n) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  55          26
+ global sums
+ number global nuclide recoils:            5 Fe
+ number global element recoils:            5
+ Fe                  55 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.2443698653925110E-015   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.2443698653925075E-015
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,3n) recoil matrix        17 0.30000E+08       661       660         1         2
+ pka data read in for: (n,3n) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  54          26
+ global sums
+ number global nuclide recoils:            6 Fe
+ Fe                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,na) recoil matrix        22 0.30000E+08       661       660         1         2
+ pka data read in for: (n,na) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  52          24
+ global sums
+ number global nuclide recoils:            7 Cr
+ number global element recoils:            7
+ Cr                  52 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.0419646169734330E-018   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.0419646169734311E-018
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2na) recoil matrix        24 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2na) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  51          24
+ global sums
+ number global nuclide recoils:            8 Cr
+ Cr                  51 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,np) recoil matrix        28 0.30000E+08       661       660         1         2
+ pka data read in for: (n,np) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  55          25
+ global sums
+ number global nuclide recoils:            9 Mn
+ Mn                  55 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.2909360964333906E-016   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.2909360964333913E-016
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n2a) recoil matrix        29 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n2a) recoil matrix
+ computing PKAs for current channel
+ daughter: Ti                  48          22
+ global sums
+ number global nuclide recoils:           10 Ti
+ number global element recoils:           10
+ Ti                  48 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,nd) recoil matrix        32 0.30000E+08       661       660         1         2
+ pka data read in for: (n,nd) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  54          25
+ global sums
+ number global nuclide recoils:           11 Mn
+ Mn                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,nt) recoil matrix        33 0.30000E+08       661       660         1         2
+ pka data read in for: (n,nt) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  53          25
+ global sums
+ Mn                  53 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,nh) recoil matrix        34 0.30000E+08       661       660         1         2
+ pka data read in for: (n,nh) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  53          24
+ global sums
+ number global nuclide recoils:           12 Cr
+ Cr                  53 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,2np) recoil matrix        41 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2np) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  54          25
+ global sums
+ Mn                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,3np) recoil matrix        42 0.30000E+08       661       660         1         2
+ pka data read in for: (n,3np) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  53          25
+ global sums
+ Mn                  53 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,n2p) recoil matrix        44 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n2p) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  54          24
+ global sums
+ number global nuclide recoils:           13 Cr
+ Cr                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,npa) recoil matrix        45 0.30000E+08       661       660         1         2
+ pka data read in for: (n,npa) recoil matrix
+ computing PKAs for current channel
+ daughter: V                   51          23
+ global sums
+ number global nuclide recoils:           14 V
+ number global element recoils:           14
+ V                   51 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,nc) recoil matrix        91 0.30000E+08       661       660         1         2
+ pka data read in for: (n,nc) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ number global nuclide recoils:           15 Fe
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.0028146487746348E-012   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.0028146487746073E-012
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,p) recoil matrix       103 0.30000E+08       661       660         1         2
+ pka data read in for: (n,p) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  56          25
+ global sums
+ number global nuclide recoils:           16 Mn
+ Mn                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.3291509653434532E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.3291509653434633E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,d) recoil matrix       104 0.30000E+08       661       660         1         2
+ pka data read in for: (n,d) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  55          25
+ global sums
+ Mn                  55 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.5019126029991888E-017   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.5019126029991872E-017
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,t) recoil matrix       105 0.30000E+08       661       660         1         2
+ pka data read in for: (n,t) recoil matrix
+ computing PKAs for current channel
+ daughter: Mn                  54          25
+ global sums
+ Mn                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.2481151641488312E-026   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.2481151641488381E-026
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,h) recoil matrix       106 0.30000E+08       661       660         1         2
+ pka data read in for: (n,h) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  54          24
+ global sums
+ Cr                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.3253732179786075E-029   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.3253732179785974E-029
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,a) recoil matrix       107 0.30000E+08       661       660         1         2
+ pka data read in for: (n,a) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  53          24
+ global sums
+ Cr                  53 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.3477083537362107E-015   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.3477083537361918E-015
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2a) recoil matrix       108 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2a) recoil matrix
+ computing PKAs for current channel
+ daughter: Ti                  49          22
+ global sums
+ number global nuclide recoils:           17 Ti
+ Ti                  49 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   9.5430707994547406E-036   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   9.5430707994547419E-036
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,2p) recoil matrix       111 0.30000E+08       661       660         1         2
+ pka data read in for: (n,2p) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  55          24
+ global sums
+ number global nuclide recoils:           18 Cr
+ Cr                  55 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.8705035922988302E-032   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.8705035922988297E-032
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,pa) recoil matrix       112 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pa) recoil matrix
+ computing PKAs for current channel
+ daughter: V                   52          23
+ global sums
+ number global nuclide recoils:           19 V
+ V                   52 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.0080046638197328E-035   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.0080046638197329E-035
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,pd) recoil matrix       115 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pd) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  54          24
+ global sums
+ Cr                  54 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,pt) recoil matrix       116 0.30000E+08       661       660         1         2
+ pka data read in for: (n,pt) recoil matrix
+ computing PKAs for current channel
+ daughter: Cr                  53          24
+ global sums
+ Cr                  53 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,da) recoil matrix       117 0.30000E+08       661       660         1         2
+ pka data read in for: (n,da) recoil matrix
+ computing PKAs for current channel
+ daughter: V                   51          23
+ global sums
+ V                   51 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000        2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   0.0000000000000000     
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+ zero recoils for this channel
+(n,elastic) recoil matrix         2 0.30000E+08       661       660         1         2
+ pka data read in for: (n,elastic) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.5660145777461103E-009   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.5660145777461066E-009
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n01) recoil matrix        51 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n01) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.2358384442774577E-011   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.2358384442774402E-011
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n02) recoil matrix        52 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n02) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.4625995046191532E-012   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.4625995046191778E-012
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n03) recoil matrix        53 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n03) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.2753084550663442E-012   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.2753084550663353E-012
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n04) recoil matrix        54 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n04) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.8273192025533735E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.8273192025534129E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n05) recoil matrix        55 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n05) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.1239653637230375E-012   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.1239653637230359E-012
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n06) recoil matrix        56 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n06) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   6.3448014190625583E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   6.3448014190625483E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n07) recoil matrix        57 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n07) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.0754080972504948E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.0754080972504640E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n08) recoil matrix        58 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n08) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.1739302749615271E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.1739302749615423E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n09) recoil matrix        59 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n09) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.9863124820562542E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.9863124820562744E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n10) recoil matrix        60 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n10) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.6488741685936824E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.6488741685937193E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n11) recoil matrix        61 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n11) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.2780373332157490E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.2780373332157354E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n12) recoil matrix        62 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n12) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.1234169908810399E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.1234169908810434E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n13) recoil matrix        63 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n13) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.0929217795052102E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   3.0929217795051985E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n14) recoil matrix        64 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n14) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.0888068503831338E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.0888068503831419E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n15) recoil matrix        65 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n15) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.2933712208420042E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.2933712208420138E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n16) recoil matrix        66 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n16) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.1988307944788277E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.1988307944788441E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n17) recoil matrix        67 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n17) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.8869646324167824E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.8869646324167995E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n18) recoil matrix        68 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n18) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.9853691781903371E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.9853691781903490E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n19) recoil matrix        69 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n19) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.6632150566119965E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.6632150566120223E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n20) recoil matrix        70 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n20) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.1260944615268357E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.1260944615268348E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n21) recoil matrix        71 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n21) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.1678262389116836E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   1.1678262389116667E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n22) recoil matrix        72 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n22) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.1996120044401750E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.1996120044401687E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n23) recoil matrix        73 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n23) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   9.4218004140675490E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   9.4218004140676197E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n24) recoil matrix        74 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n24) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.9115880903926606E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   4.9115880903926624E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n25) recoil matrix        75 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n25) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.3079750130682393E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   2.3079750130682349E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n26) recoil matrix        76 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n26) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.0121111783300727E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.0121111783300992E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n27) recoil matrix        77 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n27) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   8.2869669298378996E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   8.2869669298378983E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n28) recoil matrix        78 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n28) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.6712138249044826E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.6712138249045103E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n29) recoil matrix        79 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n29) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   6.1056217791227248E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   6.1056217791227122E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,n30) recoil matrix        80 0.30000E+08       661       660         1         2
+ pka data read in for: (n,n30) recoil matrix
+ computing PKAs for current channel
+ daughter: Fe                  56          26
+ global sums
+ Fe                  56 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.1379138430470865E-014   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   5.1379138430470884E-014
+ collapsing fluxes
+ finished
+ sent results to matrix
+ mtd sums
+ collapsing fluxes
+ finished
+ sent results to matrix
+ collapsing fluxes
+ finished
+ sent results to matrix
+(n,g) cross section       102 0.30000E+08       661         1         1
+ pka data read in for: (n,g) cross section
+ performing (n,g) evaluation
+ problem reading more of pka file
+ either we have reached the end (likely) or there is an error
+ skipping to next pka file if required
+ outputting sum PKAs
+ output (n,g) evaluation
+ add ng estimate to globals
+ number global nuclide recoils:           20 Fe
+ Fe                  57 adding to globals
+ global sum allocate done         661         661         661         661         661
+ collapsing fluxes
+ finished
+ sent results to matrix
+ global sum flux collapse done
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.7568895432109166E-013   2646.1499999999996        1232.1856188886768     
+ collapsing fluxes
+ finished
+ sent results to matrix
+   7.7568895432108994E-013
+ collapsing fluxes
+ finished
+ sent results to matrix
+ end of (n,g) output
+ end of unit for current file
+ total sum        2300        2300   2.6222644030120034E-009
+ END as expected

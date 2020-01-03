@@ -258,7 +258,6 @@ choiceloop:DO WHILE (.not.found)
          IF(choice==pka_events_id(ievent)) foundi=ievent
          ievent=ievent+1
         END DO
-        !PRINT *,'here',choice,ievent,pka_events_id(ievent),foundi,num_events
         
         IF(foundi.LE.num_events) THEN
          IF((pka_events_mass(foundi)==config_parent_nums(ichannel)).AND. &
@@ -271,7 +270,6 @@ choiceloop:DO WHILE (.not.found)
          ! (it has already been selected at random, so this is OK)
          ! provided we have not reached the maximum for the parent atom type
          ! first see if it (the parent) is one of the input types (must be)
-         !PRINT *,'here',number_pka_files
          ifiles=1
          DO 
            IF(ifiles.GT.number_pka_files) cycle choiceloop ! shouldn't happen
@@ -281,7 +279,6 @@ choiceloop:DO WHILE (.not.found)
 (TRIM(ADJUSTL(parent_ele(ifiles)))==TRIM(ADJUSTL(config_parent_eles(ichannel))))) EXIT
            ifiles=ifiles+1
          END DO
-         !PRINT *,'here2',ifiles,initial_atom_types_count(ifiles),REAL(natoms,DBL)*pka_ratios(ifiles)
          IF(initial_atom_types_count(ifiles).GE.NINT(REAL(natoms,DBL)*pka_ratios(ifiles))) THEN
           ! cannot have any more target atoms of this type
           ! need to cycle and find one already defined
@@ -334,7 +331,6 @@ choiceloop:DO WHILE (.not.found)
          END IF
          ienergy=ienergy+1
        END DO
-       !PRINT *,ienergy,ireal,SUM(config_pka_vectors(ichannel,1:ienergy)),total_channelpkas
        
        
        CALL random_number(ireal)
@@ -471,7 +467,6 @@ choiceloop:DO WHILE (.not.found)
     END IF
     ienergy=ienergy+1
    END DO    
-   !write(701,*) jevent,ievent,ienergy,jenergy,pka_min_sep(jevent,:),pka_min_sep(ievent,:)
    DO ii=1,MIN(ienergy,jenergy)
     ! can contribute to all bins up to lowest PKA energy
     total_sep_dist(ii)=total_sep_dist(ii)+sqrt(current_sep)
@@ -487,7 +482,6 @@ choiceloop:DO WHILE (.not.found)
        pka_min_sep(jevent,2*ii)=REAL(pka_events_id(ievent),DBL)
     END IF 
    END DO   
-   !write(701,*) jevent,ievent,ienergy,jenergy,pka_min_sep(jevent,:),pka_min_sep(ievent,:)
     
      
    END DO ! ievent
@@ -515,9 +509,7 @@ choiceloop:DO WHILE (.not.found)
              NINT(pka_min_sep(MINLOC(pka_min_sep(1:num_events,1)),2)), &
                TRIM(outstr)
   
-  !PRINT *,pka_min_sep(1:num_events,1)
-  !PRINT *,pka_events_id(1:num_events)
-  !write(700,*) num_events,event_dist
+
  ELSE
    jenergy=1
    jevent=1
@@ -559,7 +551,6 @@ choiceloop:DO WHILE (.not.found)
     ireal=sqrt(DOT_PRODUCT(pka_events_vec(ievent,1:3),pka_events_vec(ievent,1:3)))* &
          sqrt(2._DBL*ke*1000._DBL/(pka_events_mass(ievent)*avogadro))
  
-    
     write(pka_events,'(x,I19,3F20.5,3ES20.5,2x,A15,3x,I15,5x,I20,2ES20.9,I10,3ES20.5)') &
           pka_events_id(ievent),jrealvector,pka_events_vec(ievent,:)/ireal, &
           pka_events_ele(ievent),pka_events_mass(ievent), &

@@ -41,10 +41,17 @@
                 x(ijk,1)=latt*REAL(i,DBL)-latt*(REAL(j,DBL))*sin(pi/6._DBL)
                 x(ijk,2)=latt*REAL(j,DBL)*cos(pi/6._DBL)
                 x(ijk,3)=latt*sqrt(3.0_DBL)*REAL(k,DBL)
+  
+ 
+ 		!3/1/2020 - in a hcpb lattice, the x coordinates with the
+		! above definition will be negative for large j (see bk 14)
+		! since this is a perfect box, we should shift as required
+		IF (x(ijk,1).LT.0._DBL) THEN
+		 x(ijk,1)=x(ijk,1)+lx(1)
+		END IF
                 ! tests
                 !CALL define_atom_position_hcp(ijk,ww)
-                !write(111,*) ijk,i,j,k,x(ijk,:)
-           
+                !write(111,*) ijk,i,j,k,x(ijk,:)           
 
 ! in a hcp lattice there is only one more atom in each unit cell:
 !  at (2/3,1/3,0.5)
@@ -54,8 +61,11 @@
 		    latt*(REAL(j,DBL)+1._DBL/3._DBL)*sin(pi/6._DBL)
                 x(ijk,2)=latt*(REAL(j,DBL)+1._DBL/3._DBL)*cos(pi/6._DBL)
                 x(ijk,3)=latt*sqrt(3.0_DBL)*(REAL(k,DBL)+0.5_DBL)
-                !CALL define_atom_position_hcp(ijk,ww)
-                !write(111,*) ijk,i,j,k,x(ijk,:)
+     
+		IF (x(ijk,1).LT.0._DBL) THEN
+		 x(ijk,1)=x(ijk,1)+lx(1)
+		END IF
+		
             end do
         end do
     end do
@@ -102,8 +112,12 @@ END SUBROUTINE create_hcp
     
     xx(3)=latt*sqrt(3.0_DBL)*(REAL(k,DBL)+REAL(mod(nn-1,2),DBL)*0.5_DBL)
     
-    !write(111,*) nn,i,j,k,xx
-
+ 		!3/1/2020 - in a hcp lattice, the x coordinates with the
+		! above definition will be negative for large j (see bk 14)
+		! since this is a perfect box, we should shift as required
+		IF (xx(1).LT.0._DBL) THEN
+		 xx(1)=xx(1)+lx(1)
+		END IF
 
 END SUBROUTINE define_atom_position_hcp
 

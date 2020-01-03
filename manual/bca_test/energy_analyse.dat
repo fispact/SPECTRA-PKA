@@ -1,0 +1,129 @@
+ SDTrimSP: VERSION 5.06    03.01.2020
+ ------------------------------------------------------ 
+  
+ENERGY ANALYSE PROJECTLE( 1):
+     NUC.LOSS (<ED):              0.1157 keV 
+     NUC.LOSS (>ED):              0.3166 keV 
+ E(TRANSFER)-E_BULK:              0.3764 keV (Energie of recoils first generation)
+                        --------------------
+       sum NUC.LOSS:              0.4323 keV 
+  
+        NUCL.LOSS  :             -0.4448 keV 
+        ELECT.LOSS :             -0.0402 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.0176 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.5027 keV 
+      
+         E_TOT     :              0.5027 keV 
+         E_INPUT   :              0.5027 keV              from outside E0*NH (*NR)
+  
+ ENERGY ANALYSE PARTICLE( 2):
+     NUC.LOSS (<ED):              0.2388 keV 
+     NUC.LOSS (>ED):              0.0479 keV 
+                        --------------------
+       sum NUC.LOSS:              0.2867 keV 
+  
+        NUCL.LOSS  :             -0.2867 keV 
+        ELECT.LOSS :             -0.0125 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.0629 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.3621 keV 
+  
+         E_TOT     :              0.3621 keV          from projectiles and recoils
+         E_INPUT   :              0.1385 keV                      from projectiles
+  
+ ENERGY ANALYSE PARTICLE( 3):
+     NUC.LOSS (<ED):              0.0709 keV 
+     NUC.LOSS (>ED):              0.0525 keV 
+                        --------------------
+       sum NUC.LOSS:              0.1235 keV 
+  
+        NUCL.LOSS  :             -0.1235 keV 
+        ELECT.LOSS :             -0.0060 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.0237 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.1532 keV 
+  
+         E_TOT     :              0.1532 keV          from projectiles and recoils
+         E_INPUT   :              0.0000 keV                      from projectiles
+  
+ ENERGY ANALYSE PARTICLE( 4):
+     NUC.LOSS (<ED):              0.0859 keV 
+     NUC.LOSS (>ED):              0.1043 keV 
+                        --------------------
+       sum NUC.LOSS:              0.1902 keV 
+  
+        NUCL.LOSS  :             -0.1902 keV 
+        ELECT.LOSS :             -0.0104 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.0373 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.2379 keV 
+  
+         E_TOT     :              0.2379 keV          from projectiles and recoils
+         E_INPUT   :              0.2379 keV                      from projectiles
+  
+ ENERGY ANALYSE PARTICLE( 5):
+     NUC.LOSS (<ED):              0.0351 keV 
+     NUC.LOSS (>ED):              0.0415 keV 
+                        --------------------
+       sum NUC.LOSS:              0.0766 keV 
+  
+        NUCL.LOSS  :             -0.0766 keV 
+        ELECT.LOSS :             -0.0018 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.0032 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.0816 keV 
+  
+         E_TOT     :              0.0816 keV          from projectiles and recoils
+         E_INPUT   :              0.0000 keV                      from projectiles
+  
+ ENERGY ANALYSE PARTICLE( 6):
+     NUC.LOSS (<ED):              0.0000 keV 
+     NUC.LOSS (>ED):              0.0000 keV 
+                        --------------------
+       sum NUC.LOSS:              0.0000 keV 
+  
+        NUCL.LOSS  :             -0.0000 keV 
+        ELECT.LOSS :             -0.0000 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.0000 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.0000 keV 
+  
+         E_TOT     :              0.0000 keV          from projectiles and recoils
+         E_INPUT   :              0.0000 keV                      from projectiles
+  
+ENERGY ANALYSE PARTICLE(all):
+     NUC.LOSS (<ED):              0.4308 keV 
+     NUC.LOSS (>ED):              0.2461 keV 
+                        --------------------
+       sum NUC.LOSS:              0.6769 keV 
+  
+        NUCL.LOSS  :             -0.6769 keV 
+        ELECT.LOSS :             -0.0307 keV 
+        E_BACK     :             -0.0000 keV 
+        E_TRAN     :             -0.0000 keV 
+        E_STOP     :             -0.1271 keV 
+        E_SBE      :             -0.0000 keV 
+                        --------------------
+        sum ENERGY :             -0.8347 keV 
+  
+         E_TOT     :              0.8347 keV          from projectiles and recoils
+         E_INPUT   :              0.3764 keV                     from projectiles 

@@ -594,7 +594,7 @@
  do_timed_configs=.false. !if true then output a sequence of atomic configurations to evolve a composition in time
  latt=2.8664d0 ! lattice parameter for configurations
  box_nunits=10 ! size of square atomic box to create (lattice base units)
- box_type=1 ! bcc, 2 fcc, 3 hcp (not currently available)
+ box_type=1 ! bcc, 2 fcc, 3 hcp 
  config_max_pka_vectors=200 ! maximum number of pka vectors to use when defining atomic lattice PKAs 
  config_do_exclude_light_pkas=.true.
  timestep=1E-12_DBL ! 1 picosecond
