@@ -5,16 +5,43 @@
 !******************************************************************************
 !end rubric
 
+ MODULE file_units
+  
+  INTEGER, PARAMETER ::unitin=20  
+  integer, parameter ::flux_unit=21
+  INTEGER, PARAMETER ::results_unit=22
+  INTEGER, PARAMETER ::kerma_unit=23
+  INTEGER, PARAMETER ::pka_unit=24
+  INTEGER, PARAMETER ::gas_unit=25
+  INTEGER, PARAMETER ::sigma_unit=26
+  INTEGER, PARAMETER ::index_summary=27
+  INTEGER, PARAMETER ::user_ebinsunit=28
+
+  INTEGER, PARAMETER :: cfg_file=29
+  INTEGER, PARAMETER :: lammps_file=30  
+  INTEGER, PARAMETER :: pka_events=31
+  INTEGER, PARAMETER :: pka_analysis=32
+  INTEGER, PARAMETER :: triinp=33
+  INTEGER, PARAMETER :: bca_result=34
+  INTEGER, PARAMETER :: bca_output=35
+  INTEGER, PARAMETER :: bca_analysis=36
+  INTEGER, PARAMETER :: bca_overlap=37
+  INTEGER, PARAMETER :: log_unit=38
+  
+  
+ end module file_units
+
 MODULE globals
  USE accuracy
+ USE file_units
  
  
- integer, parameter ::flux_unit=21,results_unit=22,kerma_unit=23,pka_unit=24,gas_unit=25, &
-                      sigma_unit=26,unitin=20,index_summary=27,user_ebinsunit=28
+
  CHARACTER (LEN=200) :: flux_filename,results_filename,kerma_filename, &
                         gas_filename,sigma_filename,results_stub
  CHARACTER (LEN=100) :: flux_title
  REAL(KIND=DBL) :: rtemp
+ !real :: starttime, finishtime,currenttime
  
  INTEGER :: i,j,k,l,m,file_index
  INTEGER :: io_open,io_quit,io_read
@@ -23,7 +50,7 @@ MODULE globals
  ! variables in flux input file
  INTEGER :: itype,isigma,igroup,ipka,number_flux_groups,ksail,number_flux_ebins
  INTEGER :: flux_norm_type
- REAL (KIND=DBL) :: acnm,time,total_fluence,norm_fluence,flux_energy_rescale_value, &
+ REAL (KIND=DBL) :: acnm,irrtime,total_fluence,norm_fluence,flux_energy_rescale_value, &
                     flux_rescale_value
  REAL (KIND=DBL), ALLOCATABLE :: flux_energies(:),fluxes(:),flux_covariances(:,:),&
               flux_ebin_widths(:),fluxes_norm(:)
@@ -42,7 +69,7 @@ MODULE globals
                                  recoil_kermas(:,:),pka(:,:),epka(:)
  CHARACTER (LEN=30) :: pka_element
  LOGICAL :: at_end
- REAL(KIND=DBL) :: sum_temp,sum_temp2,pka_ave
+ REAL(KIND=DBL) :: pka_ave
  INTEGER :: pka_filetype
  !20/6/2013 - variables for pka summing
  INTEGER :: mtd,num_pka_recoil_points_master
@@ -169,10 +196,34 @@ MODULE globals
  !24/4/2018 - extended text outputs flag
  LOGICAL :: do_outputs,doing_ng
  
- !9/5/2018
+ !9/5/2018 atomic configuration creation
  LOGICAL :: do_timed_configs
  INTEGER :: box_nunits,box_type,nsteps
  REAL (KIND=DBL) :: timestep,latt
  CHARACTER (LEN=500) :: config_namestub
+ !7/3/2019
+ INTEGER :: config_max_pka_vectors ! maximum number of PKA vectors to include when assigning atomic PKAS
+                                   ! e.g. might want only top 10 (in total PKAs - summed over all PKA Energies - careful)
+                                   
+ REAL(KIND=DBL), ALLOCATABLE :: config_pka_vectors(:,:) ! will be of size config_max_pka_vectors
+ INTEGER :: config_num_pka_vectors ! less than or equal to config_max_pka_vectors
+ CHARACTER (LEN=10), allocatable :: config_daughter_eles(:),config_parent_eles(:)
+ INTEGER, allocatable :: config_daughter_nums(:),config_parent_nums(:)
+ CHARACTER (LEN=30), ALLOCATABLE :: config_pka_strings(:)
+ LOGICAL :: config_do_exclude_light_pkas,do_output_configs
+ INTEGER :: config_global_num_pka_recoil_points
+ REAL(KIND=DBL), ALLOCATABLE :: config_global_pka_recoil_energies(:)
+ INTEGER :: config_threshold_group ! for testing for dominance - 10/12/19
+ 
+ !10/9/2019 bca globals
+ REAL(KIND=DBL) :: bca_cell_size
+ LOGICAL :: do_bca_pbc,overlap_stop,do_store_bca_output,do_bca
+ CHARACTER (LEN=100) :: sdtrim_path
+ INTEGER :: bca_code
+ 
+ 
+ 
  
  end module globals
+ 
+

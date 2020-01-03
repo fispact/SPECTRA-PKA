@@ -23,7 +23,7 @@
       CASE(2)
        READ(pka_unit,'(a30,I5,a70)',IOSTAT=io_read) pka_element,mtd,input_line
        
-       IF(io_read==0) write (*,'(a,I10,x,a)') TRIM(ADJUSTL(pka_element)),mtd,TRIM(ADJUSTL(input_line))
+       IF(io_read==0) write (log_unit,'(a,I10,x,a)') TRIM(ADJUSTL(pka_element)),mtd,TRIM(ADJUSTL(input_line))
        
        !6/3/2014 - allow for (n,g) cross section to be read-in
        IF(io_read==0) THEN
@@ -37,12 +37,11 @@
                       flag1,flag2 ! 25/2/2014 - flags to handle non-legendre format from njoy
         END IF
        END IF
-       !print *,flag1,flag2,io_read
        !stop
       CASE(3) !7/9/2017 - GEANT output format
        READ(pka_unit,'(a70)',IOSTAT=io_read) input_line
        
-       IF(io_read==0) print *,TRIM(ADJUSTL(input_line))
+       !IF(io_read==0) print *,TRIM(ADJUSTL(input_line))
        IF(io_read==0) READ(input_line(1:index(input_line,"A:")-LEN("A:")),'(a)',IOSTAT=io_read) pka_element
        IF(io_read==0) THEN
          READ(input_line(index(input_line,"A:")+LEN("A:"):),*,IOSTAT=io_read) daughter_num
@@ -50,10 +49,10 @@
          READ(input_line(index(input_line,"Ein:")+LEN("Ein:"):),*,IOSTAT=io_read) num_pka_incident_energies
          READ(input_line(index(input_line,"Eout:")+LEN("Eout:"):),*,IOSTAT=io_read) num_pka_recoil_points
        END IF
-       PRINT *,io_read,daughter_num,daughter_z,num_pka_incident_energies,num_pka_recoil_points
+       WRITE(log_unit,*) io_read,daughter_num,daughter_z,num_pka_incident_energies,num_pka_recoil_points
        num_pka_points=num_pka_incident_energies-1
        daughter_ele=master_elements(daughter_z)
-       PRINT *,TRIM(ADJUSTL(pka_element))
+       WRITE(log_unit,*) TRIM(ADJUSTL(pka_element))
        !stop
        pka_element=TRIM(ADJUSTL(pka_element))!//" matrix"
        IF((daughter_num==4).AND.(daughter_z==2)) THEN
@@ -72,7 +71,7 @@
        IF(io_read==0) READ(input_line,*,IOSTAT=io_read) rdummy,num_pka_recoil_points,num_pka_points
       END SELECT
        
-       !PRINT *,pka_element,rdummy,num_pka_recoil_points,num_pka_points,io_read,input_line
+       !WRITE(log_unit,*)  pka_element,rdummy,num_pka_recoil_points,num_pka_points,io_read,input_line
        IF(io_read==0) THEN
         num_pka_incident_energies=num_pka_points+1
         ALLOCATE(pka_recoil_energies(num_pka_recoil_points),pka_incident_energies(num_pka_incident_energies),&
@@ -111,7 +110,8 @@
           IF((num_pka_incident_energies.NE.num_pka_incident_energies_filemaster).OR.&
             (num_pka_recoil_points.NE.num_pka_recoil_points_filemaster)) THEN
             PRINT *,'Energy matrix only read once, but subseqent recoil matrices have different grid'
-            STOP
+    WRITE(log_unit,*) 'Energy matrix only read once, but subseqent recoil matrices have different grid' 
+	    STOP
           ELSE
            pka_recoil_energies=pka_recoil_energies_filemaster
            pka_incident_energies=pka_incident_energies_filemaster          
@@ -142,16 +142,13 @@
          recoil_kermas=0._DBL
         IF(INDEX(pka_element,'matrix')==0) THEN
          !6/3/2014 not pka matrix - will read and then skip if not n,g
-         !PRINT *,io_read
          DO WHILE (io_read==0)
           ! zero and first order legendre polynomials only
           READ(pka_unit,*,IOSTAT=io_read) idummy,rdummy
-          !PRINT *,idummy,rdummy,io_read
           IF(io_read==0) THEN
            recoil_kermas(1,idummy)=rdummy
            last_i=idummy
            last_j=1
-           !PRINT *,last_i,last_j,recoil_kermas(idummy+1,idummy)
           ELSE
            ! error or reached end of pka matrix and have read next line
            backspace(pka_unit)
@@ -193,7 +190,6 @@
          DO WHILE (io_read==0)
           ! zero and first order legendre polynomials only
           READ(pka_unit,*,IOSTAT=io_read) idummy,jdummy,rdummy,rdummy2
-          !PRINT *,idummy,jdummy,rdummy,rdummy2
           IF(io_read==0) THEN
            !7/4/2016 - checks of NJOY output reveal that the sum of the P0 Legendre 
            ! constants equals the total cross section for a particular incident energy group
@@ -202,7 +198,6 @@
            recoil_kermas(jdummy+1,idummy)=rdummy!+rdummy2
            last_i=idummy
            last_j=jdummy
-           !PRINT *,last_i,last_j,recoil_kermas(jdummy,idummy)
           ELSE
            ! error or reached end of pka matrix and have read next line
            backspace(pka_unit)
@@ -210,7 +205,6 @@
          END DO
          
         END IF !flag test 24/2/2014
-         !PRINT *,last_i,last_j
          
          !6/3/2014 - check cross section case
          ! and skip if not n,g and/or not doing n,g estimate
@@ -225,7 +219,6 @@
           END IF
          END IF
          
-         !PRINT *,mtd,pka_element
 
          IF((last_i+last_j).GT.0) THEN
           redo=.false.
@@ -236,12 +229,7 @@
            redo=.true.
          END IF
          io_read=0
-         !DO i=1,num_pka_points
-         ! DO j=1,num_pka_recoil_points
-         !  PRINT *,i,j,recoil_kermas(j,i)
-         ! END DO
-         !END DO
-         !PRINT *,recoil_kermas
+
          
         CASE(3) !GEANT approach
 
@@ -255,12 +243,10 @@
          DO WHILE (io_read==0)
           ! zero and first order legendre polynomials only
           READ(pka_unit,*,IOSTAT=io_read) idummy,jdummy,rdummy
-          !PRINT *,idummy,jdummy,rdummy,rdummy2
           IF(io_read==0) THEN
            recoil_kermas(jdummy+1,idummy)=rdummy
            last_i=idummy
            last_j=jdummy
-           !PRINT *,last_i,last_j,recoil_kermas(jdummy,idummy)
           ELSE
            ! error or reached end of pka matrix and have read next line
            backspace(pka_unit)
@@ -286,14 +272,20 @@
 
         IF(io_read.NE.0) THEN
          PRINT *,'error reading pka file'
+	 WRITE(log_unit,*)  'error reading pka file'
          io_quit=1
          at_end=.true.
         END IF
         
        ELSE
-        PRINT *,'problem reading pka file'
-        PRINT *,'either we have reached the end or there is an error'
+        PRINT *,'problem reading more of pka file'
+        PRINT *,'either we have reached the end (likely) or there is an error'
         PRINT *,'skipping to next pka file if required'
+	
+        WRITE(log_unit,*) 'problem reading more of pka file'
+        WRITE(log_unit,*) 'either we have reached the end (likely) or there is an error'
+        WRITE(log_unit,*) 'skipping to next pka file if required'	
+	
         !io_quit=1
         at_end=.true.
         redo=.false.

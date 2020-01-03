@@ -21,7 +21,7 @@
  
 !30/6/2016 modified from CEM's grpconvert routine in FISPACT-II - itself based on routines written by N.P.Taylor.
 
-!IF(do_outputs) WRITE(*,*) 'collapsing fluxes'
+IF(do_outputs) WRITE(log_unit,*) 'collapsing fluxes'
  ! 11/7/2016 but in this routine we will always be using a grid where the value in ii corresponds to
  ! the energy bin from ii-1 to ii
  
@@ -58,12 +58,10 @@
  
            !if(kk/=1) then
               fluxx_rounded(ii) = fluxx_rounded(ii) + fluxx(jj) * frac
-             ! print *,frac,jj,ii
            !end if
  
            split = .false.
            if(input_energies(jj) == real(output_energies(ii))) cycle outer
-!           IF(do_outputs) WRITE(*,*) jj,split
         end do inner
         
         IF(jj/=1) THEN
@@ -91,7 +89,6 @@
  
         !if(kk/=1) then
            fluxx_rounded(ii) = fluxx_rounded(ii) + fluxx(jj) * frac2
-           !print *,frac2,jj,ii
         !end if
  
         frac = frac * (1.0 - due / dud)
@@ -99,9 +96,9 @@
     end do outer
  
  
-IF(do_outputs) WRITE(*,*) "finished"
+IF(do_outputs) WRITE(log_unit,*) "finished"
  fluxx=0._DBL
  fluxx(1:noutput_groups)=fluxx_rounded(1:noutput_groups)
-IF(do_outputs) WRITE(*,*) 'sent results to matrix'
+IF(do_outputs) WRITE(log_unit,*) 'sent results to matrix'
  
  END SUBROUTINE collapse_fluxes

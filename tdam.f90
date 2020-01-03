@@ -33,7 +33,6 @@
      ar=REAL(arec,DBL)
      al=REAL(alat,DBL)
 
-!print *,num_points,arec,zrec,alat,zlat,kk,aa
  pi=atan2(0d0,-1d0)
 IF(tdam_method==1) THEN
       
@@ -44,7 +43,6 @@ aa=((9._DBL*pi**2/128._DBL)**onethd)* &
       zl**twothd)
 kk=0.1337_DBL*zr**sixth*&
       (zr/ar)**(1.0_DBL/2.0_DBL)
-!print *,num_points,arec,zrec,alat,zlat,kk,aa
   IF(zrec==0) THEN
   tdams(1:num_points)=0._DBL
   ELSE
@@ -56,7 +54,6 @@ DO i=1,num_points
   
   ! no need for keV conversion here
   tdams(i)=Epkas(i)/(1.0_DBL+kk*gg)
-  !print *,kk*gg
 END DO
   END IF
 

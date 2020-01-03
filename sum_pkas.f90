@@ -16,8 +16,8 @@
     ! also removes error check for mis-matched grids - now we can just proceed and flag
     IF(num_pka_recoil_points.NE.num_pka_recoil_points_master) THEN
      IF (.NOT.do_user_output_energy_grid) THEN
-      PRINT *,'grid of recoil energies do not match while summing over mt numbers'
-      PRINT *,'interpolation will be used to collapse the current grid onto the mt-sum one'
+      WRITE(log_unit,*) 'grid of recoil energies do not match while summing over mt numbers'
+      WRITE(log_unit,*) 'interpolation will be used to collapse the current grid onto the mt-sum one'      
      END IF
     END IF
     ALLOCATE(pka_temp(MAX(num_pka_recoil_points_master,num_pka_recoil_points)))
@@ -183,13 +183,9 @@
     ! do nothing - not a summable reaction
    END SELECT
    
-   !print *,'h2',mtd,do_tdam
    IF(do_tdam) THEN
-    !PRINT *,allocated(tdam_pka_temp),size(tdam_pka_temp)
     DEALLOCATE(tdam_pka_temp,STAT=deallocerr)
-    !PRINT *,allocated(tdam_pka_temp),size(tdam_pka_temp),deallocerr 
    END IF  
    DEALLOCATE(pka_temp)
-  !print *,'h3',mtd,do_tdam
-  !STOP
+
   END SUBROUTINE sum_pkas

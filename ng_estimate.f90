@@ -24,7 +24,7 @@
        incident_mass=neutron_mass
       END SELECT   
    
-    IF(do_outputs) WRITE(*,*) 'performing (n,g) evaluation'
+    IF(do_outputs) WRITE(log_unit,*) 'performing (n,g) evaluation'
  
     ! see pg 126 bk 5
     ALLOCATE(ng_recoil_kermas(num_pka_recoil_points,MAX(number_flux_ebins,num_pka_incident_energies)), &
@@ -80,7 +80,6 @@
               (2._DBL*avogadro*1000._DBL*ngamma_daughter_mass(filenum))
          
          
-         !write(1001,*) upper_energy_out,lower_energy_out,extra_momentum_energy,ngamma_daughter_mass(filenum),ngamma_parent_mass(filenum),incident_mass,clight,avogadro
          
          upper_energy_out=upper_energy_out+extra_momentum_energy
          lower_energy_out=lower_energy_out+extra_momentum_energy
@@ -129,14 +128,12 @@
          END DO 
          !24/2/2014, k defines lower limit of bin k+1
          upper_bin=k+1  !k
-         !PRINT *,i,j,upper_bin,lower_bin,upper_energy_out,lower_energy_out
          
          
          
          IF((upper_bin==1).OR.(lower_bin==ng_num_pka_recoil_points+1)) THEN
            !skip - less than lower bin or above upper bin
          ELSE 
-          !PRINT *,'bob',i,j,upper_bin,lower_bin,upper_energy_out,lower_energy_out
           ! now we have the range of bins into which the kerma must be split
 
           !3/4/2014 - total width of recoil group is the same
@@ -175,7 +172,6 @@
              
           END DO
          END IF
-         !PRINT *,i,j
          
          !11/7/2016 - now divide xs in each recoil group by bin width
          !25/4/2018 array handling for k=1
@@ -221,11 +217,10 @@
     !estimated (n,g) recoil matrix
     ! ng_pka(1,:)
     
-   IF(do_outputs) WRITE(*,*) 'output (n,g) evaluation'
+   IF(do_outputs) WRITE(log_unit,*) 'output (n,g) evaluation'
     
    mtd=102
    CALL define_daughter(.true.)
-   !PRINT *,daughter_num,daughter_ele
     IF(do_tdam) THEN
          CALL calc_tdam(num_pka_recoil_points,ng_pka_recoil_energies,ng_tdam_energies, &
          daughter_num,daughter_z,parent_num(filenum),parent_z)
@@ -245,7 +240,7 @@
          
          
     END IF
-    IF(do_outputs) WRITE(*,*) 'add ng estimate to globals'
+    IF(do_outputs) WRITE(log_unit,*) 'add ng estimate to globals'
      doing_ng=.true.
    IF(do_global_sums) CALL add_to_globals(ng_pka(1,:),ng_num_pka_recoil_points,ng_tdam_energies,ng_pka_recoil_energies)
    j=1
@@ -314,6 +309,6 @@
       WRITE(results_unit,*)
       file_index=file_index+1
    END IF !non zero check
-   IF(do_outputs) WRITE(*,*) 'end of (n,g) output'
+   IF(do_outputs) WRITE(log_unit,*) 'end of (n,g) output'
   
   END SUBROUTINE output_ng_estimate

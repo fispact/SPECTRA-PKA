@@ -12,7 +12,6 @@
 \newcommand{\etals}{\emph{et al. \@}}\newcommand{\mb}[1]{\mathbf{#1}}
 \newcommand{\ie}{\emph{i.e.\@} }\newcommand{\etc}{\emph{etc.\@} }
 \newcommand{\etal}{\emph{et al.\@}}\newcommand{\diffd}{\text{d}}
-\usepackage{epstopdf}
 
 \hypersetup{backref,
 colorlinks=true}
@@ -22,14 +21,14 @@ colorlinks=true}
 
 \maketitle
 \section{Introduction}
-\texttt{SPECTRA-PKA}~\cite{gilbertmariansublet2015,gilbertsubletNME2016,gilbertsublet2018,spectrapkaavailablefrom} is a command-line driven programme for calculating the expected primary knock-on atom (PKA) spectra for a given target nuclide under neutron or charged particle irradiation. NJOY-processed recoil matrices must be provided as the input nuclear data for each nuclide and reaction channel of interest. \texttt{SPECTRA-PKA} will read the nuclear data and collapse the data for each reaction channel in a file with a user-defined energy spectrum of incident particles. \texttt{SPECTRA-PKA} outputs the resulting PKA spectra for each reaction channel read-in, as well as summed PKA distributions for each different recoiling nuclide or element, including both the typically heavy residuals and the secondary-emitted light gas particles. Crucially, \texttt{SPECTRA-PKA} has the ability to process data, in a single run, for a complex material containing many different target species. The user must specify the atomic percentage for each target and the appropriate recoil cross section file, but then \texttt{SPECTRA-PKA} will automatically read-in and process each file and create global average (including as a function of isotope and element) PKA distributions. This feature, in particular, is a significant advancement over what was possible before (such as with \texttt{SPECTER}~\cite{specter} from ANL), where typically PKA distributions were only provided for single elements (and not separated by reaction channel) and based on only one nuclear data library (ENDF/B-V in the case of \texttt{SPECTER}). It allows, for example, the user to investigate the variation in PKA distributions as a function of time under irradiation, where a materials composition may change due to transmutation -- see, for example,~\cite{gilbertsubletNME2016}.
+\texttt{SPECTRA-PKA}~\cite{gilbertmariansublet2015,gilbertsubletNME2016,gilbertsublet2018,spectrapkaavailablefrom} is a command-line driven programme for calculating the expected primary knock-on atom (PKA) spectra for a given target nuclide under neutron or charged particle irradiation. NJOY-processed recoil matrices must be provided as the input nuclear data for each nuclide and reaction channel of interest. \texttt{SPECTRA-PKA} will read the nuclear data and collapse the data for each reaction channel in a file with a user-defined energy spectrum of incident particles. \texttt{SPECTRA-PKA} outputs the resulting PKA spectra for each reaction channel read-in, as well as summed PKA distributions for each different recoiling nuclide or element, including both the typically heavy residuals and the secondary-emitted light gas particles. Crucially, \texttt{SPECTRA-PKA} has the ability to process data, in a single run, for a complex material containing many different target species. The user must specify the atomic percentage for each target and the appropriate recoil cross section file, but then \texttt{SPECTRA-PKA} will automatically read-in and process each file and create global average (including as a function of isotope and element) PKA distributions. This feature, in particular, is a significant advancement over what was possible before (such as with \texttt{SPECTER}~\cite{specter} from ANL), where typically PKA distributions were only provided for single elements (and not separated by reaction channel) and based on only one nuclear data library (ENDF/B-V in the case of \texttt{SPECTER}). It allows, for example, the user to investigate the variation in PKA distributions as a function of time under irradiation, where a materials composition may change due to transmutation -- see, for example,~\cite{gilbertsubletNME2016}. More recent additions to the code include per-channel evaluations of damage rates (measured as the so-called NRT-dpa metric -- see \cite{gilbertsublet2018} for details), the ability to import a user-defined energy grid for the output of distributions (e.g. to overload the logarithmically-distributed scale commonly used for nuclear physics applications with a more modelling-friendly linear scale), and the application of PKA distributions to ``real'' atomistic systems to define when and where PKAs will occur in a given lattice of atoms, which can be subsequently applied to modelling activities.  The latter has been extended further with a prototyped interface to a code (SDTrimSP~\cite{sdtrimsp}) that applies the binary collision approximation (BCA) to simulate the cascade of recoil events associated with a given PKA.
 
 \section{Command line options}
 \texttt{SPECTRA-PKA} is executed from the command-line. By default, the programme expects to find an input file called \texttt{specter.input} in the execution folder, but this behaviour can be over-ridden by specifying the name of an input file on the command-line. The input file provides the user with the option to over-ride the default values of the various code words (see below) that \texttt{SPECTRA-PKA} relies upon to control its execution. The input file should be a text file but is largely free from other formatting requirements. Code word values are specified in any order, one per line, via syntax of type:
 \begin{center}
 \texttt{<code word name>=<code word value>}
 \end{center}
-A description of each code word and its expected value(s) is given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described. Unless otherwise stated, all numbers given in the main input file (or other files for the irradiation spectrum, etc.) should use a dot (.) to represent the decimal place (including in numbers represented in scientific notation) -- use of a comma (,) will result in incorrect reading of files and potentially misleading results.
+A description of each code word and its expected value(s) are given below. An alternative syntax allowing an easier description of a complex alloy (containing multiple target species) is also described.
 \section{Code words}
 Default values are given in brackets after each code word)
 \begin{itemize}
@@ -42,7 +41,7 @@ Default values are given in brackets after each code word)
 < text description >
 <itype> <dummyi> <igroup> <dummyi> <acnm> <time>
 <number_groups> <ksail>
-< number_groups + 1 energy bin boundaries in ascending MeV>
+< number_groups + 1 energy bin boundaries in MeV>
 < number_groups flux values >
     \end{verbatim}
     where \texttt{itype} identifies the type of the flux file. The only type currently supported by \texttt{SPECTRA-PKA} is that where \texttt{itype}\(>1\) -- so that the third line in the file has the \verb|<number_groups><ksail>| format shown above. \texttt{dummyi} are obsolete entries where an integer value is still expected. \texttt{igroup} identifies the units of the subsequent flux values, and an appropriate conversion may be applied according to \verb|flux_norm_type| (see below). In the present code only two choices are accepted: n~s\(^{-1}\) (\texttt{igroup=2}), or n~s\(^{-1}\)~MeV\(^{-1}\) (any other value of \texttt{igroup}), both per unit area. \texttt{acnm} and \texttt{time} were, respectively, used for flux (power) normalization and to obtain the total fluence, but neither of these influence the output produced by \texttt{SPECTRA-PKA}. A \texttt{ksail} value greater than zero indicates that the spectrum file contains error values for the flux in each bin, which are propagated via covariance matrices to the error estimates in the PKA spectrum for each reaction channel (but not to the summed distributions as yet). The flux error vector (\verb|number_groups| values) should immediately follow the \verb|number_groups| flux values.
@@ -51,8 +50,8 @@ Default values are given in brackets after each code word)
 \item \texttt{flux{\textunderscore}rescale{\textunderscore}value} [\texttt{1.0}] --- an optional flux rescale factor that is applied at the time of reading-in the values from the flux file.
 
 \item \texttt{flux{\textunderscore}norm{\textunderscore}type} [\texttt{2}] --- flux normalization control. In the present version of the program, the emphasis is on outputs that are absolute PKAs per second, and so the normalization features are largely obsolete. However, if \verb|flux_norm_type| is 2 then it is assumed that the flux values read-in are per cm\(^2\) and the required conversion to barns (to match the recoil cross sections) is performed. If \verb|flux_norm_type| is 3, then the fluxes used in the subsequent evaluations are exactly those read in from the flux file, with no unit conversion or rescaling. For any other value of \verb|flux_norm_type| the barns conversion is still done, but additionally any unit conversion specified in the flux input file by \texttt{igroup} (see above) is also applied.
-\item \texttt{results{\textunderscore}filename} [\texttt{results.out}] --- the string to be used as the name of the file of output the PKA distributions
-\item \texttt{results{\textunderscore}stub} [no default] --- a filename stub (beginning) string to be used for both the file of output PKA distributions, and the index file listing the type of each distribution and their location (index) within the main file. If \texttt{results{\textunderscore}stub} is non-empty it overrides any specification within \texttt{results{\textunderscore}filename}. The resulting output files will be named{\begin{center}\texttt{<results{\textunderscore}stub>.out} and \texttt{<results{\textunderscore}stub>.indexes},\end{center}}for the PKA distributions and index file, respectively. If \texttt{results{\textunderscore}stub} is empty the index file will have a default name of \texttt{index{\textunderscore}summary.dat}
+\item \texttt{results{\textunderscore}filename} [\texttt{results.out}] --- the string to be used as the name of the file of output the PKA distributions. The index file of channel numbers will be called \texttt{index{\textunderscore}summary.dat} and the log file will be \texttt{<results{\textunderscore}filename>.log}. It is recommended that the user always use \texttt{results{\textunderscore}stub} (below) to define an explicit naming convention for all files and avoid issues of accidental file overwrites.
+\item \texttt{results{\textunderscore}stub} [no default] --- a filename stub (beginning) string to be used for both the file of output PKA distributions, and the index file listing the type of each distribution and their location (index) within the main file. If \texttt{results{\textunderscore}stub} is non-empty it overrides any specification within \texttt{results{\textunderscore}filename}. The resulting output files will be named{\begin{center}\texttt{<results{\textunderscore}stub>.out}, \texttt{<results{\textunderscore}stub>.indexes} and \texttt{<results{\textunderscore}stub>.log} ,\end{center}}for the output file PKA distributions, the reaction channel index file and run log-file, respectively. If \texttt{results{\textunderscore}stub} is empty the index file will have a default name of \texttt{index{\textunderscore}summary.dat}
 \item \texttt{pka{\textunderscore}ratios} [\texttt{1.0} for all targets] --- the weighting factors to be used when combining (summing) results from different targets (each with a separate PKA cross section file). Normally these would be atomic fractions, for example of the naturally occurring isotopes of W, but any non-negative numbers can be used. The user should specify a space-separated list of \texttt{number{\textunderscore}pka{\textunderscore}files} factors. The numbers given need not sum to one -- \texttt{SPECTRA-PKA} will renormalise.
 
 
@@ -101,6 +100,42 @@ columns= pka_filename pka_ratios parent_ele parent_num ngamma_parent_mass ngamma
 \item \texttt{user{\textunderscore}energybin{\textunderscore}file} [\texttt{ebins.dat}] --- the name of the file from where the user-defined output energy grid will be read. The first line of this file is expected to give the number of energy bounds, which are subsequently listed in the file (in increasing MeV units). It is assumed the minimum energy (below the first bound) is zero, but the code does not check if the maximum energy is high enough to capture all of the evaluated PKA energies (PKA fluxes above the maximum will be omitted from the output). If this file cannot be found, or if an error occurs during reading, then the program will default to the original grids from the input data.
 
 \item \texttt{user{\textunderscore}grid{\textunderscore}option} [\texttt{2}] --- the use of a user-defined output energy grid can result in very large output files, particularly if using a fine resolution linear grid over several orders of magnitude (in energy). In such cases it may be desirable to restrict the application of the user grid. If \texttt{user{\textunderscore}grid{\textunderscore}option} is 1 (or any other integer not discussed here) then the user grid will be used to output all summed spectra (sums across nuclides, elements, reaction sets, etc.). If 2 then only the global sums at the end of the evaluation will use the grid -- sums performed at the end of the processing of each target nuclide will use the default energy grid obtained from the input data steams, which are typically based around log-scaling. If \texttt{user{\textunderscore}grid{\textunderscore}option} is 3 then only the very final ``total'' PKA spectrum will use the specified grid.
+
+\item \texttt{do{\textunderscore}outputs} [\texttt{.true.}] --- switch off to reduce program execution output (particularly to the log-file).
+
+\item \texttt{do{\textunderscore}timed{\textunderscore}configs} [\texttt{.false.}] --- if true then define PKAs at the atomic level and as a function of time according to the evaluated distributions. Currently, \texttt{SPECTRA-PKA} defines an ideal lattice of atoms according to various input parameters (below), but future developments will allow pre-defined systems (e.g. containing defects and/or precipitates) to be read-in. The code applies stochastic sampling to define which atoms will become a PKA and when. A pseudo-random-number generator is used to give the PKA an energy and initial direction vector. Each PKA event is recorded in the file \texttt{config{\textunderscore}events.pka} (one event per line with position, velocity vector, PKA species [which may be different from the original target], mass, and energy). A further output file \texttt{config{\textunderscore}analysis.pka} records various global analyses of the population of PKA events.
+
+\item \texttt{config{\textunderscore}max{\textunderscore}pka{\textunderscore}vectors} [\texttt{200}] --- in a very complex system (many different target species) the number of possible PKA reaction channels will be large. Applying the stochastic sampling to a very large number of minor channels (i.e. ones that are unlikely to generate a PKA on the simulation times considered) could be time-consuming an unnecessary. This parameter allows the user to restrict the analysis (for atomic PKA events only) to the  \texttt{config{\textunderscore}max{\textunderscore}pka{\textunderscore}vectors} most dominant PKA channels -- the filtering is performed according to the total PKA-rate above \texttt{assumed{\textunderscore}ed}  in each channel.
+
+\item \texttt{config{\textunderscore}do{\textunderscore}exclude{\textunderscore}light{\textunderscore}pkas} [\texttt{.true.}] --- if true (the default) do not allow PKA channels generating gas-particle PKAs to be considered in the atomistic analysis. This is typically the correct approach (i.e. for transition metal elements) since gas (helium/hydrogen) PKAs will behave very differently for PKAs of elements similar in mass to the host lattice. However, if \texttt{SPECTRA-PKA}  is being interfaced with a BCA code, it might be appropriate to consider these PKAs since they can be considered within the binary-collision approximation.
+
+\item \texttt{timestep} [\texttt{1e-12} (1~ps)] --- \(\Delta t\) time-step (in seconds) to use when defining atomic PKAs. \texttt{SPECTRA-PKA} will define the correct number of PKAs for each time-step according to the stochastic sampling. Typically, \texttt{timestep}  should be chosen to be large enough that at least one PKA event happens per \(\Delta t\), but not so large that independence between individual events in a time-step cannot be guaranteed.
+
+\item \texttt{nsteps} [\texttt{100}] --- number of \(\Delta t\) time-steps to define PKAs for. \(\texttt{nsteps}\times\texttt{timestep}\) will define the total simulation time considered and would normally be constrained by the rate of secondary evolution factors such as transmutation-induced composition changes or defect-evolution timescales.
+
+\item \texttt{box{\textunderscore}type} [\texttt{1}] --- for the generation of perfect crystalline lattices the user can select body-centered-cubic (bcc)  [\texttt{1}] , face-centered-cubic (fcc)  [\texttt{2}] , or hexagonal close-packed (hcp)  [\texttt{3}] .
+
+\item \texttt{box{\textunderscore}units} [\texttt{10}] --- number of fundamental unit cells in each cartesian direction. For bcc/fcc this will result in a perfectly cubic box.
+
+\item \texttt{latt} [\texttt{2.8664}] --- lattice parameter (in Angstroms) to use when defining atomic positions (the default is typical of iron/steel).
+
+\item \texttt{do{\textunderscore}output{\textunderscore}configs} [\texttt{.false.}] --- do not use -- at prototype stage
+
+\item \texttt{do{\textunderscore}bca} [\texttt{.false.}] --- if true then interface with a BCA code (currently only SDTrimSP is allowed) and generate a recoil-displacement cascade for each defined PKA (above \texttt{assumed{\textunderscore}ed}). \texttt{SPECTRA-PKA}  writes the necessary (SDTrimSP) input files, calls the code, and then reads and processes the result. Each cascade is placed back onto the defined lattice system according to the random direction vector (and shifted through PBCs if requested and necessary). \texttt{SPECTRA-PKA}  stores all cascades in one output file (\texttt{config{\textunderscore}bca.dat}) that can be subsequently applied to other modelling (or simply plotted).
+
+\item \texttt{bca{\textunderscore}type} [\texttt{1}] --- type of BCA simulation to perform. Currently only SDTrimSP is available, so this parameter has no effect.
+
+\item \texttt{sdtrim{\textunderscore}path} [\texttt{SDTrimSP}] --- path to SDTrimSP executable.
+
+\item \texttt{do{\textunderscore}store{\textunderscore}bca{\textunderscore}output} [\texttt{.true.}] --- if true then store each set of output files from the bca execution. Files are number sequentially. If false, then only the processed set of recoils within each cascade is stored (in \texttt{config{\textunderscore}bca.dat}).
+
+\item \texttt{bca{\textunderscore}cell{\textunderscore}size} [\texttt{2.8664}] --- defines grid resolution (in Angstroms) when deciding if cascades overlap -- at prototype stage, use with caution
+
+\item \texttt{overlap{\textunderscore}stop} [\texttt{.false.}] --- if true then the generation of PKAs and BCA simulations will stop as soon as the (prototype) overlap criteria is met -- at prototype stage, use with caution
+
+\item \texttt{do{\textunderscore}bca{\textunderscore}pbc} [\texttt{.true.}] --- if true then make sure all cascades fall within the defined atomic box by assuming periodic boundary conditions (PBCs) and shifting recoil events by one (or more) box lengths in appropriate directions as required.
+
+
 \end{itemize}
 
 
@@ -110,8 +145,8 @@ SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files 
 
 
 
-\section{Example calculations}
-In the subfolder containing the pdf manual distributed with \texttt{SPECTRA-PKA} there are two example calculations to get the user started. The first, in \texttt{manual/test}, contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder and then, on the command line, type:
+\section{Example calculation}
+In the folder containing the distributed code of \texttt{SPECTRA-PKA} there is a ``test'' folder to get the user started. The folder contains the necessary input files to evaluate the PKA distributions of pure zirconium (Zr) in a typical PWR fission spectrum. To run the test navigate to the test folder in the git repository and then, on the command line, type:
 \begin{verbatim}
 <location of SPECTRA-PKA>SPECTRA_PKA ZR.in
 \end{verbatim}
@@ -140,9 +175,9 @@ energies_once_perfile=.t.
 do_tdam=.t.
 assumed_ed=40.0
 \end{verbatim}}
-Note that in the test folder \texttt{<PKA data folder>} in the above has been replaced by the appropriate directory path for the default hierarchy of the \texttt{FISPACT-II} system. The user should tailor this file as necessary to their own system configuration before running the test.
+Note that in the test folder \texttt{<PKA data folder>} in the above has been replaced by the appropriate directory path for the default path to PKA data files in the hierarchy of \texttt{FISPACT-II}. The user should tailor this file as necessary to their own system configuration before running the test.
 
-The test folder also has an ``example\verb|_|results'' folder containing the .out and .indexes files that should be produced from a successful execution of the test. The ``plot\verb|_|example'' folder provides example .plt files for \texttt{GNUPLOT} that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with \texttt{GNUPLOT} will note the use of the \texttt{index} option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see \texttt{example\_results/ZR.indexes}). \textbf{Important:} Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are given in figure~\ref{pka_graphs}.
+The test folder also has an ``example\verb|_|results'' folder containing the .out and .indexes files that should be produced from a successful execution of the test. The ``plot\verb|_|example'' folder provides example .plt files for \texttt{GNUPLOT} that will produce plots of the summed elemental and isotopic PKA distributions. Users familiar with \texttt{GNUPLOT} will note the use of the \texttt{index} option in each plot command. The index numbers currently used in the .plt files are appropriate for the example results (see \texttt{example\char`_results/ZR.indexes}). \textbf{Important:} Using a different version of the PKA source libraries could result in a different ordering of the results, and so the user should compare the .plt files with the .indexes file from their execution of the test to check that the correct distributions are plotted. The images that should result from this test are given in figure~\ref{pka_graphs}.
 
 
 
@@ -150,15 +185,13 @@ The test folder also has an ``example\verb|_|results'' folder containing the .ou
 \begin{figure}[t]
 \hskip-1.5cm
 \parbox[b][7cm][t]{0.7\textwidth}{\includegraphics[width=0.7\textwidth]
-{ZR_elemental}}%\vskip1xcm
+{ZR_elemental}}%\vskip1cm
 \includegraphics[width=0.5\textwidth]
 {ZR_isotope}\\
 \vskip-1.0cm
 \hskip-0.5cm(a)\hskip7.2cm(b)
 \caption{\label{pka_graphs}(a) elemental and (b) isotopic PKA distributions for pure Zr under PWR conditions.}
 \end{figure}
-
-A further example, which doesn't include a plot example (as described above), can be found in the folder \texttt{manual/usergrid\_test}. This ``test'' calculates the PKA distributions for a single Fe isotope (\(^{56}\)Fe) irradiated in a typical fission irradiation spectrum. It exemplifies the use of a user-defined energy output grid for the PKA distributions and additionally provides examples of the format of the required user-grid input file.
 
 \begin{thebibliography}{10}
 
@@ -195,7 +228,8 @@ L.~R. Greenwood and R.~K. Smither,
   ANL/FPP/TM-197. SPECTER and SPECOMP are available from the NEA databank.
 \newblock \url{http://www.oecd-nea.org/tools/abstract/detail/psr-0263}.
 
-
+\bibitem{sdtrimsp}
+A.~Mutzke, R.~Schneider, W.~Eckstein and R.~Dohmen, ``{SDTrimSP}'',  {see \url{http://www2.ipp.mpg.de/~stel/SDTrimSP.html}}.
 
 \bibitem{lindardetal1963a}
 J.~Lindhard, M.~Scharff, and H.~E. Schi{\o}tt,

@@ -41,11 +41,13 @@
     IF(number_global_recoils.GT.max_global_recoils) THEN
      PRINT *,'max number of global nuclide recoils exceeded!'
      PRINT *,' increase max_global_recoils - STOP'
+     WRITE(log_unit,*) 'max number of global nuclide recoils exceeded!'
+     WRITE(log_unit,*) ' increase max_global_recoils - STOP'     
      STOP
     END IF
     global_daughter_eles(ii)=daughter_ele
     global_daughter_nums(ii)=daughter_num
-    IF(do_outputs) WRITE(*,*) 'number global nuclide recoils: ',number_global_recoils,TRIM(ADJUSTL(daughter_ele))
+    IF(do_outputs) WRITE(log_unit,*) 'number global nuclide recoils: ',number_global_recoils,TRIM(ADJUSTL(daughter_ele))
     
    END IF   
    
@@ -53,28 +55,28 @@
    IF(jj.GT.number_global_recoil_elements) THEN
     number_global_recoil_elements=jj
     IF(number_global_recoil_elements.GT.max_global_recoils) THEN
-     PRINT *,'max number of global recoil elements exceeded- STOP'
+     WRITE(log_unit,*) 'max number of global recoil elements exceeded- STOP'
      STOP
     END IF
     global_elements(jj)=daughter_ele
-    PRINT *,'number global element recoils: ',number_global_recoils
+    WRITE(log_unit,*) 'number global element recoils: ',number_global_recoils
    END IF
    
 
-   IF(do_outputs) WRITE(*,*) daughter_ele,daughter_num,'adding to globals'
+   IF(do_outputs) WRITE(log_unit,*) daughter_ele,daughter_num,'adding to globals'
     !24/4/2018 changes to allow for user output grid for sums and globals
     ! also removes error check for mis-matched grids - now we can just proceed and flag   
   IF(recoil_points.NE.global_num_pka_recoil_points_master) THEN
   ! 24/4/2018 allow for possibility of different grid and flag if do_user_output_energy_grid is false
    IF ((.NOT.do_user_output_energy_grid).OR.(do_user_output_energy_grid.AND.(user_grid_option==3))) THEN
-      PRINT *,'grid of recoil energies do not match global energy grid during summing'
-      PRINT *,'interpolation will be used to collapse the current grid onto the global one'
+      WRITE(log_unit,*) 'grid of recoil energies do not match global energy grid during summing'
+      WRITE(log_unit,*) 'interpolation will be used to collapse the current grid onto the global one'
    END IF
   END IF
     
     ALLOCATE(pka_temp(MAX(global_num_pka_recoil_points_master,recoil_points)))
     pka_temp(1:recoil_points)=input_pka(:)*pka_ratios(filenum)
-    IF(do_outputs) WRITE(*,*) 'global sum allocate done',size(pka_recoil_energies), &
+    IF(do_outputs) WRITE(log_unit,*) 'global sum allocate done',size(pka_recoil_energies), &
        size(global_pka_recoil_energies_master),recoil_points,global_num_pka_recoil_points_master, &
        size(pka_temp)
        
@@ -83,7 +85,7 @@
                   global_num_pka_recoil_points_master,&
                   global_pka_recoil_energies_master,&
                   energy_vector) 
-    IF(do_outputs) WRITE(*,*) 'global sum flux collapse done'
+    IF(do_outputs) WRITE(log_unit,*) 'global sum flux collapse done'
    global_pka_sums(ii,:)=global_pka_sums(ii,:)+pka_temp(1:global_num_pka_recoil_points_master)
    global_pka_sums_element(jj,:)=global_pka_sums_element(jj,:)+pka_temp(1:global_num_pka_recoil_points_master)
    IF(do_tdam) THEN
@@ -102,8 +104,8 @@
                   global_num_pka_recoil_points_master,&
                   global_tdam_energies_master,&
                   tdam_vector)
-   !PRINT *,'out',SUM(tdam_pka_temp)  
-   !print *,tdam_pka_temp
+
+
    global_pka_sums_tdam(ii,:)=global_pka_sums_tdam(ii,:)+&
         tdam_pka_temp(1:global_num_pka_recoil_points_master)
    global_pka_sums_element_tdam(jj,:)=global_pka_sums_element_tdam(jj,:)+&
@@ -117,11 +119,11 @@
    !20/5/2014 - add to total recoil spectra
    IF((do_exclude_light_from_total).AND.&
     ((TRIM(ADJUSTL(daughter_ele))=='He').OR.(TRIM(ADJUSTL(daughter_ele))=='H'))) THEN
-    PRINT *,'omitting gas particle from total pkas'
+    WRITE(log_unit,*) 'omitting gas particle from total pkas'
     !total_pka_sum(:)=total_pka_sum(:)+input_pka(:)*pka_ratios(filenum)
    ELSE IF((do_exclude_unknown_from_total).AND.&
     (TRIM(ADJUSTL(daughter_ele))=='unknown')) THEN
-    PRINT *,'omitting unknown daughter from total pkas'
+    WRITE(log_unit,*) 'omitting unknown daughter from total pkas'
    ELSE 
    
   !24/4/2018 - handling of user_grid_option 
@@ -131,14 +133,14 @@
     DEALLOCATE(pka_temp)
     ALLOCATE(pka_temp(MAX(totalglobal_num_pka_recoil_points_master,recoil_points)))
     pka_temp(1:recoil_points)=input_pka(:)*pka_ratios(filenum)
-    IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:recoil_points)), &
+    IF(do_outputs) WRITE(log_unit,*) SUM(pka_temp(1:recoil_points)), &
       SUM(totalglobal_pka_recoil_energies_master),SUM(energy_vector)
     CALL collapse_fluxes(pka_temp, &
                   recoil_points,&
                   totalglobal_num_pka_recoil_points_master,&
                   totalglobal_pka_recoil_energies_master,&
                   energy_vector)  
-IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_master))                  
+IF(do_outputs) WRITE(log_unit,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_master))                  
                   
     IF(do_tdam) THEN
      ! 24/4/2018 - assume tdam totalglobal matrix is same as totalglobal pka energy matrix
@@ -309,7 +311,6 @@ IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_maste
      positions(i)=positions(i)+1
     END IF
    END DO 
-   !PRINT *,positions(i),global_elements(i)
  END DO
    
    DO i=1,number_global_recoil_elements
@@ -423,7 +424,7 @@ IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_maste
        ELSE
         energy_min=totalglobal_pka_recoil_energies_master(1)/2._DBL
        END IF   
-    IF(do_outputs) WRITE(*,*) 'total sum',SIZE(total_pka_sum),totalglobal_num_pka_recoil_points_master, &
+    IF(do_outputs) WRITE(log_unit,*) 'total sum',SIZE(total_pka_sum),totalglobal_num_pka_recoil_points_master, &
        sum(total_pka_sum(1:totalglobal_num_pka_recoil_points_master))
     !IF(sum(total_pka_sum(1:totalglobal_num_pka_recoil_points_master)).NE.0) THEN   
        WRITE(results_unit,*) '### index ',file_index,' ##### ( totals )'
@@ -520,9 +521,6 @@ IF(do_outputs) WRITE(*,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_points_maste
     !END IF !non zero check 
     
     
-    IF(do_timed_configs) THEN
-    
-      CALL create_configs
-    END IF
+
    
   END SUBROUTINE output_global_sums

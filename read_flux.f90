@@ -15,7 +15,7 @@
   IF(io_open==0) THEN
   
     READ(flux_unit,'(A100)',IOSTAT=io_read) flux_title
-        IF(io_read==0) READ(flux_unit,*,IOSTAT=io_read) itype,isigma,igroup,ipka,acnm,time
+        IF(io_read==0) READ(flux_unit,*,IOSTAT=io_read) itype,isigma,igroup,ipka,acnm,irrtime
     
     IF(io_read==0) THEN
      ! just consider cases for example files for now
