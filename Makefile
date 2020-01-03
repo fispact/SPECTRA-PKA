@@ -28,7 +28,10 @@ OBJ = accuracy.o globals.o read_input.o \
       collapse_fluxes.o define_daughter.o \
       ng_estimate.o output_sum_pkas.o \
       sum_pkas.o read_flux.o read_pka.o \
-      global_sums.o tdam.o
+      global_sums.o tdam.o \
+      create_configs.o create_bcc.o \
+      bca.o create_fcc.o create_hcp.o \
+      config_input_output.o
       
 $(PROG) : $(OBJ) 
 	  $(LD) -o $(PROG) $(LDFLAGS) $(OBJ)
