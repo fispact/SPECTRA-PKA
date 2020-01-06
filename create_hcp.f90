@@ -44,7 +44,7 @@
   
  
  		!3/1/2020 - in a hcpb lattice, the x coordinates with the
-		! above definition will be negative for large j (see bk 14)
+		! above definition will be negative for large j (see bk 15)
 		! since this is a perfect box, we should shift as required
 		IF (x(ijk,1).LT.0._DBL) THEN
 		 x(ijk,1)=x(ijk,1)+lx(1)
@@ -113,7 +113,7 @@ END SUBROUTINE create_hcp
     xx(3)=latt*sqrt(3.0_DBL)*(REAL(k,DBL)+REAL(mod(nn-1,2),DBL)*0.5_DBL)
     
  		!3/1/2020 - in a hcp lattice, the x coordinates with the
-		! above definition will be negative for large j (see bk 14)
+		! above definition will be negative for large j (see bk 15)
 		! since this is a perfect box, we should shift as required
 		IF (xx(1).LT.0._DBL) THEN
 		 xx(1)=xx(1)+lx(1)
