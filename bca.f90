@@ -445,8 +445,9 @@ SUBROUTINE triinpwrite(ke,pkaelement)
   real (KIND=DBL), intent(in) :: ke
   character (LEN=200) :: tstr,tstr2
   CHARACTER (LEN=2), intent(in) :: pkaelement
-  
-  
+  INTEGER :: loc_ncp
+  CHARACTER (LEN=2) :: loc_parent_ele(number_pka_files)  
+  REAL (KIND=DBL) :: loc_pka_ratios(number_pka_files)
   
   
   OPEN(triinp,file="tri.inp",STATUS='REPLACE')
@@ -455,16 +456,44 @@ SUBROUTINE triinpwrite(ke,pkaelement)
 ! so that it is easier to track if parent is PKA
 
 
+!6/6/2020
+! define new pka_element list to remove duplicates
+! and hopefully avoid problem with SDTrimSP not liking more than
+! 8 species (will be true in nearly all case)
+! count number
+loc_ncp=1
+loc_pka_ratios=0._DBL
+loc_parent_ele(loc_ncp)=parent_ele(1)
+loc_pka_ratios(loc_ncp)=pka_ratios(1)
+DO i=2,number_pka_files
+  j=1
+  DO WHILE (j.LE.loc_ncp)
+   IF(loc_parent_ele(j)==parent_ele(i)) THEN
+    !duplicate - don't add
+    exit ! exit loop
+   END IF
+   j=j+1
+  END DO
+  IF(j>loc_ncp) THEN ! didn't find in list
+   loc_ncp=loc_ncp+1
+   loc_parent_ele(loc_ncp)=parent_ele(i)
+   loc_pka_ratios(loc_ncp)=pka_ratios(i)
+  ELSE ! add ratios
+   loc_pka_ratios(j)=loc_pka_ratios(j)+pka_ratios(i)
+  END IF
+END DO
+
+
 write(triinp,*) "run "  
 write(triinp,*) "   &TRI_INP  " 
 
 ! number of ncp is total types in material plus one extra for projectile
 ! start with input composition (later could change)
-write(triinp,*) "     ncp = ", number_pka_files+1
+write(triinp,*) "     ncp = ", loc_ncp+1
 tstr=""
 tstr=TRIM(ADJUSTL(tstr))//'"'//TRIM(ADJUSTL(pkaelement))//'"'
-DO i=1,number_pka_files
- tstr=TRIM(ADJUSTL(tstr))//',"'//TRIM(ADJUSTL(parent_ele(i)))//'"'
+DO i=1,loc_ncp
+ tstr=TRIM(ADJUSTL(tstr))//',"'//TRIM(ADJUSTL(loc_parent_ele(i)))//'"'
 END DO
 write(triinp,*) '     symbol ='//TRIM(ADJUSTL(tstr))
      
@@ -480,14 +509,14 @@ write(triinp,*) "     ipot  = 1 "
 
 tstr=""
 tstr=TRIM(ADJUSTL(tstr))//'1.00'
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//',0.00'
 END DO
 write(triinp,*) "     qubeam = "//TRIM(ADJUSTL(tstr))
 
 tstr=""
 tstr=TRIM(ADJUSTL(tstr))//'1.00'
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//',1.00'
 END DO
 write(triinp,*) "     qumax= "//TRIM(ADJUSTL(tstr))
@@ -497,7 +526,7 @@ write(triinp,*) "     case_e0=0 "
 tstr=""
 write(tstr2,'(F10.2)') ke
 tstr=TRIM(ADJUSTL(tstr))//TRIM(ADJUSTL(tstr2))
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//',0.00'
 END DO
 write(triinp,*) "     e0= "//TRIM(ADJUSTL(tstr))
@@ -506,7 +535,7 @@ write(triinp,*) "     e0= "//TRIM(ADJUSTL(tstr))
 tstr=""
 write(tstr2,'(F8.1)') xstart
 tstr=TRIM(ADJUSTL(tstr))//TRIM(ADJUSTL(tstr2))
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//',0.00'
 END DO
 
@@ -517,7 +546,7 @@ write(triinp,*) "     case_alpha=0 "
 
 tstr=""
 tstr=TRIM(ADJUSTL(tstr))//'0.0'
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//',0.00'
 END DO
 write(triinp,*) "     alpha0= "//TRIM(ADJUSTL(tstr))
@@ -528,15 +557,15 @@ write(triinp,*) "     nqx     =  500 "
 
 tstr=""
 tstr=TRIM(ADJUSTL(tstr))//'0.0'
-DO i=1,number_pka_files
- write(tstr2,'(F10.2)') pka_ratios(i)
+DO i=1,loc_ncp
+ write(tstr2,'(F10.4)') loc_pka_ratios(i)
  tstr=TRIM(ADJUSTL(tstr))//','//TRIM(ADJUSTL(tstr2))
 END DO
 write(triinp,*) "     qu= "//TRIM(ADJUSTL(tstr))
 
 tstr=""
 tstr=TRIM(ADJUSTL(tstr))//'20.00'
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//',20.00'
 END DO
 write(triinp,*) "     e_cutoff= "//TRIM(ADJUSTL(tstr))
@@ -544,7 +573,7 @@ write(triinp,*) "     e_cutoff= "//TRIM(ADJUSTL(tstr))
 tstr=""
 write(tstr2,'(F10.2)') assumed_ed
 tstr=TRIM(ADJUSTL(tstr))//TRIM(ADJUSTL(tstr2))
-DO i=1,number_pka_files
+DO i=1,loc_ncp
  tstr=TRIM(ADJUSTL(tstr))//','//TRIM(ADJUSTL(tstr2))
 END DO
 write(triinp,*) "     e_displ= "//TRIM(ADJUSTL(tstr))

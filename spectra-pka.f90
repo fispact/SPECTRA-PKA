@@ -533,7 +533,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
     IF(ksail.GE.0) THEN
      WRITE(results_unit,'(1x,a31,a8,3x,a7,a11,a24,A22,A12)') &
            '#RECOIL energy (MeV low & high)','PKAs','ERROR(%)',&
-              'norm_sum',' T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
+              'norm_sum',' T_dam (MeV low & high)','disp_energy (eV/s)','NRT_dpa/s'
      i=1
      ! add in displacement energy and dpa
      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,ES11.4,3x,F7.3,2ES11.4,2ES20.4)') &
@@ -556,7 +556,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
     ELSE !ksail
      WRITE(results_unit,'(1x,a31,a8,2x,a11,a24,2x,A22,A12)') '#RECOIL energy (MeV low & high)',&
             'PKAs','norm_sum', &
-            ' T_dam (MeV low & high)','disp_energy (eV/s)','dpa/s'
+            ' T_dam (MeV low & high)','disp_energy (eV/s)','NRT_dpa/s'
      i=1
      IF(pka(1,i).NE.0) WRITE(results_unit,'(2ES16.6,4ES11.4,2ES20.4)') &
                pka_recoil_energies(i)/2._DBL,pka_recoil_energies(i), &
