@@ -64,8 +64,8 @@
       IF (do_tdam) THEN
        WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
-       WRITE(results_unit,'(1x,a50)') '#(or T-dam energy low+high for tdam-pkas/disp/dpa)' 
-	
+       WRITE(results_unit,'(1x,a30)') '#(or T_dam energy low+high for' 
+       WRITE(results_unit,'(1x,a30)') '#          tdam-pkas/disp/dpa)'
        i=1
        IF(pka_sums(j,i).NE.0) WRITE(results_unit,fmt1) &
                energy_min,pka_recoil_energies_master(i), &

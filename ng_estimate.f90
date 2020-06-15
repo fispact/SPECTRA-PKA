@@ -263,17 +263,24 @@
        
        i=1
       IF(do_tdam) THEN
-       WRITE(results_unit,'(1x,a31,a8,2x,a11,a28)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum', &
-              '  T_dam (MeV low and high)'
-       IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2E14.4,5x,4ES11.4)') &
+       WRITE(results_unit,'(1x,a31,a8,2x,a11,a28,2x,A22,A12)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum', &
+              '  T_dam (MeV low and high)','disp_energy (eV/s)','NRT_dpa/s'
+              
+       IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2ES16.6,4ES11.4,2ES20.4)') &
                ng_pka_recoil_energies(i)/2._DBL,ng_pka_recoil_energies(i), &
                  ng_pka(j,i),ng_pka(j,i)/SUM(ng_pka(j,1:ng_num_pka_recoil_points)), &
-                 ng_tdam_energies(i)/2._DBL,ng_tdam_energies(i)
+                 ng_tdam_energies(i)/2._DBL,ng_tdam_energies(i),(ng_pka(1,i))*&
+             (ng_tdam_energies(i)/2._DBL)*1e6_DBL, &
+             0.8_DBL*(pka(1,i))*&
+             (ng_tdam_energies(i)/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL)
        DO i=2,ng_num_pka_recoil_points
-        IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2E14.4,5x,4ES11.4)') &
+        IF(ng_pka(j,i).NE.0) WRITE(results_unit,'(2ES16.6,4ES11.4,2ES20.4)') &
                   ng_pka_recoil_energies(i-1),ng_pka_recoil_energies(i), &       
                  ng_pka(j,i),ng_pka(j,i)/SUM(ng_pka(j,1:ng_num_pka_recoil_points)), &
-                 ng_tdam_energies(i-1),ng_tdam_energies(i)
+                 ng_tdam_energies(i-1),ng_tdam_energies(i),(ng_pka(1,i))*&
+             ((ng_tdam_energies(i-1)+ng_tdam_energies(i))/2._DBL)*1e6_DBL, &
+             0.8_DBL*(ng_pka(1,i))*&
+             ((ng_tdam_energies(i-1)+ng_tdam_energies(i))/2._DBL)/(2._DBL*assumed_ed*1e-6_DBL)
        END DO
       ELSE
        WRITE(results_unit,'(1x,a31,a8,a11)') '#RECOIL energy (MeV low & high)','PKAs','norm_sum'
