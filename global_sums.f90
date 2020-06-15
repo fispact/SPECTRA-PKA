@@ -216,6 +216,7 @@ IF(do_outputs) WRITE(log_unit,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_point
        
        WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
+       WRITE(results_unit,'(1x,a50)') '#(or T-dam energy low+high for tdam-pkas/disp/dpa)' 
        
        
        j=1
@@ -337,6 +338,8 @@ IF(do_outputs) WRITE(log_unit,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_point
 
        WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
+       WRITE(results_unit,'(1x,a50)') '#(or T-dam energy low+high for tdam-pkas/disp/dpa)' 
+
         
        j=1
        IF((global_pka_sums_element(i,j).NE.0).or.(global_pka_sums_element_tdam(i,j).NE.0)) &
@@ -449,6 +452,7 @@ IF(do_outputs) WRITE(log_unit,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_point
 
        WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
         'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
+       WRITE(results_unit,'(1x,a50)') '#(or T-dam energy low+high for tdam-pkas/disp/dpa)' 
         
        j=1
        IF((total_pka_sum(j).NE.0).or.(total_pka_sum_tdam(j).NE.0)) &
