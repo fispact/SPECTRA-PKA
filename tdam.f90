@@ -1,7 +1,8 @@
 !begin rubric
 !******************************************************************************                                                                         *
 !* Original Author: Mark Gilbert                                                       *
-!* mark.gilbert@ukaea.uk,                                                     *
+!* mark.gilbert@ukaea.uk
+!* copyright, 2015 (first version), 2018 (first git repository), UKAEA                                                     *
 !******************************************************************************
 !end rubric
 
