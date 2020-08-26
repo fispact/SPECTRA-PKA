@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/MacPorts 2019.50896_1) (preloaded format=pdflatex 2019.10.27)  3 JAN 2020 16:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/MacPorts 2019.50896_1) (preloaded format=pdflatex 2019.10.27)  26 AUG 2020 01:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -437,14 +437,14 @@ Overfull \hbox (13.60234pt too wide) in paragraph at lines 74--75
 fol-low-ing the Lindhard-Scharff-Schi^^\tt [[]]
  []
 
-
+[4]
 Overfull \hbox (19.45233pt too wide) in paragraph at lines 75--76
 []\OT1/pcr/m/n/10 assumed[]ed \OT1/ptm/m/n/10 [\OT1/pcr/m/n/10 40.0\OT1/ptm/m/n
 /10 ] --- thresh-old dis-place-ment en-ergy (in eV) for the ma-te-rial used for
  displacements-
  []
 
-[4]
+
 Overfull \hbox (32.94661pt too wide) in paragraph at lines 94--94
 []\OT1/pcr/m/n/8 columns= pka_filename pka_ratios parent_ele parent_num ngamma_
 parent_mass ngamma_daughter_mass[] 
@@ -514,6 +514,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 186--191
 
  []
 
+[8]
 Package epstopdf Info: Source file: <figures/pkas100s.eps>
 (epstopdf)                    date: 2020-01-03 14:13:17
 (epstopdf)                    size: 25737 bytes
@@ -524,7 +525,7 @@ Package epstopdf Info: Source file: <figures/pkas100s.eps>
 rted-to.pdf figures/pkas100s.eps>
 (epstopdf)             \includegraphics on input line 204.
 Package epstopdf Info: Output file is already uptodate.
-<figures/pkas100s-eps-converted-to.pdf, id=92, 395.4775pt x 596.2275pt>
+<figures/pkas100s-eps-converted-to.pdf, id=97, 395.4775pt x 596.2275pt>
 File: figures/pkas100s-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/pkas100s-eps-converted-to.pdf>
 Package pdftex.def Info: figures/pkas100s-eps-converted-to.pdf  used on input l
@@ -540,14 +541,14 @@ Package epstopdf Info: Source file: <figures/bca100s.eps>
 ted-to.pdf figures/bca100s.eps>
 (epstopdf)             \includegraphics on input line 206.
 Package epstopdf Info: Output file is already uptodate.
-<figures/bca100s-eps-converted-to.pdf, id=93, 395.4775pt x 545.03625pt>
+<figures/bca100s-eps-converted-to.pdf, id=98, 395.4775pt x 545.03625pt>
 File: figures/bca100s-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/bca100s-eps-converted-to.pdf>
 Package pdftex.def Info: figures/bca100s-eps-converted-to.pdf  used on input li
 ne 206.
 (pdftex.def)             Requested size: 204.9466pt x 282.45576pt.
-[8] [9 <./figures/ZR_elemental-eps-converted-to.pdf> <./figures/ZR_isotope-eps-
-converted-to.pdf>]
+ [9 <./figures/ZR_elemental-eps-converted-to.pdf> <./figures/ZR_isotope-eps-con
+verted-to.pdf>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 281.
  [10 <./figures/pkas100s-eps-converted-to.pdf> <./figures/bca100s-eps-converted
 -to.pdf>]
@@ -639,11 +640,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 281.
 Here is how much of TeX's memory you used:
  6728 strings out of 494560
  96593 string characters out of 6177299
- 191470 words of memory out of 5000000
+ 190470 words of memory out of 5000000
  10244 multiletter control sequences out of 15000+600000
  28128 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 28i,8n,28p,2719b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,8n,28p,2719b,435s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/opt/local/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</opt/local/share
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/local/share/texm
 f-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/share/texmf-texl
@@ -653,7 +654,7 @@ pe1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/type1/ur
 w/courier/ucrr8a.pfb></opt/local/share/texmf-texlive/fonts/type1/urw/times/utmb
 8a.pfb></opt/local/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></opt/l
 ocal/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on manual.pdf (10 pages, 688079 bytes).
+Output written on manual.pdf (10 pages, 688826 bytes).
 PDF statistics:
  204 PDF objects out of 1000 (max. 8388607)
  168 compressed objects within 2 object streams

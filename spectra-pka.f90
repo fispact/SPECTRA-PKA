@@ -104,18 +104,24 @@ use globals
     IF(igroup==2) flux_ebin_widths(i)=1._DBL   ! fluxes in n/cm^2/s units
     rtemp=rtemp+fluxes(i)*flux_ebin_widths(i)
    END DO
-   total_fluence=rtemp*irrtime/acnm
-   norm_fluence=1._DBL/rtemp
+
    IF(flux_norm_type==2) THEN
     fluxes_norm=fluxes*1e-24_DBL  ! 1/cm^2 --> 1/barns
+    rtemp=SUM(fluxes(1:number_flux_groups)) !sum not in barns
+    !26/8/2020 typically flux_norm_type=2 is no different from other values
+    ! if the fluxes are n/cm^2/s according to igroup
+    ! only flux_norm_type=3 produces anything different
    ELSEIF(flux_norm_type==3) THEN
     ! do nothing
     fluxes_norm=fluxes
+    rtemp=SUM(fluxes(1:number_flux_groups))
    ELSE
     ! 1/11/2013 - even here we want to convert between cm2 and barns
     ! 1/11/2013 - and don't want to normalise
     fluxes_norm=fluxes*flux_ebin_widths*1e-24_DBL
    END IF
+   total_fluence=rtemp*irrtime/acnm
+   norm_fluence=1._DBL/rtemp
    WRITE(results_unit,'(2(A,ES11.4))') '# TOTAL FLUX = ',rtemp,'  FLUENCE = ',total_fluence
    
    WRITE(results_unit,*)
