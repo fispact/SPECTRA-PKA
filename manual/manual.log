@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/MacPorts 2019.50896_1) (preloaded format=pdflatex 2019.10.27)  26 AUG 2020 01:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/MacPorts 2019.50896_1) (preloaded format=pdflatex 2019.10.27)  10 JAN 2021 21:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -472,16 +472,20 @@ Overfull \hbox (30.00319pt too wide) in paragraph at lines 180--181
  []
 
 Package epstopdf Info: Source file: <figures/ZR_elemental.eps>
-(epstopdf)                    date: 2018-03-11 22:33:08
+(epstopdf)                    date: 2020-10-08 23:17:36
 (epstopdf)                    size: 31764 bytes
 (epstopdf)             Output file: <figures/ZR_elemental-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2020-01-03 14:17:28
-(epstopdf)                    size: 14696 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/ZR_elemental-eps-c
 onverted-to.pdf figures/ZR_elemental.eps>
 (epstopdf)             \includegraphics on input line 188.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=figures/ZR_elemental-eps-converted-to.pdf figures
+/ZR_elemental.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <figures/ZR_elemental-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2021-01-10 21:45:24
+(epstopdf)                    size: 14696 bytes.
 <figures/ZR_elemental-eps-converted-to.pdf, id=89, 274.02374pt x 178.6675pt>
 File: figures/ZR_elemental-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/ZR_elemental-eps-converted-to.pdf>
@@ -489,15 +493,18 @@ Package pdftex.def Info: figures/ZR_elemental-eps-converted-to.pdf  used on inp
 ut line 188.
 (pdftex.def)             Requested size: 292.77629pt x 190.90788pt.
 Package epstopdf Info: Source file: <figures/ZR_isotope.eps>
-(epstopdf)                    date: 2018-03-11 22:33:08
+(epstopdf)                    date: 2020-10-08 23:17:36
 (epstopdf)                    size: 44356 bytes
 (epstopdf)             Output file: <figures/ZR_isotope-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-01-03 14:17:29
-(epstopdf)                    size: 22942 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/ZR_isotope-eps-con
 verted-to.pdf figures/ZR_isotope.eps>
 (epstopdf)             \includegraphics on input line 190.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=figures/ZR_isotope-eps-converted-to.pdf figures/Z
+R_isotope.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <figures/ZR_isotope-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-01-10 21:45:24
+(epstopdf)                    size: 22942 bytes.
 <figures/ZR_isotope-eps-converted-to.pdf, id=90, 274.02374pt x 244.915pt>
 File: figures/ZR_isotope-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/ZR_isotope-eps-converted-to.pdf>
@@ -516,15 +523,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 186--191
 
 [8]
 Package epstopdf Info: Source file: <figures/pkas100s.eps>
-(epstopdf)                    date: 2020-01-03 14:13:17
+(epstopdf)                    date: 2020-10-08 23:17:36
 (epstopdf)                    size: 25737 bytes
 (epstopdf)             Output file: <figures/pkas100s-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-01-03 14:17:29
-(epstopdf)                    size: 8415 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/pkas100s-eps-conve
 rted-to.pdf figures/pkas100s.eps>
 (epstopdf)             \includegraphics on input line 204.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=figures/pkas100s-eps-converted-to.pdf figures/pka
+s100s.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <figures/pkas100s-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-01-10 21:45:25
+(epstopdf)                    size: 8415 bytes.
 <figures/pkas100s-eps-converted-to.pdf, id=97, 395.4775pt x 596.2275pt>
 File: figures/pkas100s-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/pkas100s-eps-converted-to.pdf>
@@ -532,15 +542,18 @@ Package pdftex.def Info: figures/pkas100s-eps-converted-to.pdf  used on input l
 ine 204.
 (pdftex.def)             Requested size: 188.21288pt x 283.75687pt.
 Package epstopdf Info: Source file: <figures/bca100s.eps>
-(epstopdf)                    date: 2020-01-03 14:13:49
+(epstopdf)                    date: 2020-10-08 23:17:36
 (epstopdf)                    size: 235295 bytes
 (epstopdf)             Output file: <figures/bca100s-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-01-03 14:17:31
-(epstopdf)                    size: 525280 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/bca100s-eps-conver
 ted-to.pdf figures/bca100s.eps>
 (epstopdf)             \includegraphics on input line 206.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=figures/bca100s-eps-converted-to.pdf figures/bca1
+00s.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <figures/bca100s-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-01-10 21:45:26
+(epstopdf)                    size: 525280 bytes.
 <figures/bca100s-eps-converted-to.pdf, id=98, 395.4775pt x 545.03625pt>
 File: figures/bca100s-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/bca100s-eps-converted-to.pdf>
@@ -654,7 +667,7 @@ pe1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/type1/ur
 w/courier/ucrr8a.pfb></opt/local/share/texmf-texlive/fonts/type1/urw/times/utmb
 8a.pfb></opt/local/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></opt/l
 ocal/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on manual.pdf (10 pages, 688826 bytes).
+Output written on manual.pdf (10 pages, 688773 bytes).
 PDF statistics:
  204 PDF objects out of 1000 (max. 8388607)
  168 compressed objects within 2 object streams
