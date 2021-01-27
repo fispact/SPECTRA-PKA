@@ -39,7 +39,7 @@ In the subfolder containing the pdf manual distributed with SPECTRA-PKA there ar
 ```bash
 <location of SPECTRA-PKA>SPECTRA_PKA ZR.in
 ```
-Here ```<location of SPECTRA-PKA>``` is the folder contained the SPECTRA-PKA executable. The input file (ZR.in) is:
+Here ```<location of SPECTRA-PKA>``` is the folder containing the SPECTRA-PKA executable. The input file (ZR.in) is:
 
 ```bash
 flux_filename="fluxes_specter.dat"
