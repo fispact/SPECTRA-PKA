@@ -207,9 +207,26 @@ fileread:  DO WHILE(.not.fileend)
    IF(TRIM(ADJUSTL(dummystr))=="ende") THEN
     fileend=.true.
     cycle
+   ELSEIF(default_sdtrim.AND.TRIM(ADJUSTL(dummystr))=="i_traj") THEN
+    ! 8/10/2020 changes to make reading of unmodified TRIM
+    ! next line will have the equivalent 7-10 entries we need in
+    ! dummyarray in items 1-4 of line
+    READ(bca_result,*,IOSTAT=io_read) dummyarray(7:10)
+    IF(io_read.NE.0) THEN
+     ! probably not default file type
+     PRINT *,'error reading trim outputs, probably wrong trim type'
+     PRINT *,'quiting'
+     STOP
+    END IF
    END IF
    BACKSPACE(bca_result)
-   READ(bca_result,*,IOSTAT=io_read) dummyarray(:)
+   IF(default_sdtrim) THEN
+    ! 8/10/2020 - just first 6 entries
+    READ(bca_result,*,IOSTAT=io_read) dummyarray(1:6)
+   ELSE
+    ! all 10 entries available
+    READ(bca_result,*,IOSTAT=io_read) dummyarray(:)
+   END IF
    !PRINT *,io_read,NINT(dummyarray(8))
   IF((io_read==0).AND.(NINT(dummyarray(8))==1)) THEN
    ! define according to coordinate transform
@@ -586,7 +603,7 @@ write(triinp,*) "     ioutput_hist = 10000, 10, 0, 10000, 10, 0,"
 write(triinp,*) "     lparticle_p=.true."
 write(triinp,*) "     lparticle_r=.true."
 write(triinp,*) "     ioutput_part=10000,100,0,10000,100,0"
-write(triinp,*) "     tableinp = '/work/SDTrimSP/tables' "
+write(triinp,*) "     tableinp = '"//TRIM(ADJUSTL(sdtrimsptablespath))//"' "
 write(triinp,*) "/ "
 
 

@@ -438,6 +438,21 @@
 	     write (log_unit,*) 'changing bca_code to      :',bca_code
  	     processed=.true.
             end if 
+            if (trim(adjustl(input_label))=='default_sdtrim') then
+ 	     read (input_value,*) default_sdtrim
+ 	     write (*,*) 'changing default_sdtrim to      :',default_sdtrim
+	     write (log_unit,*) 'changing default_sdtrim to      :',default_sdtrim
+ 	     processed=.true.
+            end if 
+	    
+            if (trim(adjustl(input_label))=='sdtrimsptablespath') then
+ 	     read (input_value,*) sdtrimsptablespath
+ 	     write (*,*) 'changing sdtrimsptablespath to      :',sdtrimsptablespath
+	     write (log_unit,*) 'changing sdtrimsptablespath to      :',sdtrimsptablespath
+ 	     processed=.true.
+            end if	    
+
+
 	    
             if (.not.processed) then
                  write (*,*) 'variable ',trim(adjustl(input_label)),' not recognised'
@@ -608,13 +623,20 @@ sdtrim_path="SDTrimSP"
  do_store_bca_output=.true.   ! if false then overwrite without storing from SDTRIM - 
  !useful if only analysis required, or if willing to rely on global config_bca.dat file (should be
 ! sufficient in most cases)
- bca_code=1 ! 1 for SDTrimSP (only option available so far).
+ bca_code=1 ! 1 for SDTrimSP, 2 for marlowe, 3 for both (i.e. side-by-side comparison), error otherwise
  do_bca=.false. !only invoke bca if true
  
  bca_cell_size=2.8664d0  ! size of boxes to "put"/tally recoil events into
  do_bca_pbc=.true. ! default is to shift cascade events through pbcs (bias towards maximum overlap?)
  overlap_stop=.false. ! flag to stop if bca overlap - useful it that is the question to answer
- 
+ !oct 2020
+ default_sdtrim=.true. ! if false then read SDTrimSP output in modified format, 
+                    !otherwise based on original code
+		    
+		    
+!sept21 correction to remove fixed path for SDTRIMSP tables location
+sdtrimsptablespath="/work/SDTrimSP/tables"		    
+		    
  
      END SUBROUTINE set_defaults
      

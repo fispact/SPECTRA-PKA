@@ -221,7 +221,9 @@ MODULE globals
  LOGICAL :: do_bca_pbc,overlap_stop,do_store_bca_output,do_bca
  CHARACTER (LEN=100) :: sdtrim_path
  INTEGER :: bca_code
+ LOGICAL :: default_sdtrim
  
+ CHARACTER (LEN=100) :: sdtrimsptablespath
  
  
  
