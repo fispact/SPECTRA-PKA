@@ -141,6 +141,7 @@ END IF
  num_pka_elements=0
  alpha_sum_flag=.true.
  proton_sum_flag=.true.
+ total_read=0
  !open pka file
  OPEN(unit=pka_unit,FILE=TRIM(ADJUSTL(pka_filename(filenum))),IOSTAT=io_open,STATUS='OLD')
  
@@ -158,6 +159,7 @@ END IF
    IF(io_read.NE.0) cycle
    IF(io_quit.NE.0) cycle
    WRITE(log_unit,*) 'pka data read in for: '//TRIM(ADJUSTL(pka_element))
+   total_read=total_read+1
    !num_pka_elements=num_pka_elements+1
    !IF(num_pka_elements==69) at_end=.true.
    !write(*,*) 'got here',num_pka_elements,ALLOCATED(pka_sums)
@@ -209,6 +211,9 @@ END IF
    IF((do_global_sums)) THEN
     ALLOCATE(global_daughter_eles(max_global_recoils),global_daughter_nums(max_global_recoils))
    END IF
+   IF(do_global_mt_sums) THEN
+     ALLOCATE(global_mt_nums(max_global_recoils))
+   END IF
    IF(do_timed_configs) THEN
     ALLOCATE(config_daughter_eles(config_max_pka_vectors),config_daughter_nums(config_max_pka_vectors))
     ALLOCATE(config_parent_eles(config_max_pka_vectors),config_parent_nums(config_max_pka_vectors))
@@ -218,7 +223,7 @@ END IF
   
    !23/4/2018 - read bins from file if specified
    
-   IF((do_global_sums).OR.do_timed_configs) THEN ! for energy grid - use the same in both cases
+   IF((do_global_sums).OR.do_timed_configs.OR.do_global_mt_sums) THEN ! for energy grid - use the same in both cases
    
    IF(do_user_output_energy_grid) THEN
     IF(do_outputs) WRITE(log_unit,*) 'reading user-defined grid of output recoil energy-bins'
@@ -229,12 +234,15 @@ END IF
      IF(do_outputs) WRITE(log_unit,*) global_num_pka_recoil_points_master,' grid points expected'
      IF(io_read==0) THEN
        IF(do_global_sums) ALLOCATE(global_pka_sums(max_global_recoils,global_num_pka_recoil_points_master))
+       IF(do_global_mt_sums) &
+        ALLOCATE(global_mt_pka_sums(max_global_recoils,global_num_pka_recoil_points_master)) 
        ALLOCATE(global_pka_recoil_energies_master(global_num_pka_recoil_points_master))       
        READ(user_ebinsunit,*,IOSTAT=io_read) &
           (global_pka_recoil_energies_master(j),j=1,global_num_pka_recoil_points_master)
        IF (io_read.NE.0) THEN
         IF(do_global_sums) DEALLOCATE(global_pka_sums)
-        DEALLOCATE(global_pka_sums,global_pka_recoil_energies_master)
+        DEALLOCATE(global_pka_recoil_energies_master)
+        IF(do_global_mt_sums) DEALLOCATE(global_mt_pka_sums)
        ELSE
          IF(do_outputs) THEN
 	  WRITE(log_unit,*) 'grid read correctly'
@@ -259,6 +267,8 @@ END IF
    IF (.not.do_user_output_energy_grid) THEN  
     global_num_pka_recoil_points_master=num_pka_recoil_points
     IF(do_global_sums) ALLOCATE(global_pka_sums(max_global_recoils,global_num_pka_recoil_points_master))
+    IF(do_global_mt_sums) &
+        ALLOCATE(global_mt_pka_sums(max_global_recoils,global_num_pka_recoil_points_master))
     ALLOCATE(global_pka_recoil_energies_master(global_num_pka_recoil_points_master))
     global_pka_recoil_energies_master=pka_recoil_energies       
    END IF !do_user_output_energy_grid 
@@ -280,9 +290,11 @@ END IF
     END IF   
    END IF ! global sums
 
+
+
       
     
-   END IF !globalsums or do_time_configs   
+   END IF !globalsums or do_time_configs   or mt_sums
    
   IF(do_timed_configs) THEN ! 16/4/19 - no need for user array for pka vectors, only for output
     config_global_num_pka_recoil_points=num_pka_recoil_points
@@ -355,11 +367,41 @@ END IF
                                            global_num_pka_recoil_points_master))
      global_pka_sums_element_tdam=0._DBL
     END IF   
-    
-
-    
 
    END IF !global sums
+   
+!28/3/22   
+  IF(do_global_mt_sums) THEN
+   IF(do_user_output_energy_grid.AND.(user_grid_option==3)) THEN
+    !24/4/2018 - reset globals
+    DEALLOCATE(global_mt_pka_sums,global_pka_recoil_energies_master)
+    global_num_pka_recoil_points_master=num_pka_recoil_points
+    ALLOCATE(global_mt_pka_sums(max_global_recoils,global_num_pka_recoil_points_master), &
+       global_pka_recoil_energies_master(global_num_pka_recoil_points_master))
+    global_pka_recoil_energies_master=pka_recoil_energies
+   END IF
+   ! all of this is the same in either case
+   IF(do_tdam) THEN
+      ALLOCATE(global_mt_disp_sums(max_global_recoils))
+      global_mt_disp_sums=0._DBL
+   END IF
+   global_mt_pka_sums=0._DBL
+   
+   IF(do_tdam) THEN
+     IF(.not.do_global_sums) THEN
+        ALLOCATE(global_tdam_energies_master(global_num_pka_recoil_points_master))
+        global_tdam_energies_master=global_pka_recoil_energies_master
+     END IF
+     ALLOCATE(global_mt_pka_sums_tdam(max_global_recoils,global_num_pka_recoil_points_master) &
+         )
+
+     global_mt_pka_sums_tdam=0._DBL
+   END IF   
+   
+   number_global_mt_recoils=0    
+
+
+   END IF !global mt sums   
    
    END IF !num_pka_elements=1,not-first_non_empty  
    
@@ -498,6 +540,7 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
      ELSE
       IF(do_global_sums) CALL add_to_globals(pka(1,:),num_pka_recoil_points,tdam_energies,pka_recoil_energies)
       IF(do_timed_configs) CALL add_to_config_pkas(pka(1,:),num_pka_recoil_points,pka_recoil_energies)
+      IF(do_global_mt_sums) CALL add_to_mt_globals(pka(1,:),num_pka_recoil_points,tdam_energies,pka_recoil_energies)
      END IF
     
   
@@ -740,14 +783,32 @@ IF((num_pka_elements==1).AND.(do_mtd_sums)) THEN
    CALL output_global_sums()
    IF(ALLOCATED(global_pka_sums)) DEALLOCATE(global_pka_sums)
    IF(ALLOCATED(global_pka_sums_element)) DEALLOCATE(global_pka_sums_element)
-   IF(do_tdam.AND.ALLOCATED(global_tdam_energies_master)) &
-       DEALLOCATE(global_tdam_energies_master,global_pka_sums_tdam, &
+   IF(do_tdam.AND.ALLOCATED(global_pka_sums_tdam)) &
+       DEALLOCATE(global_pka_sums_tdam, &
       global_pka_sums_element_tdam)
   ELSE
    print *,'no global sums to output'
    write(log_unit,*) 'no global sums to output'
   END IF
  END IF
+
+  !28/3/22 - check there is something to output - i.e. avoid crash if no files have been read
+ IF(do_global_mt_sums) THEN
+  IF((number_global_mt_recoils.GT.0)) THEN
+   CALL output_global_mt_sums()
+   IF(ALLOCATED(global_mt_pka_sums)) DEALLOCATE(global_mt_pka_sums)
+   IF(do_tdam.AND.ALLOCATED(global_mt_pka_sums_tdam)) &
+       DEALLOCATE(global_mt_pka_sums_tdam)       
+  ELSE
+   print *,'no global mt sums to output'
+   write(log_unit,*) 'no global mt sums to output'
+  END IF
+ END IF
+ 
+ !28/3/22 - have to do this after both sum outputs.
+   IF(do_tdam.AND.ALLOCATED(global_tdam_energies_master)) &
+       DEALLOCATE(global_tdam_energies_master)
+ 
  IF(io_quit.NE.0) THEN
   PRINT *,'quiting'
   write(log_unit,*) 'quiting'

@@ -99,12 +99,14 @@ MODULE globals
  REAL (KIND=DBL),ALLOCATABLE ::pka_ratios(:)
  CHARACTER (LEN=200),ALLOCATABLE :: pka_filename(:)
  INTEGER :: number_pka_files,filenum
- LOGICAL :: do_global_sums
+ LOGICAL :: do_global_sums,do_global_mt_sums
  INTEGER :: max_global_recoils
  REAL(KIND=DBL),ALLOCATABLE :: global_pka_sums(:,:),global_pka_recoil_energies_master(:)
+ REAL(KIND=DBL),ALLOCATABLE :: global_mt_pka_sums(:,:)
  CHARACTER (LEN=10), allocatable :: global_daughter_eles(:)
- INTEGER, allocatable :: global_daughter_nums(:)
- INTEGER :: global_num_pka_recoil_points_master,number_global_recoils
+ INTEGER, allocatable :: global_daughter_nums(:),global_mt_nums(:)
+ INTEGER :: global_num_pka_recoil_points_master,number_global_recoils, &
+               number_global_mt_recoils
  
  !24/4/2018 - separate total results to allow separate use of user grid
  REAL(KIND=DBL),ALLOCATABLE :: totalglobal_pka_recoil_energies_master(:)
@@ -170,6 +172,9 @@ MODULE globals
  REAL (KIND=DBL) :: displacements,assumed_ed,total_disp
  REAL (KIND=DBL), ALLOCATABLE :: global_disp_sums(:),global_disp_sums_element(:)  ! for species/element sums
  REAL (KIND=DBL), ALLOCATABLE :: mtd_disp_sums(:)   ! for alpha/proton sums
+ !28/3/22 for mt sums
+ REAL (KIND=DBL), ALLOCATABLE :: global_mt_disp_sums(:)
+ 
  
  character (LEN=1) :: incident_particle
  
@@ -179,7 +184,9 @@ MODULE globals
                                  global_tdam_energies_master(:), &
                                  global_pka_sums_tdam(:,:),&
                                  tdam_energies_master(:)
- REAL (KIND=DBL), ALLOCATABLE :: pka_sums_tdam(:,:)       
+ REAL (KIND=DBL), ALLOCATABLE :: pka_sums_tdam(:,:)  
+ !28/3/22 for mt sums
+ REAL (KIND=DBL), ALLOCATABLE :: global_mt_pka_sums_tdam(:,:)     
  
  !16/10/2017 - handle exception caused by first file being empty and preventing array allocation
  LOGICAL :: first_non_empty
@@ -224,6 +231,8 @@ MODULE globals
  LOGICAL :: default_sdtrim
  
  CHARACTER (LEN=100) :: sdtrimsptablespath
+ 
+ INTEGER :: total_read
  
  
  

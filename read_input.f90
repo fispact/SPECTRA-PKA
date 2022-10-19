@@ -452,6 +452,14 @@
  	     processed=.true.
             end if	    
 
+            if (trim(adjustl(input_label))=='do_global_mt_sums') then
+ 	     read (input_value,*) do_global_mt_sums
+ 	     write (*,*) 'changing do_global_mt_sums to      :',do_global_mt_sums
+	     write (log_unit,*) 'changing do_global_mt_sums to      :',do_global_mt_sums
+ 	     processed=.true.
+            end if
+
+
 
 	    
             if (.not.processed) then
@@ -580,6 +588,7 @@
  parent_ele='Fe'  !used to define daughters
  parent_num=56
  do_global_sums=.false. ! if true then sum species over multiple files
+ do_global_mt_sums=.false. ! sum by mt numbers (even though daughters won't match - 28/3/22)
  do_exclude_light_from_total=.true. ! 20/5/2014 if false then include He+H in total recoil spectra.
  do_exclude_unknown_from_total=.true. !4/3/2016
  max_global_recoils=200

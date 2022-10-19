@@ -529,3 +529,234 @@ IF(do_outputs) WRITE(log_unit,*) SUM(pka_temp(1:totalglobal_num_pka_recoil_point
 
    
   END SUBROUTINE output_global_sums
+  
+  
+  
+  SUBROUTINE add_to_mt_globals(input_pka,recoil_points,tdam_vector,energy_vector)
+   use globals
+   IMPLICIT NONE
+   INTEGER, INTENT (in) :: recoil_points
+   REAL (KIND=DBL), INTENT(in) :: input_pka(recoil_points)
+   REAL (KIND=DBL), INTENT(in) :: tdam_vector(recoil_points),energy_vector(recoil_points)
+   REAL (KIND=DBL), ALLOCATABLE :: tdam_pka_temp(:),pka_temp(:)
+   LOGICAL :: found
+   INTEGER :: ii,jj !ii stores isotope position, jj the element position
+   
+   ii=1
+   found=.false.
+   DO WHILE ((ii.LE.number_global_mt_recoils).AND.(.not.found))
+    IF(mtd==global_mt_nums(ii)) THEN
+      found=.true.
+    ELSE
+     ii=ii+1
+    END IF
+   END DO
+   
+
+   
+   IF(ii.GT.number_global_mt_recoils) THEN
+    number_global_mt_recoils=ii
+    IF(number_global_mt_recoils.GT.max_global_recoils) THEN
+     PRINT *,'max number of global mt recoils exceeded!'
+     PRINT *,' increase max_global_recoils - STOP'
+     WRITE(log_unit,*) 'max number of global mt recoils exceeded!'
+     WRITE(log_unit,*) ' increase max_global_recoils - STOP'     
+     STOP
+    END IF
+    global_mt_nums(ii)=mtd
+    IF(do_outputs) WRITE(log_unit,*) 'number global mt recoils: ',number_global_mt_recoils,mtd
+    
+   END IF   
+   
+   
+
+   IF(do_outputs) WRITE(log_unit,*) mtd,'adding to globals'
+    !24/4/2018 changes to allow for user output grid for sums and globals
+    ! also removes error check for mis-matched grids - now we can just proceed and flag   
+  IF(recoil_points.NE.global_num_pka_recoil_points_master) THEN
+  ! 24/4/2018 allow for possibility of different grid and flag if do_user_output_energy_grid is false
+   IF ((.NOT.do_user_output_energy_grid).OR.(do_user_output_energy_grid.AND.(user_grid_option==3))) THEN
+      WRITE(log_unit,*) 'grid of recoil energies do not match global energy grid during summing'
+      WRITE(log_unit,*) 'interpolation will be used to collapse the current grid onto the global one'
+   END IF
+  END IF
+    
+    ALLOCATE(pka_temp(MAX(global_num_pka_recoil_points_master,recoil_points)))
+    pka_temp(1:recoil_points)=input_pka(:)*pka_ratios(filenum)
+    IF(do_outputs) WRITE(log_unit,*) 'global sum allocate done',size(pka_recoil_energies), &
+       size(global_pka_recoil_energies_master),recoil_points,global_num_pka_recoil_points_master, &
+       size(pka_temp)
+       
+    CALL collapse_fluxes(pka_temp, &
+                  recoil_points,&
+                  global_num_pka_recoil_points_master,&
+                  global_pka_recoil_energies_master,&
+                  energy_vector) 
+    IF(do_outputs) WRITE(log_unit,*) 'global sum flux collapse done'
+   global_mt_pka_sums(ii,:)=global_mt_pka_sums(ii,:)+pka_temp(1:global_num_pka_recoil_points_master)
+   IF(do_tdam) THEN
+    global_mt_disp_sums(ii)=global_mt_disp_sums(ii)+displacements*pka_ratios(filenum)
+    
+    
+    ! 29/6/2016 collapse pka rates onto global tdam energy spectrum using tdam energy spectrum for
+    ! current channel
+    !24/4/2018 - this was wrong before - the grids could be different now
+    ALLOCATE(tdam_pka_temp(MAX(global_num_pka_recoil_points_master,recoil_points)))
+    tdam_pka_temp(1:recoil_points)=input_pka(:)*pka_ratios(filenum)
+
+    CALL collapse_fluxes(tdam_pka_temp, &
+                  recoil_points,&
+                  global_num_pka_recoil_points_master,&
+                  global_tdam_energies_master,&
+                  tdam_vector)
+
+
+   global_mt_pka_sums_tdam(ii,:)=global_mt_pka_sums_tdam(ii,:)+&
+        tdam_pka_temp(1:global_num_pka_recoil_points_master)
+    
+    
+   END IF
+
+
+   
+
+
+  
+  
+  IF(do_tdam) DEALLOCATE(tdam_pka_temp)
+  DEALLOCATE(pka_temp)
+  
+  
+  END SUBROUTINE add_to_mt_globals
+  
+  
+  
+     SUBROUTINE output_global_mt_sums()
+   use globals
+   IMPLICIT NONE
+   
+   INTEGER, allocatable :: order(:),positions(:)
+   LOGICAL :: found
+   CHARACTER (LEN=100) :: fmt1='(ES14.6,2x,ES14.6,4(3x,ES11.4),3x,ES11.4,5x,ES11.4)'
+   CHARACTER (LEN=100) :: fmt2='(1x,a31,a8,6x,a11,3x,a15,a11,a19,a11)' 
+   CHARACTER (LEN=100) :: fmt3='(1x,a31,a8,6x,a11,3x,a15)'
+   REAL (KIND=DBL) :: energy_min
+    
+    DO i=1,number_global_mt_recoils
+    IF(sum(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)).NE.0) THEN
+       WRITE(results_unit,*) '### index ',file_index,' ##### ( totals )'
+       WRITE(number_string,'(I5)') global_mt_nums(i)
+       WRITE(results_unit,*) '#  total recoil matrix of mt '//  &
+        TRIM(ADJUSTL(number_string))
+    WRITE(index_summary,*) file_index,' total recoil matrix of mt '// &
+        TRIM(ADJUSTL(number_string))  
+    
+   
+       
+       
+   ! WRITE(results_unit,*) '#DIFF SPEC AVG. PKA RECOIL DISTRIBUTIONS - per target atom'
+   WRITE(results_unit,*) '#PKA RECOIL DISTRIBUTIONS - per target atom'       
+
+       !23/4/2018 - new lower bin bound for first bin - 
+       ! if using user grid then set to zero - otherwise half of lowest bin bound.
+       IF(do_user_output_energy_grid) THEN
+        energy_min=0_DBL
+       ELSE
+        energy_min=global_pka_recoil_energies_master(1)/2._DBL
+       END IF
+       
+       IF (do_tdam) THEN
+       
+       WRITE(results_unit,fmt2) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum',&
+        'cumulative_sum','tdam-pkas','disp_energy_(eV/s)','NRT_dpa/s'
+       WRITE(results_unit,'(1x,a30)') '#(or T-dam energy low+high for' 
+       WRITE(results_unit,'(1x,a30)') '#          tdam-pkas/disp/dpa)'       
+       
+       j=1
+       IF((global_mt_pka_sums(i,j).NE.0).or.(global_mt_pka_sums_tdam(i,j).NE.0)) &
+              WRITE(results_unit,fmt1) &
+               energy_min,global_pka_recoil_energies_master(j), &
+                 global_mt_pka_sums(i,j), &
+                   global_mt_pka_sums(i,j)/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)), &
+                   SUM(global_mt_pka_sums(i,1:j))/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)), &
+                   global_mt_pka_sums_tdam(i,j), &
+                   (global_mt_pka_sums_tdam(i,j))*1e6_DBL*((global_pka_recoil_energies_master(j)+&
+                   global_pka_recoil_energies_master(j)/2._DBL)/2._DBL), &
+                   (global_mt_pka_sums_tdam(i,j))*1e6_DBL*(0.8_DBL/(2._DBL*assumed_ed))*&
+                    ((global_pka_recoil_energies_master(j)+&
+                   global_pka_recoil_energies_master(j)/2._DBL)/2._DBL)
+       DO j=2,global_num_pka_recoil_points_master
+        IF((global_mt_pka_sums(i,j).NE.0).or.(global_mt_pka_sums_tdam(i,j).NE.0)) &
+               WRITE(results_unit,fmt1) &
+                   global_pka_recoil_energies_master(j-1),global_pka_recoil_energies_master(j), &
+                 global_mt_pka_sums(i,j), &
+                   global_mt_pka_sums(i,j)/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)), &
+                   SUM(global_mt_pka_sums(i,1:j))/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)), &
+                   global_mt_pka_sums_tdam(i,j), &
+                   (global_mt_pka_sums_tdam(i,j))*1e6_DBL*((global_pka_recoil_energies_master(j)+&
+                   global_pka_recoil_energies_master(j-1))/2._DBL), &
+                   (global_mt_pka_sums_tdam(i,j))*1e6_DBL*(0.8_DBL/(2._DBL*assumed_ed))*&
+                    ((global_pka_recoil_energies_master(j)+&
+                   global_pka_recoil_energies_master(j-1))/2._DBL)
+       END DO  
+       
+       ELSE
+       
+       WRITE(results_unit,fmt3) '#RECOIL energy (MeV low & high)','PKAs/s','norm_sum','cumulative sum'
+       
+       
+       
+       j=1
+       IF(global_mt_pka_sums(i,j).NE.0) WRITE(results_unit,'(5ES11.4)') &
+               energy_min,global_pka_recoil_energies_master(j), &
+                 global_mt_pka_sums(i,j), &
+                   global_mt_pka_sums(i,j)/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)), &
+                   SUM(global_mt_pka_sums(i,1:j))/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master))   
+               
+                    
+       DO j=2,global_num_pka_recoil_points_master
+        IF(global_mt_pka_sums(i,j).NE.0) WRITE(results_unit,'(5ES11.4)') &
+                   global_pka_recoil_energies_master(j-1),global_pka_recoil_energies_master(j), &
+                 global_mt_pka_sums(i,j), &
+                   global_mt_pka_sums(i,j)/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master)), &
+                   SUM(global_mt_pka_sums(i,1:j))/SUM(global_mt_pka_sums(i,1:global_num_pka_recoil_points_master))
+       END DO  
+       
+      
+       
+       END IF !do_tdam
+           
+   
+       ! compute average pka energy
+       pka_ave=0.5_DBL*(energy_min+global_pka_recoil_energies_master(1))*global_mt_pka_sums(i,1)
+       DO j=2,global_num_pka_recoil_points_master
+        pka_ave=pka_ave+0.5_DBL*(global_pka_recoil_energies_master(j)+&
+                                 global_pka_recoil_energies_master(j-1))*global_mt_pka_sums(i,j)
+       END DO
+       pka_ave=pka_ave*1000000._DBL
+       
+       WRITE(results_unit,'(a1,20x,A,ES11.4,A5)') '#','AVERAGE PKA ENERGY = ',pka_ave/SUM(global_mt_pka_sums(i,:)),' (eV)'
+   IF (do_tdam) then
+   
+    WRITE(results_unit,'(a1,20x,A,ES11.4)') '#',&
+             'displacement energy eV/s = ',global_mt_disp_sums(i)*1e6_DBL
+    WRITE(results_unit,'(a1,20x,A,ES11.4,A7,F4.1,a)') '#','equivalent NRT dpa/s = ',&
+              0.8_DBL*global_mt_disp_sums(i)/(2._DBL*assumed_ed*1e-6_DBL),&
+            ' (E_d=',assumed_ed,' eV)'    
+   
+
+   END IF          
+       WRITE(results_unit,*)
+       WRITE(results_unit,*)
+       file_index=file_index+1
+    END IF !non zero check
+   END DO ! loop over global recoils
+   
+
+    
+    
+
+   
+  END SUBROUTINE output_global_mt_sums
+  
+  

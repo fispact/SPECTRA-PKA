@@ -16,6 +16,7 @@
                   !   file type 2 only (from njoy)
      
      redo=.true.
+
      DO WHILE(redo)
       SELECT CASE(pka_filetype)
       case(1)
@@ -280,12 +281,14 @@
         
        ELSE
         PRINT *,'problem reading more of pka file'
+        PRINT *,total_read,' matrices read from file'
         PRINT *,'either we have reached the end (likely) or there is an error'
-        PRINT *,'skipping to next pka file if required'
+        PRINT *,'moving to next pka file if required'
 	
         WRITE(log_unit,*) 'problem reading more of pka file'
+        WRITE(log_unit,*) total_read,' matrices read from file'
         WRITE(log_unit,*) 'either we have reached the end (likely) or there is an error'
-        WRITE(log_unit,*) 'skipping to next pka file if required'	
+        WRITE(log_unit,*) 'moving to next pka file if required'	
 	
         !io_quit=1
         at_end=.true.
