@@ -8,6 +8,7 @@ MODULE bca
   REAL(KIND=DBL), parameter :: xstart=100._DBL
   INTEGER, ALLOCATABLE :: bca_cells(:,:) 
        ! nlc,4 - cell, number events,timestep & ievent(last occupied)
+       ! stores events per cell of box
   INTEGER :: nlcx,nlcy,nlcz,nlc_max,nlc
   INTEGER :: previous_itime
   
@@ -274,7 +275,7 @@ fileread:  DO WHILE(.not.fileend)
    END IF
    
    
-   ! define cell
+   ! define cell where event is located
    
    ix=INT(xpos*REAL(nlcx,DBL)/lx(1))+1
    iy=INT(ypos*REAL(nlcy,DBL)/lx(2))+1

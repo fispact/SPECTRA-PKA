@@ -15,6 +15,10 @@ MODULE configs
   CHARACTER (LEN=2), ALLOCATABLE :: pka_events_ele(:)
   integer,dimension(8) :: timevalues
   
+  INTEGER, PARAMETER :: num_analysis_bins=10
+  REAL (KIND=DBL) :: analysis_energies(num_analysis_bins)=(/1.000E-04,1.000E-03,1.000E-01,2.000E-01, &
+                    3.000E-01,4.000E-0,5.000E-01,1.000E+00,1.500E+00,2.000E+00/)
+  
 
 END MODULE configs
 
@@ -28,7 +32,7 @@ SUBROUTINE create_configs
   INTEGER :: isteps,ii,jj,ichannel,num_PKAs_step,ienergy,ipkas,jenergy
   REAL(KIND=DBL) :: cumtime,ireal,remain,ke,jrealvector(3),irealvector(3)
   logical :: found,bca_flag
-  CHARACTER (LEN=500) :: outstr,tempstr,tempstr2
+  CHARACTER (LEN=10000) :: outstr,tempstr,tempstr2
   INTEGER :: ievent,ifiles,foundi,jevent
   CHARACTER (LEN=30) :: date
   INTEGER(8) ::itime,num_above_threshold
@@ -102,8 +106,8 @@ SUBROUTINE create_configs
   
   
   
-  DO i=1,totalglobal_num_pka_recoil_points_master
-    write(tempstr,'(ES15.3)') totalglobal_pka_recoil_energies_master(i)
+  DO i=1,num_analysis_bins
+    write(tempstr,'(ES15.3)') analysis_energies(i)
     write(tempstr2,'(A20)') '  >'//TRIM(ADJUSTL(tempstr))//'(MeV)'
     outstr=TRIM(outstr)//TRIM(tempstr2)
   END DO
@@ -487,19 +491,26 @@ choiceloop:DO WHILE (.not.found)
    END DO ! ievent
   END DO ! jevent   
   outstr=''
+k=0
+DO j=1,num_analysis_bins
   DO i=1,totalglobal_num_pka_recoil_points_master
+    IF(totalglobal_pka_recoil_energies_master(i).GE.analysis_energies(j)) THEN
+     k=i
+     exit
+    END IF
+  END DO
     ! available events in range needs to be above 1 for there to be a pair
-    IF(SUM(event_dist(i+1:totalglobal_num_pka_recoil_points_master+1))>1._DBL) THEN
+    IF(SUM(event_dist(k+1:totalglobal_num_pka_recoil_points_master+1))>1._DBL) THEN
     !start from 1, but actually second entry pair
     write(tempstr,'(F20.5)') &
-        SUM(pka_min_sep(1:num_events,2*i+1))/&
-           SUM(event_dist(i+1:totalglobal_num_pka_recoil_points_master+1))
-        ! event_dist for pairs greater than i is at i+1
+        SUM(pka_min_sep(1:num_events,2*k+1))/&
+           SUM(event_dist(k+1:totalglobal_num_pka_recoil_points_master+1))
+        ! event_dist for pairs greater than k is at k+1
     ELSE 
       write(tempstr,'(A20)') 'none'
     END IF
     outstr=TRIM(outstr)//TRIM(tempstr)
-  END DO
+END DO
   
   write(pka_analysis,'(x,I19,F20.5,I20,2(F20.5),2I20,A)') isteps,&
              total_sep_dist(1)/total_seps(1),NINT(total_seps(1)), &
