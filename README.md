@@ -7,7 +7,7 @@
 - [Usage](#usage)
   - [Code words](#code-words)
 - [Examples](#examples)
-- [Quick-start guide](#installation)
+- [Quick-start guide](#quick-start)
 - [Input PKA data download](#data-download)
 - [Publications](#publications)
 
@@ -71,7 +71,7 @@ A further example, which doesn't include a plot example (as described above), ca
 
 A final example demonstrates the possibilities of the atomistic PKA capabilities newly developed in the code, including the ability to interface with BCA simulations. In the folder   "manual/bca_test" is another Zr example. In this case the code is asked to stochastically define the PKA events that would take place in a hcp box of 500x500x500 unit cells during a 100 s irradiation under the PWR fission spectrum. Additionally, the BCA code SDTrimSP is run for each PKA above the 40 eV threshold for atomic displacement in Zr. Two example plot scripts are provided to plot the resulting final accumulation of PKA events and the corresponding cascade distributions. Figures in the manual demonstrate how the output produced from this simulation could be viewed.
 
-##### <a name="installation"></a>Quick-start guide
+##### <a name="quick-start"></a>Quick-start guide
 
 To get started with SPECTRA-PKA, the minimum terminal inputs to download, compile and run the basic test case with Zr would be:
 
