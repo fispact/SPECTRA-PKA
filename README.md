@@ -75,7 +75,8 @@ A final example demonstrates the possibilities of the atomistic PKA capabilities
 
 To get started with SPECTRA-PKA, the minimum terminal inputs to download, compile and run the basic test case with Zr would be:
 
-```git clone https://github.com/fispact/SPECTRA-PKA.git
+```bash
+git clone https://github.com/fispact/SPECTRA-PKA.git
 cd SPECTRA-PKA
 make
 cd manual
