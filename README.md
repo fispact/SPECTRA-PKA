@@ -70,6 +70,20 @@ A further example, which doesn't include a plot example (as described above), ca
 
 A final example demonstrates the possibilities of the atomistic PKA capabilities newly developed in the code, including the ability to interface with BCA simulations. In the folder   "manual/bca_test" is another Zr example. In this case the code is asked to stochastically define the PKA events that would take place in a hcp box of 500x500x500 unit cells during a 100 s irradiation under the PWR fission spectrum. Additionally, the BCA code SDTrimSP is run for each PKA above the 40 eV threshold for atomic displacement in Zr. Two example plot scripts are provided to plot the resulting final accumulation of PKA events and the corresponding cascade distributions. Figures in the manual demonstrate how the output produced from this simulation could be viewed.
 
+##### <a name="installation"></a>Quick-start guide
+
+To get started with SPECTRA-PKA, the minimum terminal inputs to download, compile and run the basic test case with Zr would be:
+
+git clone https://github.com/fispact/SPECTRA-PKA.git
+cd SPECTRA-PKA
+make
+cd manual
+cd test
+../../spectra-pka ZR.in
+
+If this has worked the last line of the command output from the test case should be "END as expected". The above sequence of inputs should work on Unix, Mac and maybe even a properly configured unix-like environment on Windows, and should get a user started before moving on to more complex example, requiring more nuclear data files (see below).
+
+
 ##### <a name="data-download"></a>Input PKA data download
 
 SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files required from NJOY are non-standard and are produced by a slightly modified version of the GROUPR module within NJOY. An evolving selection of databases produced using various international reaction cross section libraries (for various incident particle types) have been pre-calculated and are available to download as compressed tar archives from [www.ccfe.ac.uk/FISPACT-II/nuclear_data/PKA](https://www.ccfe.ac.uk/FISPACT-II/nuclear_data/PKA/) or via links on the FISPACT-II website at [fispact.ukaea.uk/nuclear-data/downloads/](https://fispact.ukaea.uk/nuclear-data/downloads/) . These can be used immediately with SPECTRA-PKA, or can be used as a template to guide users who may want to create their own input data files (for example, for libraries not currently included on the download page).
