@@ -7,6 +7,7 @@
 - [Usage](#usage)
   - [Code words](#code-words)
 - [Examples](#examples)
+- [Quick-start guide](#installation)
 - [Input PKA data download](#data-download)
 - [Publications](#publications)
 
