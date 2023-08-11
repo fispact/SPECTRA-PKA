@@ -74,14 +74,15 @@ A final example demonstrates the possibilities of the atomistic PKA capabilities
 
 To get started with SPECTRA-PKA, the minimum terminal inputs to download, compile and run the basic test case with Zr would be:
 
-git clone https://github.com/fispact/SPECTRA-PKA.git
+```git clone https://github.com/fispact/SPECTRA-PKA.git
 cd SPECTRA-PKA
 make
 cd manual
 cd test
 ../../spectra-pka ZR.in
+```
 
-If this has worked the last line of the command output from the test case should be "END as expected". The above sequence of inputs should work on Unix, Mac and maybe even a properly configured unix-like environment on Windows, and should get a user started before moving on to more complex example, requiring more nuclear data files (see below).
+If this has worked the last line of the command output from the test case should be "END as expected". The above sequence of inputs should work on Unix, Mac and maybe even a properly configured unix-like environment on Windows, and should get a user started before moving on to more complex simulations, requiring more nuclear data files (see below).
 
 
 ##### <a name="data-download"></a>Input PKA data download
