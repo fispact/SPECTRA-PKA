@@ -20,7 +20,8 @@
         incident_mass=neutron_mass
        case("p")
         incident_mass=proton_mass
-      
+       case("a")
+        incident_mass=alpha_mass      
       CASE DEFAULT
        incident_mass=neutron_mass
       END SELECT   

@@ -600,6 +600,7 @@
  
  !21/4/2016 need to identify incident particle to get correct daughter
  incident_particle='n' !can be n or p for now
+ !22/7/2024 - added alpha
  
  !23/4/2018
  do_user_output_energy_grid=.false. ! if true then read energy bins for global totals from file
