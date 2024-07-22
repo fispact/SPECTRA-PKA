@@ -7,6 +7,7 @@
 - [Usage](#usage)
   - [Code words](#code-words)
 - [Examples](#examples)
+- [Quick-start guide](#quick-start)
 - [Input PKA data download](#data-download)
 - [Publications](#publications)
 
@@ -69,6 +70,22 @@ The test folder also has an example_results folder containing the .out and .inde
 A further example, which doesn't include a plot example (as described above), can be found in the folder "manual/usergrid_test". This "test" calculates the PKA distributions for a single Fe isotope (Fe56) irradiated in a typical fission irradiation spectrum. It exemplifies the use of a user-defined energy output grid for the PKA distributions and additionally provides examples of the format of the required user-grid input file.
 
 A final example demonstrates the possibilities of the atomistic PKA capabilities newly developed in the code, including the ability to interface with BCA simulations. In the folder   "manual/bca_test" is another Zr example. In this case the code is asked to stochastically define the PKA events that would take place in a hcp box of 500x500x500 unit cells during a 100 s irradiation under the PWR fission spectrum. Additionally, the BCA code SDTrimSP is run for each PKA above the 40 eV threshold for atomic displacement in Zr. Two example plot scripts are provided to plot the resulting final accumulation of PKA events and the corresponding cascade distributions. Figures in the manual demonstrate how the output produced from this simulation could be viewed.
+
+##### <a name="quick-start"></a>Quick-start guide
+
+To get started with SPECTRA-PKA, the minimum terminal inputs to download, compile and run the basic test case with Zr would be:
+
+```bash
+git clone https://github.com/fispact/SPECTRA-PKA.git
+cd SPECTRA-PKA
+make
+cd manual
+cd test
+../../spectra-pka ZR.in
+```
+
+If this has worked the last line of the command output from the test case should be "END as expected". The above sequence of inputs should work on Unix, Mac and maybe even a properly configured unix-like environment on Windows, and should get a user started before moving on to more complex simulations, requiring more nuclear data files (see below).
+
 
 ##### <a name="data-download"></a>Input PKA data download
 
