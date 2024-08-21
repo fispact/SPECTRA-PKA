@@ -125,7 +125,7 @@ MODULE globals
                                clight=299792458._DBL, &
                                j_to_mev=1._DBL/(1.602176565e-13_DBL), &
                                neutron_mass=1.008664923_DBL, &
-                               proton_mass=1.007825032_DBL
+                               proton_mass=1.007825032_DBL, &
                                alpha_mass=4.002603250_DBL
  REAL(KIND=DBL), ALLOCATABLE :: ngamma_daughter_mass(:),ngamma_parent_mass(:)
  
