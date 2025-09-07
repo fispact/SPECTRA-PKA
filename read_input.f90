@@ -542,7 +542,11 @@
  	     processed=.true.
             end if            
 
-
+            if (trim(adjustl(input_label))=='do_lammps') then
+ 	     read (input_value,*) do_lammps
+ 	     write (*,*) 'changing do_lammps to      :',do_lammps
+ 	     processed=.true.
+            end if  
 	    
 
           END DO 
@@ -646,6 +650,9 @@ sdtrim_path="SDTrimSP"
 		    
 !sept21 correction to remove fixed path for SDTRIMSP tables location
 sdtrimsptablespath="/work/SDTrimSP/tables"		    
+
+!29/8/25 - starting to consider MD cascades
+do_lammps=.true.
 		    
  
      END SUBROUTINE set_defaults

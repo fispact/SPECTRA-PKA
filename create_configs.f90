@@ -31,7 +31,7 @@ SUBROUTINE create_configs
   INTEGER :: jcount,kcount,choice,num_events,num_events_previous
   INTEGER :: isteps,ii,jj,ichannel,num_PKAs_step,ienergy,ipkas,jenergy
   REAL(KIND=DBL) :: cumtime,ireal,remain,ke,jrealvector(3),irealvector(3)
-  logical :: found,bca_flag
+  logical :: found,bca_flag,lammps_flag
   CHARACTER (LEN=10000) :: outstr,tempstr,tempstr2
   INTEGER :: ievent,ifiles,foundi,jevent
   CHARACTER (LEN=30) :: date
@@ -583,6 +583,15 @@ END DO
    END SELECT 
    end if !do_bca
    if(bca_flag) num_above_threshold=num_above_threshold+1
+    
+ 
+ lammps_flag-.false.   
+ ! prototyping lammps MD cascade generation
+   IF (do_lammps) then
+     CALL lammps_run(pka_events_ke(ievent), &
+           pka_events_vec(ievent,:),&
+           ievent,jrealvector,pka_events_ele(ievent),isteps,lammps_flag)
+   END IF   
     
    !END IF
   END DO  !IF(i>0) 

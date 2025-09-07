@@ -235,7 +235,7 @@ MODULE globals
  
  INTEGER :: total_read
  
- 
+ LOGICAL :: do_lammps
  
  end module globals
  
