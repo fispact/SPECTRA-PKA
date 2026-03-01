@@ -585,7 +585,7 @@ END DO
    if(bca_flag) num_above_threshold=num_above_threshold+1
     
  
- lammps_flag-.false.   
+ lammps_flag=.false.   
  ! prototyping lammps MD cascade generation
    IF (do_lammps) then
      CALL lammps_run(pka_events_ke(ievent), &
@@ -708,7 +708,7 @@ SUBROUTINE initial_config
   END IF
   ALLOCATE(initial_atom_types_count(number_pka_files))
   initial_atom_types_count=0
-
+Print *,natoms,'in box'
 
     call random_seed(size=getsize)
     allocate (seed_array(getsize))

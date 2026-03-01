@@ -2,8 +2,8 @@
 # Makefile adopted for Linux + mpich
 ###########################################
 
-FF = gfortran
-LD = gfortran
+FF = gfortran-mp-13
+LD = gfortran-mp-13
 FFLAGS =  -ffree-line-length-none -g 
 LDFLAGS = -g 
 LIBS =
@@ -31,7 +31,8 @@ OBJ = accuracy.o globals.o read_input.o \
       global_sums.o tdam.o \
       create_configs.o create_bcc.o \
       bca.o create_fcc.o create_hcp.o \
-      config_input_output.o
+      config_input_output.o \
+      lammps.f90
       
 $(PROG) : $(OBJ) 
 	  $(LD) -o $(PROG) $(LDFLAGS) $(OBJ)

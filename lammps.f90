@@ -105,12 +105,17 @@ END SUBROUTINE lammps_run
 
 
 
-SUBROUTINE lammpswrite(ke.pkaelement)
- IMPLICIT NONE
- use lammps
- INTEGER, PARAMETER :: unitlammpsin=201
- INTEGER :: io_read,io_open
- 
+SUBROUTINE lammpswrite(ke,pkaelement)
+  use lammps
+  
+  IMPLICIT NONE
+
+ INTEGER, PARAMETER :: unitlammps=201
+ !INTEGER :: io_read,io_open
+  REAL (KIND=DBL), intent(in) :: ke
+  CHARACTER (LEN=2), intent(in) :: pkaelement 
+  
+  
  OPEN(unitlammps,file="lammps.in",STATUS='REPLACE',iostat=io_open)
  IF(io_open==0) THEN
  
@@ -153,84 +158,84 @@ write(unitlammps,*) "# PKA initiation"
 
 
 
-write(unitlammps,*) "# Define a small region around the point of interest
-write(unitlammps,*) "region my_small_region sphere 0.0 0.0 0.0 1.0 units box
-write(unitlammps,*) "# Create a group of atoms within that region
-write(unitlammps,*) "group near_point region my_small_region
+write(unitlammps,*) "# Define a small region around the point of interest"
+write(unitlammps,*) "region my_small_region sphere 0.0 0.0 0.0 1.0 units box"
+write(unitlammps,*) "# Create a group of atoms within that region"
+write(unitlammps,*) "group near_point region my_small_region"
 
-# Then, perform the same distance calculation and min reduction, but only on this group.
-# The variable and compute commands can be limited to the `near_point` group.
+!# Then, perform the same distance calculation and min reduction, but only on this group.
+!# The variable and compute commands can be limited to the `near_point` group.
 
-create_atoms 1 region mybox
-variable px equal 0.0
-variable py equal 0.0
-variable pz equal 0.0
-variable distsq atom "(x-v_px)^2 + (y-v_py)^2 + (z-v_pz)^2"
-variable dist atom "sqrt(v_distsq)"
-compute mindist near_point reduce min v_dist
-variable closest_atom_id
-variable closest_atom_x
-variable closest_atom_y
-variable closest_atom_z
-label find_closest_atom
-  # Use next to loop through all atoms
-  next closest_atom_id loop 1 1 ${N}
-  if "$(v_dist[v_closest_atom_id]) == c_mindist" then &
-    "variable closest_atom_x equal x[v_closest_atom_id]" &
-    "variable closest_atom_y equal y[v_closest_atom_id]" &
-    "variable closest_atom_z equal z[v_closest_atom_id]" &
-    "jump SELF break" # Exit the loop after finding the first match
+!create_atoms 1 region mybox
+!variable px equal 0.0
+!variable py equal 0.0
+!variable pz equal 0.0
+!variable distsq atom "(x-v_px)^2 + (y-v_py)^2 + (z-v_pz)^2"
+!variable dist atom "sqrt(v_distsq)"
+!compute mindist near_point reduce min v_dist
+!variable closest_atom_id
+!variable closest_atom_x
+!variable closest_atom_y
+!variable closest_atom_z
+!label find_closest_atom
+!  # Use next to loop through all atoms
+!  next closest_atom_id loop 1 1 ${N}
+!  if "$(v_dist[v_closest_atom_id]) == c_mindist" then &
+!    "variable closest_atom_x equal x[v_closest_atom_id]" &
+!    "variable closest_atom_y equal y[v_closest_atom_id]" &
+!    "variable closest_atom_z equal z[v_closest_atom_id]" &
+!    "jump SELF break" # Exit the loop after finding the first match
 
-print "Closest atom ID: ${closest_atom_id}"
-print "Closest atom coordinates: (${closest_atom_x}, ${closest_atom_y}, ${closest_atom_z})"
+!print "Closest atom ID: ${closest_atom_id}"
+!print "Closest atom coordinates: (${closest_atom_x}, ${closest_atom_y}, ${closest_atom_z})"
 
-# To use this in a simulation, you would run minimization or dynamics
-# and then add the above logic to your script.
+!# To use this in a simulation, you would run minimization or dynamics
+!# and then add the above logic to your script.
 
-unfix 1
-group pka id 8422 #  atom ID is near center
-variable pka_energy equal 500 # 50 eV
-variable pka_mass equal 56.0 # Ni mass (g/mol)
-# divide by 100 to get from m/s to A/ps for metal units
-# divide pka_mass (in g/mol) to g per atom by dividing by avogadro (atoms/mol)
-# then divide by 1000 to convert from g to kg
-# convert pka_energy in eV to J by multiplying by 1.6E-19
-variable pka_velocity equal sqrt(2*${pka_energy}*1.60218e-19*6.02214e23*1000/(${pka_mass}))/100 # Convert eV to J, then calculate velocity
+!unfix 1
+!group pka id 8422 #  atom ID is near center
+!variable pka_energy equal 500 # 50 eV
+!variable pka_mass equal 56.0 # Ni mass (g/mol)
+!# divide by 100 to get from m/s to A/ps for metal units
+!# divide pka_mass (in g/mol) to g per atom by dividing by avogadro (atoms/mol)
+!# then divide by 1000 to convert from g to kg
+!# convert pka_energy in eV to J by multiplying by 1.6E-19
+!variable pka_velocity equal sqrt(2*${pka_energy}*1.60218e-19*6.02214e23*1000/(${pka_mass}))/100 # Convert eV to J, then calculate velocity
 
-#velocity pka set ${pka_velocity} 0 0 units box # Example velocity in x direction
+!#velocity pka set ${pka_velocity} 0 0 units box # Example velocity in x direction
 
-# make it resolved in x,y - want velocity in y to be half that of x
-# but resolved must still equal pka_velocity (resolved vector)
-# y**2=x**2+(x/2)**2, x=sqrt(4y/5)
-variable pka_velocity_x equal 2.0*${pka_velocity}/sqrt(5)
-variable pka_velocity_y equal ${pka_velocity_x}/2.0
+!# make it resolved in x,y - want velocity in y to be half that of x
+!# but resolved must still equal pka_velocity (resolved vector)
+!# y**2=x**2+(x/2)**2, x=sqrt(4y/5)
+!variable pka_velocity_x equal 2.0*${pka_velocity}/sqrt(5)
+!variable pka_velocity_y equal ${pka_velocity_x}/2.0
 
-velocity pka set ${pka_velocity_x} ${pka_velocity_y} 0 units box # Example velocity in x direction
+!velocity pka set ${pka_velocity_x} ${pka_velocity_y} 0 units box # Example velocity in x direction
 
-print "pka_mass $(v_pka_mass) "
-print "pka_velocity $(v_pka_velocity) "
-print "pka_energy $(v_pka_energy) "
+!print "pka_mass $(v_pka_mass) "
+!print "pka_velocity $(v_pka_velocity) "
+!print "pka_energy $(v_pka_energy) "
 
-# Cascade simulation
-fix 2 all nve
-#fix 3 all temp/berendsen 300.0 300.0 100.0 region boundary # Define a boundary region
-timestep 0.0001 # Small initial timestep 0.1 fs
-thermo 100
-dump 2 all custom 1 dump.cascade id type x y z vx vy vz
-dump_modify 2 sort id
-run 1000 # Example run time for cascade
+!# Cascade simulation
+!fix 2 all nve
+!#fix 3 all temp/berendsen 300.0 300.0 100.0 region boundary # Define a boundary region
+!timestep 0.0001 # Small initial timestep 0.1 fs
+!thermo 100
+!dump 2 all custom 1 dump.cascade id type x y z vx vy vz
+!dump_modify 2 sort id
+!run 1000 # Example run time for cascade
 
-compute        peratome all pe/atom
-compute        peratomke all ke/atom
+!compute        peratome all pe/atom
+!compute        peratomke all ke/atom
 
-#more time 
-timestep 0.001 # timestep 1 fs
-thermo 100
+!#more time 
+!timestep 0.001 # timestep 1 fs
+!thermo 100
 
 
-run 50 # Example run time for cascade
+!run 50 # Example run time for cascade
 
-write_dump  all custom dump.cascade_end id type x y z vx vy vz c_peratome c_peratomke modify sort id 
+!write_dump  all custom dump.cascade_end id type x y z vx vy vz c_peratome c_peratomke modify sort id 
 
 
 
