@@ -89,7 +89,7 @@ If this has worked the last line of the command output from the test case should
 
 ##### <a name="data-download"></a>Input PKA data download
 
-SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files required from NJOY are non-standard and are produced by a slightly modified version of the GROUPR module within NJOY. An evolving selection of databases produced using various international reaction cross section libraries (for various incident particle types) have been pre-calculated and are available to download as compressed tar archives from links on the FISPACT-II website at [fispact.ukaea.uk/nuclear-data/downloads/](https://fispact.ukaea.uk/nuclear-data/downloads/) . These can be used immediately with SPECTRA-PKA, or can be used as a template to guide users who may want to create their own input data files (for example, for libraries not currently included on the download page).
+SPECTRA-PKA uses NJOY-generated recoil cross section matrices. The output files required from NJOY are non-standard and are produced by a slightly modified version of the GROUPR module within NJOY. An evolving selection of databases produced using various international reaction cross section libraries (for various incident particle types) have been pre-calculated and are available to download as compressed tar archives from links on the FISPACT wiki at [https://fispact.ukaea.uk/wiki/Nuclear_data_downloads](https://fispact.ukaea.uk/wiki/Nuclear_data_downloads) . These can be used immediately with SPECTRA-PKA, or can be used as a template to guide users who may want to create their own input data files (for example, for libraries not currently included on the download page).
 
 ##### <a name="publications"></a>Publications
 
