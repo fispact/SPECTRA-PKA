@@ -55,6 +55,8 @@ MODULE globals
                     flux_rescale_value
  REAL (KIND=DBL), ALLOCATABLE :: flux_energies(:),fluxes(:),flux_covariances(:,:),&
               flux_ebin_widths(:),fluxes_norm(:)
+ ! 10/8/26 - add functionality to read fispact flux file
+ LOGICAL :: do_read_fispact_flux_file             
  
  
  

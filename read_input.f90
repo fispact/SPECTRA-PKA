@@ -563,6 +563,8 @@
  flux_rescale_value=1._DBL   !24/7/2015 - applied in read flux - would be undone if normalisation requested
                             ! afterwards
 
+!10/8/26
+ do_read_fispact_flux_file=.false. ! if true then read a fispact flux file
 
  pka_ratios=1._DBL
 ! nkerma_groups_input=171

@@ -240,8 +240,23 @@
        ! CASE DEFAULT
        !END SELECT         
 
+         IF(INDEX(pka_element,"triton").NE.0) THEN
+          daughter_ele='H'
+          daughter_num=3
+          daughter_z=1
+         END IF
 
-        
+         IF(INDEX(pka_element,"deuteron").NE.0) THEN
+          daughter_ele='H'
+          daughter_num=2
+          daughter_z=1
+         END IF
+         
+         IF(INDEX(pka_element,"he3").NE.0) THEN
+          daughter_ele='He'
+          daughter_num=3
+          daughter_z=2
+         END IF         
         
       END IF
      ELSE

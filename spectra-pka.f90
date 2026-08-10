@@ -49,7 +49,13 @@ use globals
  
  ! read flux file
  
- IF(io_quit==0) CALL read_flux()
+ IF(io_quit==0) THEN
+  IF (do_read_fispact_flux_file) THEN
+   CALL read_flux_fispact()
+  ELSE
+   CALL read_flux()
+  END IF
+ END IF
  
 
  
