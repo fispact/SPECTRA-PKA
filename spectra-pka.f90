@@ -50,6 +50,8 @@ use globals
  ! read flux file
  
  IF(io_quit==0) THEN
+  PRINT *,'Reading irradiation flux spectrum file'
+  WRITE(log_unit,*) 'Reading irradiation flux spectrum file'
   IF (do_read_fispact_flux_file) THEN
    CALL read_flux_fispact()
   ELSE
@@ -165,6 +167,10 @@ END IF
    IF(io_read.NE.0) cycle
    IF(io_quit.NE.0) cycle
    WRITE(log_unit,*) 'pka data read in for: '//TRIM(ADJUSTL(pka_element))
+   
+   
+
+   
    total_read=total_read+1
    !num_pka_elements=num_pka_elements+1
    !IF(num_pka_elements==69) at_end=.true.

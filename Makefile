@@ -2,8 +2,8 @@
 # Makefile adopted for Linux + mpich
 ###########################################
 
-FF = gfortran-mp-13
-LD = gfortran-mp-13
+FF = gfortran
+LD = gfortran
 FFLAGS =  -ffree-line-length-none -g 
 LDFLAGS = -g 
 LIBS =

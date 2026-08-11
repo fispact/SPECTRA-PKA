@@ -72,7 +72,7 @@
        READ(pka_unit,'(a23,a70)',IOSTAT=io_read) pka_element,input_line
        IF(io_read==0) READ(input_line,*,IOSTAT=io_read) rdummy,num_pka_recoil_points,num_pka_points
       END SELECT
-       
+    
        !WRITE(log_unit,*)  pka_element,rdummy,num_pka_recoil_points,num_pka_points,io_read,input_line
        IF(io_read==0) THEN
         num_pka_incident_energies=num_pka_points+1
@@ -128,6 +128,7 @@
           first_read=.false.  
          END IF
         END IF
+        
         SELECT CASE(pka_filetype)
         CASE(1) ! original format
          IF(io_read==0) READ(pka_unit,'(8(E10.3))',IOSTAT=io_read) &
@@ -142,6 +143,7 @@
          last_i=0
          last_j=0
          recoil_kermas=0._DBL
+
         IF(INDEX(pka_element,'matrix')==0) THEN
          !6/3/2014 not pka matrix - will read and then skip if not n,g
          DO WHILE (io_read==0)
@@ -156,7 +158,9 @@
            backspace(pka_unit)
           END IF
          END DO
+         
         ELSEIF((flag1==1).AND.(flag2==1)) THEN !24.2.2014 - read multiple entries per line
+
          DO WHILE (io_read==0) 
            read(pka_unit,'(A100)',IOSTAT=io_read) input_line
            read(input_line,*,IOSTAT=io_read) idummy,jdummy
@@ -205,7 +209,7 @@
            backspace(pka_unit)
           END IF
          END DO
-         
+
         END IF !flag test 24/2/2014
          
          !6/3/2014 - check cross section case

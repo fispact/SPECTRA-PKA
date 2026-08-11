@@ -679,9 +679,18 @@ DO
  END do
 END DO
 close(flux_unit,STATUS='KEEP')
+
+
+acnm=1.0_DBL
+irrtime=1.0_DBL
+ksail=-1.0
 ! the last value will have been the flux normalisation factor
 number_flux_groups=number_flux_groups-1 
 number_flux_ebins=number_flux_groups+1
+
+  PRINT *,number_flux_groups,' groups in flux file'
+  WRITE(log_unit,*) number_flux_groups,' groups in flux file'
+
 ALLOCATE(flux_energies(number_flux_ebins),fluxes(number_flux_ebins),&
               flux_ebin_widths(number_flux_ebins),fluxes_norm(number_flux_ebins))
 
@@ -690,7 +699,7 @@ ALLOCATE(flux_energies(number_flux_ebins),fluxes(number_flux_ebins),&
 
 
 
-    select case(number_flux_ebins)
+    select case(number_flux_groups)
     case(66)
        j=1
        DO i=67,1,-1
@@ -784,6 +793,7 @@ ALLOCATE(flux_energies(number_flux_ebins),fluxes(number_flux_ebins),&
        END DO
     case default
        PRINT *,'Invalid number of cross-section energy bins for reading FISPACT-II flux file'
+       WRITE(log_unit,*) 'Invalid number of cross-section energy bins for reading FISPACT-II flux file'     
        io_quit=1 
     end select
 

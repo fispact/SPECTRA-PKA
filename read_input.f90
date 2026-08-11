@@ -460,6 +460,13 @@
             end if
 
 
+            if (trim(adjustl(input_label))=='do_read_fispact_flux_file') then
+ 	     read (input_value,*) do_read_fispact_flux_file
+ 	     write (*,*) 'changing do_read_fispact_flux_file to      :',do_read_fispact_flux_file
+	     write (log_unit,*) 'changing do_read_fispact_flux_file to      :',do_read_fispact_flux_file
+ 	     processed=.true.
+            end if
+
 
 	    
             if (.not.processed) then
